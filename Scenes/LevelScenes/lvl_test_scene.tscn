@@ -37,4 +37,4 @@ tile_set = SubResource("TileSet_okdji")
 [node name="Node2D" type="Node2D" parent="TileMapLayer"]
 
 [node name="SHIP" parent="TileMapLayer/Node2D" instance=ExtResource("2_awfln")]
-position = Vector2(125, 140)
+position = Vector2(95, 128)
