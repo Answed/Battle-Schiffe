@@ -39,4 +39,7 @@ tile_set = SubResource("TileSet_okdji")
 [node name="Controller" type="Node" parent="."]
 
 [node name="SHIP" parent="." instance=ExtResource("2_awfln")]
-position = Vector2(638, 249)
+position = Vector2(568, 210)
+
+[node name="SHIP2" parent="." instance=ExtResource("2_awfln")]
+position = Vector2(578, 352)

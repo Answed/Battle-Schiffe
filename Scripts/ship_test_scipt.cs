@@ -19,6 +19,7 @@ public partial class ship_test_scipt : Node2D{
 		if((bool)GetMeta("Hovered") == true && Input.IsActionJustPressed("select")){
 			if((bool)GetMeta("Selected") == true){
 				SetMeta("Selected", false);
+				Position = (Vector2)GetMeta("SetPosition");
 			}
 			else{
 				SetMeta("Selected", true);
@@ -35,12 +36,11 @@ public partial class ship_test_scipt : Node2D{
 		GetNode<Area2D>("Area2D").GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(1.0F,1.0F);
 	}
 	public void _on_area_2d_body_entered(TileMapLayer nod){
-		Print(GlobalPosition.X.ToString());
-		Vector2I helper = nod.LocalToMap(Position);
-		Print(helper);
-		Print(nod.MapToLocal(helper));
-		SetMeta("Hovered", false);
-		SetMeta("Selected", false);
-		Position = nod.MapToLocal(helper);
+		SetMeta("SetPosition",nod.MapToLocal(nod.LocalToMap(Position)));
+		SetMeta("positionViable", true);
+		Print(GetMeta("SetPosition"));
 	}
 }
+	//	SetMeta("Hovered", false);
+	//	SetMeta("Selected", false);
+	//	Position = nod.MapToLocal(helper);//

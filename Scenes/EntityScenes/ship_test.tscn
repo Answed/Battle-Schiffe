@@ -21,7 +21,8 @@ size = Vector2(16, 16)
 script = ExtResource("2_iiyjt")
 metadata/Selected = false
 metadata/Hovered = false
-metadata/Once = false
+metadata/PositionViable = false
+metadata/SetPosition = Vector2(0, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 
