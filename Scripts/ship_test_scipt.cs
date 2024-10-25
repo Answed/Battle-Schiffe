@@ -2,11 +2,12 @@ using System;
 using System.Threading.Tasks;
 using Godot;
 using Godot.NativeInterop;
+using static Godot.GD;
 
 public partial class ship_test_scipt : Node2D{
 	public override void _Process(double delta)
 	{
-		if(((bool)GetMeta("Selected"))== true ){
+		if(((bool)GetMeta("Selected"))== true){
 			//follows mouse
 			Position = GetGlobalMousePosition();
 			//rotation
@@ -32,5 +33,14 @@ public partial class ship_test_scipt : Node2D{
 	public void _on_area_2d_mouse_exited(){
 		SetMeta("Hovered", false);
 		GetNode<Area2D>("Area2D").GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(1.0F,1.0F);
+	}
+	public void _on_area_2d_body_entered(TileMapLayer nod){
+		Print(GlobalPosition.X.ToString());
+		Vector2I helper = nod.LocalToMap(Position);
+		Print(helper);
+		Print(nod.MapToLocal(helper));
+		SetMeta("Hovered", false);
+		SetMeta("Selected", false);
+		Position = nod.MapToLocal(helper);
 	}
 }
