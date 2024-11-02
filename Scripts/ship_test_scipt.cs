@@ -7,17 +7,17 @@ using static Godot.GD;
 public partial class ship_test_scipt : Node2D{
 	public override void _Process(double delta)
 	{
-		if(((bool)GetMeta("Selected"))== true){
+		if(((bool)GetMeta("Selected"))){
 			//follows mouse
 			Position = GetGlobalMousePosition();
 			//rotation
-			if( Input.IsActionJustPressed("rotate_selected_ship")){
+			if(Input.IsActionJustPressed("rotate_selected_ship")){
 				RotationDegrees += 90;
 			}
 		}
 		//selects current ship
-		if((bool)GetMeta("Hovered") == true && Input.IsActionJustPressed("select")){
-			if((bool)GetMeta("Selected") == true){
+		if((bool)GetMeta("Hovered") && Input.IsActionJustPressed("select")){
+			if((bool)GetMeta("Selected")){
 				SetMeta("Selected", false);
 				Position = (Vector2)GetMeta("SetPosition");
 			}
@@ -27,20 +27,17 @@ public partial class ship_test_scipt : Node2D{
 		}
 	}
 	//checks if the ship is hovered over
-	public void _on_area_2d_mouse_entered(){
+	public void MouseEnter(){
 		SetMeta("Hovered", true);
-		GetNode<Area2D>("Area2D").GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(1.1F,1.1F);
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(1.1F,1.1F);
 	}
-	public void _on_area_2d_mouse_exited(){
+	public void MouseExit(){
 		SetMeta("Hovered", false);
-		GetNode<Area2D>("Area2D").GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(1.0F,1.0F);
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(1.0F,1.0F);
 	}
-	public void _on_area_2d_body_entered(TileMapLayer nod){
+	public void BodyEnter(TileMapLayer nod){
 		SetMeta("SetPosition",nod.MapToLocal(nod.LocalToMap(Position)));
 		SetMeta("positionViable", true);
-		Print(GetMeta("SetPosition"));
+		Print(GetMeta("SetPosition")); //for testing
 	}
 }
-	//	SetMeta("Hovered", false);
-	//	SetMeta("Selected", false);
-	//	Position = nod.MapToLocal(helper);//
