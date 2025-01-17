@@ -17,7 +17,6 @@ public partial class BoardManager : Node
 	protected List<Ship> ships = new List<Ship>();
 	private Node boardNode;
 	private bool isPlayerBoard;
-	private int currentShipIndex;
 
 	public void InitBoard(int[,] board, bool isPlayerBoard, Node boardNode) 
 	{
@@ -58,6 +57,19 @@ public partial class BoardManager : Node
 	public void DeleteBoard()
 	{
 		boardNode.QueueFree();
+	}
+
+	public void SetShipArray()
+	{
+		int currentShipIndex = 2;
+		foreach (Ship ship in ships)
+		{
+			foreach (int[,] position in ship.shipPosition)
+			{
+				shipsPositions[position[0, 0], position[0,1]] = currentShipIndex;
+			}
+			currentShipIndex++;
+		}
 	}
 }
 
