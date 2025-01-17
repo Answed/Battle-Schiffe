@@ -1,3 +1,4 @@
+namespace BattleSchiffe.Scripts.BoardManager;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,10 @@ public struct Ship
 public partial class BoardManager : Node
 {
 	private int[,] shipsPositions;
-	private List<Ship> ships = new List<Ship>();
+	protected List<Ship> ships = new List<Ship>();
 	private Node boardNode;
 	private bool isPlayerBoard;
+	private int currentShipIndex;
 
 	public void InitBoard(int[,] board, bool isPlayerBoard, Node boardNode) 
 	{
