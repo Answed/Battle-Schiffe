@@ -30,11 +30,10 @@ public partial class BoardManager : Node
 		int[,] position = {{x},{y}};
 		if (shipsPositions[position[0, 0], position[0,1]] >= 2)
 		{
-			//ships[shipsPositions[position[0, 0], position[0,1]]].shipManager.GetDamage();
-			ships[shipsPositions[position[0, 0], position[0,1]]].shipPosition.Remove(position);
-
-			if (ships[shipsPositions[position[0, 0], position[0, 1]]].shipPosition.Count == 0)
+			ships[shipsPositions[position[0, 0], position[0,1]] - 2].shipPosition.Remove(position);
+			if (ships[shipsPositions[position[0, 0], position[0, 1]] - 2].shipPosition.Count == 0)
 			{
+				//ships[shipsPositions[position[0, 0], position[0, 1]] - 2].shipManager.DestroyShip();
 				ships.RemoveAt(shipsPositions[position[0, 0], position[0,1]] - 2); // -2 because or ship index on the map starts with 2 and the list with 0. So the first ship in the list is the ship 2 on the maps
 				CheckIfAllShipsAreDead();
 			}
@@ -70,6 +69,11 @@ public partial class BoardManager : Node
 			}
 			currentShipIndex++;
 		}
+	}
+
+	public List<Ship> GetShips()
+	{
+		return ships;
 	}
 }
 

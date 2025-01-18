@@ -12,4 +12,9 @@ public partial class PlayerBoardManager : BoardManager
         newShip.shipManager = shipManager;
         ships.Add(newShip);
     }
+
+    public int GetShipCount()
+    {
+        return ships.Count;
+    }
 }
