@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfbm46ln6e0un"]
+
+[ext_resource type="Script" path="res://Breake_menu/MainGameSzene.cs" id="1_bqn2p"]
+[ext_resource type="Texture2D" uid="uid://bauxm37oxykb2" path="res://Breake_menu/background_break_menu.jpg" id="2_6tgf1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rxuff"]
+texture = ExtResource("2_6tgf1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pi8al"]
+bg_color = Color(0.266667, 0.266667, 0.266667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uebw5"]
+bg_color = Color(0.266667, 0.266667, 0.266667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6kd6i"]
+bg_color = Color(0.266667, 0.266667, 0.266667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp5x8"]
+bg_color = Color(0.266667, 0.266667, 0.266667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m364t"]
+bg_color = Color(0.266667, 0.266667, 0.266667, 1)
+
+[node name="MainGanmeSzene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bqn2p")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rxuff")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Continue_Button_break_menu" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_pi8al")
+text = "Continue Game"
+
+[node name="Restart_Game_Button_break_menu" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_uebw5")
+text = "Restart Game"
+
+[node name="Options_Button_break_menu" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_6kd6i")
+text = "Options"
+
+[node name="Return_to_Main_Menu_Button_break_menu" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_cp5x8")
+text = "Return to Main Menu"
+
+[node name="Close_Game_Button_break_menu" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_m364t")
+text = "Close Game
+"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Continue_Button_break_menu" to="." method="_on_continue_button_break_menu_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Restart_Game_Button_break_menu" to="." method="_on_restart_game_button_break_menu_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Options_Button_break_menu" to="." method="_on_options_button_break_menu_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Return_to_Main_Menu_Button_break_menu" to="." method="_on_return_to_main_menu_button_break_menu_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Close_Game_Button_break_menu" to="." method="_on_close_game_button_break_menu_pressed"]

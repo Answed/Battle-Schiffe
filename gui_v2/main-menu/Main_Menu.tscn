@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://crakwdtnyfnxi"]
+
+[ext_resource type="Script" path="res://main-menu/MainMenu.cs" id="1_aekl0"]
+[ext_resource type="Texture2D" uid="uid://o53knydibw04" path="res://main-menu/Sea_with_Warhip.jpg" id="1_gk23o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l134v"]
+texture = ExtResource("1_gk23o")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aekl0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_l134v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="Start_Game_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Start Game"
+
+[node name="Options_button_main_menu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Options
+"
+
+[node name="Open_Credits_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Credits
+"
+
+[node name="Close_Game_Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Close Game
+"
+
+[connection signal="pressed" from="VBoxContainer/Start_Game_button" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options_button_main_menu" to="." method="_on_options_button_main_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/Open_Credits_button" to="." method="_on_open_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Close_Game_Button" to="." method="_on_close_game_button_pressed"]

@@ -1,0 +1,477 @@
+[gd_scene load_steps=40 format=3 uid="uid://dkmpigf3t3i27"]
+
+[ext_resource type="Script" path="res://Main_Game/MainGameSzene.cs" id="1_ct0ul"]
+[ext_resource type="Texture2D" uid="uid://bauxm37oxykb2" path="res://Breake_menu/background_break_menu.jpg" id="2_gtuyx"]
+[ext_resource type="Texture2D" uid="uid://cp1074f5ovn7m" path="res://Main_Game/Flugzeugträger_main_game.jpg" id="2_tva7a"]
+[ext_resource type="Texture2D" uid="uid://8u7m4oywud8d" path="res://Main_Game/DALL·E 2025-01-03 10.43.26 - A visually appealing ability card for a Battleship game, designed in a modern and sleek style. The card has a blue oceanic theme, featuring a radar-li.webp" id="3_0p8s5"]
+[ext_resource type="Texture2D" uid="uid://6lx4tqdlp3pl" path="res://Main_Game/hwd0gid2.png" id="3_fscu4"]
+[ext_resource type="FontFile" uid="uid://c8kwtwsx4l8si" path="res://Main_Game/secrcode.ttf" id="3_q8dk4"]
+[ext_resource type="Texture2D" uid="uid://bludn3ilu0ll" path="res://Main_Game/Kreuzer_Bild.jpg" id="4_c8u4g"]
+[ext_resource type="Texture2D" uid="uid://dc6hm2ha3big1" path="res://Main_Game/Attack_Hover_Button.webp" id="5_8o0o5"]
+[ext_resource type="Texture2D" uid="uid://dp3p47tosvu15" path="res://Main_Game/Attack_Button.webp" id="5_vvl72"]
+[ext_resource type="Texture2D" uid="uid://ci0xxgbaske4a" path="res://Main_Game/Spezial_Attack_button.webp" id="6_7hlyk"]
+[ext_resource type="Texture2D" uid="uid://jddxj8rv0t82" path="res://Main_Game/Special_Attack_Hover_Button.webp" id="7_4l1qv"]
+[ext_resource type="FontFile" uid="uid://chqw5827p34gn" path="res://Main_Game/Weather Sunday - Personal Use.otf" id="8_p8q6j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ii8ov"]
+texture = ExtResource("2_gtuyx")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7x0j"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spin7"]
+bg_color = Color(0.027, 0.157, 0.227, 0.817)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o7tcb"]
+texture = ExtResource("3_fscu4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4eb46"]
+bg_color = Color(0.162, 0.162, 0.162, 0.86)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gll0x"]
+texture = ExtResource("5_8o0o5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_spyta"]
+texture = ExtResource("5_vvl72")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4y22l"]
+texture = ExtResource("7_4l1qv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e72cc"]
+texture = ExtResource("6_7hlyk")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v28un"]
+
+[sub_resource type="Theme" id="Theme_ipoy0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qmg1"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0toe"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rj7hw"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhn70"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ca2yh"]
+texture = ExtResource("2_tva7a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oxe7h"]
+texture = ExtResource("4_c8u4g")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysctp"]
+bg_color = Color(0.223, 0.223, 0.223, 0.7)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_56m4j"]
+texture = ExtResource("3_0p8s5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lf0ax"]
+texture = ExtResource("3_0p8s5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_psys3"]
+texture = ExtResource("3_0p8s5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lfq67"]
+texture = ExtResource("3_0p8s5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bmdc7"]
+texture = ExtResource("3_0p8s5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmfir"]
+bg_color = Color(0.245, 0.245, 0.245, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dr16"]
+bg_color = Color(0.162, 0.162, 0.162, 0.86)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0lf7"]
+bg_color = Color(0.125911, 0.125911, 0.125911, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6owb"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[node name="MainGame-szene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ct0ul")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ii8ov")
+
+[node name="own_ships" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -291.0
+offset_right = 279.0
+offset_bottom = 291.0
+grow_vertical = 2
+theme_override_constants/separation = -1
+
+[node name="Label" type="Label" parent="Panel/own_ships"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_q8dk4")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_j7x0j")
+text = "Own ships
+"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Panel/own_ships"]
+custom_minimum_size = Vector2(200, 400)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_spin7")
+
+[node name="playground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -534.0
+offset_top = -477.0
+offset_right = 475.0
+offset_bottom = 309.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="playground" type="Panel" parent="playground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -489.5
+offset_top = -379.0
+offset_right = 491.5
+offset_bottom = 382.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_o7tcb")
+
+[node name="Interaktionen" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -158.0
+offset_top = 7.0
+offset_right = -58.0
+offset_bottom = 107.0
+grow_horizontal = 0
+scale = Vector2(1.5, 1.5)
+
+[node name="Attack_buttons" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -398.0
+offset_top = -211.0
+offset_right = -15.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4eb46")
+
+[node name="GridContainer" type="GridContainer" parent="Attack_buttons"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -326.0
+offset_top = -188.0
+offset_right = -168.0
+offset_bottom = -93.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2, 2)
+columns = 2
+
+[node name="class_label" type="Label" parent="Attack_buttons/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_q8dk4")
+text = "class:
+"
+horizontal_alignment = 1
+
+[node name="ship_class_label" type="Label" parent="Attack_buttons/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_q8dk4")
+text = "destroyer"
+
+[node name="attack_info_button" type="Button" parent="Attack_buttons/GridContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_gll0x")
+theme_override_styles/normal = SubResource("StyleBoxTexture_spyta")
+
+[node name="attack_button" type="Button" parent="Attack_buttons/GridContainer"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_4y22l")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e72cc")
+
+[node name="Enemy_Ship_Counter" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -306.0
+offset_top = -214.0
+offset_right = -100.0
+offset_bottom = 81.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme_override_constants/separation = -10
+
+[node name="Panel" type="Panel" parent="Enemy_Ship_Counter"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Enemy_Ship_Counter/Panel"]
+self_modulate = Color(0.223529, 0.243137, 0.243137, 1)
+light_mask = 647
+visibility_layer = 769
+material = SubResource("CanvasItemMaterial_v28un")
+use_parent_material = true
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+offset_left = 4.0
+offset_top = 12.0
+offset_right = 189.0
+offset_bottom = 184.0
+size_flags_horizontal = 8
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme = SubResource("Theme_ipoy0")
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Label" type="Label" parent="Enemy_Ship_Counter/Panel/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_q8dk4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6qmg1")
+text = "Enemy"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Enemy_Ship_Counter/Panel/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_q8dk4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r0toe")
+text = "ships
+"
+horizontal_alignment = 1
+
+[node name="class_label" type="Label" parent="Enemy_Ship_Counter/Panel/GridContainer"]
+modulate = Color(1, 1, 1, 0.988235)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_q8dk4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rj7hw")
+text = "class
+"
+horizontal_alignment = 1
+
+[node name="number_label" type="Label" parent="Enemy_Ship_Counter/Panel/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_q8dk4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mhn70")
+text = "Number"
+
+[node name="aircraftcarrier_picture" type="Panel" parent="Enemy_Ship_Counter/Panel/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_ca2yh")
+
+[node name="number_cv" type="Label" parent="Enemy_Ship_Counter/Panel/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_p8q6j")
+text = "2"
+horizontal_alignment = 2
+
+[node name="crousor_picture" type="Panel" parent="Enemy_Ship_Counter/Panel/GridContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_oxe7h")
+
+[node name="number_ca" type="Label" parent="Enemy_Ship_Counter/Panel/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_p8q6j")
+text = "4"
+horizontal_alignment = 2
+
+[node name="cards" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -419.0
+offset_top = -172.0
+offset_right = 419.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ysctp")
+
+[node name="Cards" type="HBoxContainer" parent="cards"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -160.0
+offset_right = 400.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 6.28319
+
+[node name="card_1" type="Panel" parent="cards/Cards"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_56m4j")
+
+[node name="card_2" type="Panel" parent="cards/Cards"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_lf0ax")
+
+[node name="card_3" type="Panel" parent="cards/Cards"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_psys3")
+
+[node name="card_4" type="Panel" parent="cards/Cards"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_lfq67")
+
+[node name="card_5" type="Panel" parent="cards/Cards"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_bmdc7")
+
+[node name="upper_right_options" type="Panel" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -156.0
+offset_top = 5.0
+offset_right = -20.0
+offset_bottom = 115.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_dmfir")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="upper_right_options"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -92.0
+offset_bottom = 66.0
+grow_horizontal = 0
+theme_override_constants/separation = 5
+
+[node name="End_Round_Button" type="Button" parent="upper_right_options/VBoxContainer"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_q8dk4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6dr16")
+text = "End Round"
+
+[node name="open_break_menu_button" type="Button" parent="upper_right_options/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_q8dk4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_c0lf7")
+text = "menu
+"
+
+[node name="Button" type="Button" parent="upper_right_options/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_l6owb")
+text = "change to enemy"
+
+[connection signal="pressed" from="upper_right_options/VBoxContainer/open_break_menu_button" to="." method="_on_open_break_menu_button_pressed"]
