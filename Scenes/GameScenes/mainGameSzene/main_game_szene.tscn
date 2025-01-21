@@ -1,0 +1,192 @@
+[gd_scene load_steps=10 format=3 uid="uid://diqpx54flql5i"]
+
+[ext_resource type="Texture2D" uid="uid://n6otvbrpmayd" path="res://Scenes/GameScenes/mainGameSzene/Texturen/background_break_menu.jpg" id="1_xd3xi"]
+[ext_resource type="Script" path="res://MainGameSzene.cs" id="2_1ga50"]
+[ext_resource type="Texture2D" uid="uid://chmwtookfrfwa" path="res://Scenes/GameScenes/mainGameSzene/settings.jpg" id="2_wo5q2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8bfbu"]
+texture = ExtResource("1_xd3xi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v76k3"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrgx0"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b54en"]
+texture = ExtResource("2_wo5q2")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyf6p"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_773p7"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="main_game_szene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8bfbu")
+
+[node name="own_ships_display" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -247.0
+offset_right = 197.0
+offset_bottom = 84.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="own_ships_display"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_v76k3")
+text = "Own Ships
+"
+
+[node name="Panel" type="Panel" parent="own_ships_display"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="combine_field" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = -190.0
+offset_right = 221.0
+offset_bottom = -23.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="combine_field"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vrgx0")
+text = "Combine Field"
+
+[node name="Panel" type="Panel" parent="combine_field"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="settings_button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 54.0
+offset_bottom = 45.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_b54en")
+
+[node name="game_field" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -229.0
+offset_right = 273.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardManager" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("2_1ga50")
+
+[node name="scrollContainer" type="ScrollContainer" parent="CardManager"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+follow_focus = true
+
+[node name="card_display" type="HBoxContainer" parent="CardManager/scrollContainer"]
+layout_mode = 2
+
+[node name="interactions" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -100.0
+offset_right = -30.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Switch_board_button" type="Button" parent="interactions"]
+layout_mode = 2
+text = "Switch Board"
+
+[node name="end_turn_button" type="Button" parent="interactions"]
+layout_mode = 2
+text = "Next Round"
+
+[node name="Round_info" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="Round_info"]
+layout_mode = 2
+
+[node name="GridMap" type="GridContainer" parent="Round_info"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="Round_info/GridMap"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_cyf6p")
+text = "Stage:
+"
+
+[node name="Label2" type="Label" parent="Round_info/GridMap"]
+layout_mode = 2
+text = "2"
+
+[node name="Label3" type="Label" parent="Round_info/GridMap"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_773p7")
+text = "Round
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
