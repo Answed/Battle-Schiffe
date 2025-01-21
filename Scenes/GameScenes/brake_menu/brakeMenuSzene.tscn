@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://2wjgpkal8a73"]
+
+[ext_resource type="Texture2D" uid="uid://ddxoo3dvx6jrg" path="res://Scenes/GameScenes/brake_menu/Texturs/background_break_menu.jpg" id="1_06cjq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rnyxb"]
+texture = ExtResource("1_06cjq")
+
+[node name="BrakeMenuSzene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rnyxb")
+
+[node name="options" type="VBoxContainer" parent="background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -132.0
+offset_right = 149.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="background/options"]
+layout_mode = 2
+text = "Continue Game"
+
+[node name="Button2" type="Button" parent="background/options"]
+layout_mode = 2
+text = "Restart Game"
+
+[node name="Button3" type="Button" parent="background/options"]
+layout_mode = 2
+text = "Return to Main Menu"
+
+[node name="Button4" type="Button" parent="background/options"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Button5" type="Button" parent="background/options"]
+layout_mode = 2
+text = "Close Game"
