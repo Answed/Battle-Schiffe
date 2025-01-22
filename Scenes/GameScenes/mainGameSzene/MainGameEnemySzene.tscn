@@ -118,3 +118,66 @@ text = "Round "
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_vfu6r")
 text = "3"
+
+[node name="background_for_number_of_enemy_ships" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -148.0
+offset_bottom = 149.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="background_for_number_of_enemy_ships"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -113.5
+offset_bottom = 113.5
+grow_horizontal = 0
+grow_vertical = 2
+columns = 2
+
+[node name="label_cv" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+text = "Flugzeugträger:"
+
+[node name="number_cv" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+
+[node name="label_ca" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+text = "Kreuzer"
+
+[node name="numer_ca" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="label_dd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+text = "Zerstörer"
+
+[node name="number_dd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+
+[node name="label_k" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+text = "Korvette"
+
+[node name="number_k" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+
+[node name="label_tbd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+text = "Torpedoboot"
+
+[node name="number_tbd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2

@@ -12,6 +12,12 @@ public partial class MainGameSzene : Control
 		GD.Print($"Aktueller Node: {GetPath()}");
 		GD.Print($"Parent: {GetParent().Name}");
 
+		// Prüfe Kinder des aktuellen Nodes
+		foreach (Node child in GetChildren())
+		{
+			GD.Print($"Child Node: {child.Name}");
+		}
+
 		// Lade die Platzhalter-Textur
 		placeholderTexture = GD.Load<Texture2D>("res://Scenes/GameScenes/mainGameSzene/Texturen/Spielkarten.webp");
 		GD.Print($"Platzhalter geladen: {placeholderTexture != null}");
@@ -54,18 +60,24 @@ public partial class MainGameSzene : Control
 
 	private void AddCard(int cardId)
 	{
-		// Erstelle einen neuen TextureButton
 		var button = new TextureButton
 		{
 			Name = $"Card_{cardId}",
-			TextureNormal = placeholderTexture
+			TextureNormal = placeholderTexture,
+			StretchMode = TextureButton.StretchModeEnum.Scale // Skaliert die Textur
 		};
-		button.SetCustomMinimumSize(new Vector2(100, 150));
+
+		// Setze die Größe des Buttons auf 50x50
+		button.CustomMinimumSize = new Vector2(50, 50);
+
+		// Layout-Flags korrekt setzen
+		button.SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter;
+		button.SizeFlagsVertical = Control.SizeFlags.ShrinkCenter;
 
 		// Signal verbinden
 		button.Pressed += () => OnCardPressed(cardId);
 
-		// Füge die Karte zur HBoxContainer hinzu
+		// Füge den Button zum HBoxContainer hinzu
 		hboxContainer.AddChild(button);
 	}
 
