@@ -28,8 +28,19 @@ public partial class MainGameSzene : Control
 			return;
 		}
 
-		// Signal verbinden
+		// Signal verbinden für settings_button
 		settingsButton.Pressed += OnSettingsButtonPressed;
+
+		// Versuche, den switch_board_button zu finden
+		var switchBoardButton = GetNode<Button>("/root/main_game_szene/interactions/Switch_board_button");
+		if (switchBoardButton == null)
+		{
+			GD.PrintErr("switch_board_button nicht gefunden!");
+			return;
+		}
+
+		// Signal verbinden für switch_board_button
+		switchBoardButton.Pressed += OnSwitchBoardButtonPressed;
 
 		// Beispiel: Erzeuge 5 Karten
 		for (int i = 0; i < 5; i++)
@@ -78,5 +89,12 @@ public partial class MainGameSzene : Control
 		// Szene wechseln
 		GD.Print("Settings-Button gedrückt! Wechsel zu den Einstellungen.");
 		GetTree().ChangeSceneToFile("res://Scenes/GameScenes/brake_menu/brakeMenuSzene.tscn");
+	}
+
+	private void OnSwitchBoardButtonPressed()
+	{
+		// Szene wechseln
+		GD.Print("Switch-Board-Button gedrückt! Wechsel zur MainGameEnemySzene.");
+		GetTree().ChangeSceneToFile("res://Scenes/GameScenes/mainGameSzene/MainGameEnemySzene.tscn");
 	}
 }
