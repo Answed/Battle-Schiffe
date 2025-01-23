@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://6l1wk6uwk7jn"]
+[gd_scene format=3 uid="uid://yhr8sogy02qx"]
 
-[node name="StartMenu" type="Control"]
+[node name="LoadGameSzene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

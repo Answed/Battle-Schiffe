@@ -100,7 +100,7 @@ public partial class MainGameSzene : Control
 	{
 		// Szene wechseln
 		GD.Print("Settings-Button gedrückt! Wechsel zu den Einstellungen.");
-		GetTree().ChangeSceneToFile("res://Scenes/GameScenes/brake_menu/brakeMenuSzene.tscn");
+		GetTree().ChangeSceneToFile("res://Scenes/GameScenes/BrakeMenuSzene/brakeMenuSzene.tscn");
 	}
 
 	private void OnSwitchBoardButtonPressed()

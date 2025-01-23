@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddxoo3dvx6jrg"
-path="res://.godot/imported/background_break_menu.jpg-24ba8f030cdaf27deb8289331b493dfa.ctex"
+path="res://.godot/imported/background_break_menu.jpg-32a03f1877435659a5f4bc8d5dcc7b19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/GameScenes/brake_menu/Texturs/background_break_menu.jpg"
-dest_files=["res://.godot/imported/background_break_menu.jpg-24ba8f030cdaf27deb8289331b493dfa.ctex"]
+source_file="res://Scenes/GameScenes/BrakeMenuSzene/Texturs/background_break_menu.jpg"
+dest_files=["res://.godot/imported/background_break_menu.jpg-32a03f1877435659a5f4bc8d5dcc7b19.ctex"]
 
 [params]
 
