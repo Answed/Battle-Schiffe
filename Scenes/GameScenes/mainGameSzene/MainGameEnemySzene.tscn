@@ -1,0 +1,182 @@
+[gd_scene load_steps=6 format=3 uid="uid://b03ugtev2ig4j"]
+
+[ext_resource type="Script" path="res://Scenes/GameScenes/mainGameSzene/MainGameEnemySzene.cs" id="1_qghv3"]
+[ext_resource type="Texture2D" uid="uid://n6otvbrpmayd" path="res://Scenes/GameScenes/mainGameSzene/Texturen/background_break_menu.jpg" id="1_yd6nm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7hs0n"]
+texture = ExtResource("1_yd6nm")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgxiv"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfu6r"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="MainGameEnemySzene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qghv3")
+
+[node name="background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7hs0n")
+
+[node name="enemy_ship_display" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -161.0
+offset_right = 173.0
+offset_bottom = 107.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="enemy_ship_display"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_sgxiv")
+text = "Own Ships"
+
+[node name="Panel" type="Panel" parent="enemy_ship_display"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="play_fields" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -217.0
+offset_right = 262.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="interactions" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -115.0
+offset_right = -12.0
+offset_bottom = -39.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="switch_board_button" type="Button" parent="interactions"]
+layout_mode = 2
+text = "switch board"
+
+[node name="end_round_button" type="Button" parent="interactions"]
+layout_mode = 2
+text = "end round"
+
+[node name="game_informations" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+columns = 2
+
+[node name="stage_label" type="Label" parent="game_informations"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vfu6r")
+text = "Stage"
+
+[node name="stage_number" type="Label" parent="game_informations"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vfu6r")
+text = "2"
+
+[node name="round_label" type="Label" parent="game_informations"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vfu6r")
+text = "Round "
+
+[node name="round_number" type="Label" parent="game_informations"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vfu6r")
+text = "3"
+
+[node name="background_for_number_of_enemy_ships" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -148.0
+offset_bottom = 92.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="background_for_number_of_enemy_ships"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -113.5
+offset_bottom = 113.5
+grow_horizontal = 0
+grow_vertical = 2
+columns = 2
+
+[node name="label_cv" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+text = "Flugzeugträger:"
+
+[node name="number_cv" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+
+[node name="label_ca" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+text = "Kreuzer"
+
+[node name="numer_ca" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+
+[node name="label_dd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+text = "Zerstörer"
+
+[node name="number_dd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+
+[node name="label_k" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+text = "Korvette"
+
+[node name="number_k" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+
+[node name="label_tbd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+text = "Torpedoboot"
+
+[node name="number_tbd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2

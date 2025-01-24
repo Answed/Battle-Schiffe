@@ -1,4 +1,4 @@
-﻿namespace BattleSchiffe.Scripts.BoardManager;
+namespace BattleSchiffe.Scripts.BoardManager;
 using System;
 using System.Collections.Generic;
 using Godot;
@@ -6,8 +6,8 @@ using Godot;
 
 public partial class EnemyBoardManager : BoardManager 
 {
-        public void SetShips(List<Ship> ships)
-        {
-                this.ships = ships;
-        }
+		public void SetShips(List<Ship> ships)
+		{
+				this.ships = ships;
+		}
 }

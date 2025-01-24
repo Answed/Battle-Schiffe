@@ -76,4 +76,3 @@ public partial class BoardManager : Node
 		return ships;
 	}
 }
-
