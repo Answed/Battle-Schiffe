@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://6l1wk6uwk7jn"]
 
-[ext_resource type="Texture2D" uid="uid://dvqbjud1i7cw7" path="res://Scenes/GameScenes/Texturen/Background_start_menu.webp" id="1_b2s8x"]
-[ext_resource type="Script" path="res://Scenes/GameScenes/startSzene/StartMenu.cs" id="1_tbx2a"]
+[ext_resource type="Texture2D" uid="uid://dvqbjud1i7cw7" path="res://GameScenes/Texturen/Background_start_menu.webp" id="1_b2s8x"]
+[ext_resource type="Script" path="res://GameScenes/startSzene/StartMenu.cs" id="1_tbx2a"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btqhr"]
 texture = ExtResource("1_b2s8x")

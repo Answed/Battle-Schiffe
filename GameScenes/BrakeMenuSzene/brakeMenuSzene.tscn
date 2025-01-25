@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://2wjgpkal8a73"]
 
-[ext_resource type="Script" path="res://Scenes/GameScenes/BrakeMenuSzene/BrakeMenuSzene.cs" id="1_p1o7j"]
+[ext_resource type="Script" path="res://GameScenes/BrakeMenuSzene/BrakeMenuSzene.cs" id="1_p1o7j"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uovud"]
 load_path = "res://.godot/imported/background_break_menu.jpg-32a03f1877435659a5f4bc8d5dcc7b19.ctex"

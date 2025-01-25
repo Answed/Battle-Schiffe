@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3voneuudvcw3"
-path="res://.godot/imported/Spielkarten.webp-ebd0657f8ea32e632832683558d05463.ctex"
+uid="uid://dvqbjud1i7cw7"
+path="res://.godot/imported/Background_start_menu.webp-bd76e401567e1957112e77459e69e8f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/GameScenes/Texturen/Spielkarten.webp"
-dest_files=["res://.godot/imported/Spielkarten.webp-ebd0657f8ea32e632832683558d05463.ctex"]
+source_file="res://GameScenes/Texturen/Background_start_menu.webp"
+dest_files=["res://.godot/imported/Background_start_menu.webp-bd76e401567e1957112e77459e69e8f3.ctex"]
 
 [params]
 

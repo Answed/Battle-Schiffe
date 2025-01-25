@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://yhr8sogy02qx"]
 
-[ext_resource type="Script" path="res://Scenes/GameScenes/startSzene/LoadGameSzene.cs" id="1_pbxdl"]
-[ext_resource type="Texture2D" uid="uid://6qq457r73asn" path="res://Scenes/GameScenes/Texturen/Arrow_back.png" id="2_ulxwb"]
+[ext_resource type="Script" path="res://GameScenes/startSzene/LoadGameSzene.cs" id="1_pbxdl"]
+[ext_resource type="Texture2D" uid="uid://6qq457r73asn" path="res://GameScenes/Texturen/Arrow_back.png" id="2_ulxwb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5fgo"]
 bg_color = Color(0.20871, 0.20871, 0.20871, 1)
