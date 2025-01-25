@@ -7,32 +7,31 @@ public partial class BrakeMenuSzene : Control
 	{
 		// Suche den continue_button
 		var continueButton = GetNode<Button>("background/options/continue_button");
-		if (continueButton == null)
-		{
-			GD.PrintErr("continue_button nicht gefunden!");
-			return;
-		}
 
 		// Suche den close_game_button
 		var closeGameButton = GetNode<Button>("background/options/close_game_button");
-		if (closeGameButton == null)
-		{
-			GD.PrintErr("close_game_button nicht gefunden!");
-			return;
-		}
-
+		
+		// Suche return_to_main_menu_button
+		var returnToMainMenuButton = GetNode<Button>("background/options/return_to_main_menu_button");
 
 		// Signale für die Buttons verbinden
 		continueButton.Pressed += OnContinueButtonPressed;
+		returnToMainMenuButton.Pressed += OnReturnToMainMenuButtonPressed;
 		closeGameButton.Pressed += OnCloseGameButtonPressed;
 	}
 
 	private void OnContinueButtonPressed()
 	{
 		// Szene wechseln
-		GD.Print("Continue-Button gedrückt! Wechsel zurück zur MainGameSzene.");
 		GetTree().ChangeSceneToFile("res://Scenes/GameScenes/mainGameSzene/MainGameSzene.tscn");
 	}
+	
+	private void OnReturnToMainMenuButtonPressed()
+	{
+		//Szene wechseln
+		GetTree().ChangeSceneToFile("res://Scenes/GameScenes/startSzene/start_menu.tscn");
+	}
+	
 
 	private void OnCloseGameButtonPressed()
 	{
