@@ -6,12 +6,10 @@ using System.Text.Json;
 
 public partial class SaveLoadJSONManager<T> : Node
 {
-    private Type saveLoadType;
     private String saveLoadFolder;
 
-    public void SetSaveLoadJSONManagerSettings(Type saveLoadType, String saveLoadFolder)
+    public void SetSaveLoadJSONManagerSettings(String saveLoadFolder)
     {
-        this.saveLoadType = saveLoadType;
         this.saveLoadFolder = saveLoadFolder;
     }
 
