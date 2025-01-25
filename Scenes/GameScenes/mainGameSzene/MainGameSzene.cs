@@ -19,7 +19,7 @@ public partial class MainGameSzene : Control
 		}
 
 		// Lade die Platzhalter-Textur
-		placeholderTexture = GD.Load<Texture2D>("res://Scenes/GameScenes/mainGameSzene/Texturen/Spielkarten.webp");
+		placeholderTexture = GD.Load<Texture2D>("res://Scenes/GameScenes/Texturen/Spielkarten.webp");
 		GD.Print($"Platzhalter geladen: {placeholderTexture != null}");
 
 		// Initialisiere die Scroll- und HBoxContainer-Referenzen

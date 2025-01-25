@@ -66,3 +66,8 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 34.0
+offset_bottom = 37.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://diqpx54flql5i"]
 
-[ext_resource type="Texture2D" uid="uid://n6otvbrpmayd" path="res://Scenes/GameScenes/mainGameSzene/Texturen/background_break_menu.jpg" id="1_m76x5"]
-[ext_resource type="Texture2D" uid="uid://chmwtookfrfwa" path="res://Scenes/GameScenes/mainGameSzene/Texturen/settings.jpg" id="2_d8dtn"]
+[ext_resource type="Texture2D" uid="uid://n6otvbrpmayd" path="res://Scenes/GameScenes/Texturen/background_break_menu.jpg" id="1_m76x5"]
+[ext_resource type="Texture2D" uid="uid://chmwtookfrfwa" path="res://Scenes/GameScenes/Texturen/settings.jpg" id="2_d8dtn"]
 [ext_resource type="Script" path="res://Scenes/GameScenes/mainGameSzene/MainGameSzene.cs" id="3_kwg5y"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8bfbu"]

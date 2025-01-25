@@ -1,0 +1,192 @@
+[gd_scene load_steps=6 format=3 uid="uid://yhr8sogy02qx"]
+
+[ext_resource type="Script" path="res://Scenes/GameScenes/startSzene/LoadGameSzene.cs" id="1_pbxdl"]
+[ext_resource type="Texture2D" uid="uid://6qq457r73asn" path="res://Scenes/GameScenes/Texturen/Arrow_back.png" id="2_ulxwb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5fgo"]
+bg_color = Color(0.20871, 0.20871, 0.20871, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0s4k"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0tuur"]
+texture = ExtResource("2_ulxwb")
+
+[node name="LoadGameSzene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pbxdl")
+
+[node name="background_picture" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c5fgo")
+
+[node name="MarginContainer" type="MarginContainer" parent="background_picture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="background_picture/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="background_picture/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_p0s4k")
+text = "Lademenü"
+
+[node name="main_frame_part" type="HBoxContainer" parent="background_picture/MarginContainer/VBoxContainer/Label"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = 106.5
+offset_right = 95.0
+offset_bottom = 397.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 37
+
+[node name="main_fram_part_II" type="VBoxContainer" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="first_savegame" type="HBoxContainer" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II"]
+layout_mode = 2
+
+[node name="load_first_savegame_button" type="Button" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/first_savegame"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Spielstand 1"
+
+[node name="info_for_first_savegame" type="VBoxContainer" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/first_savegame"]
+layout_mode = 2
+
+[node name="gird_info_first_savegame" type="GridContainer" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/first_savegame/info_for_first_savegame"]
+layout_mode = 2
+columns = 2
+
+[node name="date_label_first_savegame" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/first_savegame/info_for_first_savegame/gird_info_first_savegame"]
+layout_mode = 2
+text = "Datum"
+
+[node name="date_first_savegame2" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/first_savegame/info_for_first_savegame/gird_info_first_savegame"]
+layout_mode = 2
+text = "23.04.2004"
+
+[node name="stage_label_first_savegame" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/first_savegame/info_for_first_savegame/gird_info_first_savegame"]
+layout_mode = 2
+text = "Stage:"
+
+[node name="stage_first_savegame" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/first_savegame/info_for_first_savegame/gird_info_first_savegame"]
+layout_mode = 2
+text = "4"
+
+[node name="round_label_first_savegame" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/first_savegame/info_for_first_savegame/gird_info_first_savegame"]
+layout_mode = 2
+text = "Round:"
+
+[node name="round_first_savegame" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/first_savegame/info_for_first_savegame/gird_info_first_savegame"]
+layout_mode = 2
+text = "2"
+
+[node name="secound_save_game" type="HBoxContainer" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/secound_save_game"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Spielstand 2"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/secound_save_game"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/secound_save_game/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/secound_save_game/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Datum:"
+
+[node name="Label2" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/secound_save_game/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "03.05.2003"
+
+[node name="Label3" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/secound_save_game/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Stage:"
+
+[node name="Label4" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/secound_save_game/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "45"
+
+[node name="Label5" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/secound_save_game/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Round:"
+
+[node name="Label6" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/secound_save_game/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "5"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Spielstand 3"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/HBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Datum:"
+
+[node name="Label2" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "24.05.1999"
+
+[node name="Label3" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Stage:"
+
+[node name="Label4" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "9"
+
+[node name="Label5" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Round:"
+
+[node name="Label6" type="Label" parent="background_picture/MarginContainer/VBoxContainer/Label/main_frame_part/main_fram_part_II/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="back_to_main_menu_button" type="Button" parent="."]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 26.0
+offset_right = 40.0
+offset_bottom = 60.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_0tuur")
