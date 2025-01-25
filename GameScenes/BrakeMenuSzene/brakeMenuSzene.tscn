@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://2wjgpkal8a73"]
+
+[ext_resource type="Script" path="res://GameScenes/BrakeMenuSzene/BrakeMenuSzene.cs" id="1_p1o7j"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uovud"]
+load_path = "res://.godot/imported/background_break_menu.jpg-32a03f1877435659a5f4bc8d5dcc7b19.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rnyxb"]
+texture = SubResource("CompressedTexture2D_uovud")
+
+[node name="BrakeMenuSzene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p1o7j")
+
+[node name="background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rnyxb")
+
+[node name="options" type="VBoxContainer" parent="background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -132.0
+offset_right = 149.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 22
+
+[node name="continue_button" type="Button" parent="background/options"]
+layout_mode = 2
+text = "Continue Game"
+
+[node name="restart_game_button" type="Button" parent="background/options"]
+layout_mode = 2
+text = "Restart Game"
+
+[node name="return_to_main_menu_button" type="Button" parent="background/options"]
+layout_mode = 2
+text = "Return to Main Menu"
+
+[node name="open_settings_button" type="Button" parent="background/options"]
+layout_mode = 2
+text = "Settings"
+
+[node name="close_game_button" type="Button" parent="background/options"]
+layout_mode = 2
+text = "Close Game"

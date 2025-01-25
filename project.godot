@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="BattleSchiffe"
-run/main_scene="res://Scenes/GameScenes/mainGameSzene/MainGameSzene.tscn"
 config/features=PackedStringArray("4.3", "C#", "Mobile")
 config/icon="res://icon.svg"
 
