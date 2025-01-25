@@ -13,19 +13,20 @@ enum ShipType
 	SPEEDBOAT
 }
 
-private struct ShipBlueprint
+
+struct ShipBlueprint
 {
-	//public ShipManager shipManager;
 	public ShipType shipType;
 }
 
 public partial class EnemyAIManager : Node
 {
+	[Export] private Node[] shipPrefabs;
 	private List<Ship> currentShips;
 
 	private EnemyBoardManager enemyBoard;
 	private PlayerBoardManager playerBoard;
-	//private GameManager gameManager; TODO Add GameManager
+	private GameManager gameManager; 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -45,6 +46,6 @@ public partial class EnemyAIManager : Node
 	{
 		enemyBoard = GetNode<EnemyBoardManager>("EnemyBoardManager");
 		playerBoard = GetNode<PlayerBoardManager>("PlayerBoardManager");
-		playerBoard = GetNode<PlayerBoardManager>("PlayerBoardManager");
+		gameManager = GetNode<GameManager>("GameManager");
 	}
 }

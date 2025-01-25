@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn3h7jgrfxmrb"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyAI/EnemyAIManager.cs" id="1_qubg8"]
+
+[node name="EnemyAi" type="Node" node_paths=PackedStringArray("shipPrefabs")]
+script = ExtResource("1_qubg8")
+shipPrefabs = []
