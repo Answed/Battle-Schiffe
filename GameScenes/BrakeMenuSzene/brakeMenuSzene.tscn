@@ -60,3 +60,7 @@ text = "Settings"
 [node name="close_game_button" type="Button" parent="background/options"]
 layout_mode = 2
 text = "Close Game"
+
+[connection signal="pressed" from="background/options/continue_button" to="." method="OnContinueButtonPressed"]
+[connection signal="pressed" from="background/options/return_to_main_menu_button" to="." method="OnReturnToMainMenuButtonPressed"]
+[connection signal="pressed" from="background/options/close_game_button" to="." method="OnCloseGameButtonPressed"]

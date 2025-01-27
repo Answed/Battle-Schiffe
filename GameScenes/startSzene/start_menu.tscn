@@ -46,10 +46,6 @@ theme_override_constants/separation = 25
 layout_mode = 2
 text = "Neues Spiel starten"
 
-[node name="open_load_game_button" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Spiel laden"
-
 [node name="open_settings_button" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
 layout_mode = 2
 text = "Einstellungen"
@@ -61,3 +57,7 @@ text = "Credits"
 [node name="end_game_button" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
 layout_mode = 2
 text = "Spiel beenden"
+
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/open_settings_button" to="." method="OnOpenSettingsButtonPressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/open_credits_button" to="." method="OnOpenCreditsButtonPressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/end_game_button" to="." method="OnEndGameButtonPressed"]
