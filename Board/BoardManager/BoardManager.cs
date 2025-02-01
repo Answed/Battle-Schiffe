@@ -75,4 +75,9 @@ public partial class BoardManager : Node
 	{
 		return ships;
 	}
+
+	public int[,] GetBoard()
+	{
+		return shipsPositions;
+	}
 }
