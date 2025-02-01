@@ -3,16 +3,17 @@ using System.Collections.Generic;
 
 public class IslandGenerator
 {
-    static int mapWidth;
-    static int mapHeight;
-    static int[,] mapGrid;
-    static List<int[,]> presets = new List<int[,]>
+    private static int mapWidth;
+    private static int mapHeight;
+    private static int[,] mapGrid;
+
+    private static List<int[,]> presets = new List<int[,]>
     {
         new int[,] {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}},
         new int[,] {{1, 1}, {1, 1}}
     };
 
-    static bool CanPlacePreset(int[,] preset, int x, int y)
+    private static bool CanPlacePreset(int[,] preset, int x, int y)
     {
         int presetHeight = preset.GetLength(0);
         int presetWidth = preset.GetLength(1);
@@ -31,7 +32,7 @@ public class IslandGenerator
         return true;
     }
 
-    static void PlacePreset(int[,] preset, int x, int y)
+    private static void PlacePreset(int[,] preset, int x, int y)
     {
         int presetHeight = preset.GetLength(0);
         int presetWidth = preset.GetLength(1);
@@ -46,7 +47,7 @@ public class IslandGenerator
         }
     }
 
-    static double CalculateCoverage()
+    private static double CalculateCoverage()
     {
         int filledCells = 0;
         foreach (int cell in mapGrid)
@@ -58,31 +59,17 @@ public class IslandGenerator
         return (filledCells / (double)totalCells) * 100;
     }
 
-    static void PrintMap()
-    {
-        for (int y = 0; y < mapHeight; y++)
-        {
-            for (int x = 0; x < mapWidth; x++)
-            {
-                Console.Write(mapGrid[y, x] + " ");
-            }
-            Console.WriteLine();
-        }
-    }
-
     public static int[,] GetMapGrid()
     {
         return mapGrid;
     }
 
-    public static void Main()
+    public static void GenerateMap(int width, int height)
     {
-        Console.Write("Enter map width: ");
-        mapWidth = int.Parse(Console.ReadLine());
-        Console.Write("Enter map height: ");
-        mapHeight = int.Parse(Console.ReadLine());
-
+        mapWidth = width;
+        mapHeight = height;
         mapGrid = new int[mapWidth, mapHeight];
+
         Random random = new Random();
         double targetCoverage = 30.0;
 
@@ -97,8 +84,5 @@ public class IslandGenerator
                 PlacePreset(preset, x, y);
             }
         }
-
-        Console.WriteLine("Map generation complete!");
-        PrintMap();
     }
 }
