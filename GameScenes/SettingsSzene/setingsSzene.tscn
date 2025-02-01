@@ -74,3 +74,5 @@ metadata/_tab_index = 1
 layout_mode = 0
 offset_right = 34.0
 offset_bottom = 37.0
+
+[connection signal="pressed" from="back_to_main_menu_button" to="." method="OnBackToMainMenuButtonPressed"]

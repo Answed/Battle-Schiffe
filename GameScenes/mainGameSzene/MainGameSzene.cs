@@ -19,34 +19,12 @@ public partial class MainGameSzene : Control
 		}
 
 		// Lade die Platzhalter-Textur
-		placeholderTexture = GD.Load<Texture2D>("res://Scenes/GameScenes/Texturen/Spielkarten.webp");
+		placeholderTexture = GD.Load<Texture2D>("res://GameScenes/Texturen/Spielkarten.webp");
 		GD.Print($"Platzhalter geladen: {placeholderTexture != null}");
 
 		// Initialisiere die Scroll- und HBoxContainer-Referenzen
-		scrollContainer = GetNode<ScrollContainer>("scrollContainer");
-		hboxContainer = GetNode<HBoxContainer>("scrollContainer/card_display");
-
-		// Versuche, den settings_button absolut zu finden
-		var settingsButton = GetNode<Button>("/root/main_game_szene/settings_button");
-		if (settingsButton == null)
-		{
-			GD.PrintErr("settings_button nicht gefunden!");
-			return;
-		}
-
-		// Signal verbinden für settings_button
-		settingsButton.Pressed += OnSettingsButtonPressed;
-
-		// Versuche, den switch_board_button zu finden
-		var switchBoardButton = GetNode<Button>("/root/main_game_szene/interactions/Switch_board_button");
-		if (switchBoardButton == null)
-		{
-			GD.PrintErr("switch_board_button nicht gefunden!");
-			return;
-		}
-
-		// Signal verbinden für switch_board_button
-		switchBoardButton.Pressed += OnSwitchBoardButtonPressed;
+		scrollContainer = GetNode<ScrollContainer>("CardManager/scrollContainer");
+		hboxContainer = GetNode<HBoxContainer>("CardManager/scrollContainer/card_display");
 
 		// Beispiel: Erzeuge 5 Karten
 		for (int i = 0; i < 5; i++)
@@ -60,7 +38,7 @@ public partial class MainGameSzene : Control
 
 	private void AddCard(int cardId)
 	{
-		var button = new TextureButton
+		TextureButton button = new TextureButton
 		{
 			Name = $"Card_{cardId}",
 			TextureNormal = placeholderTexture,
@@ -88,25 +66,25 @@ public partial class MainGameSzene : Control
 
 	private void UpdateScrollContainer()
 	{
-		var totalWidth = hboxContainer.Size.X;
-		var visibleWidth = scrollContainer.GetViewport().GetVisibleRect().Size.X;
+		float totalWidth = hboxContainer.Size.X;
+		float visibleWidth = scrollContainer.GetViewport().GetVisibleRect().Size.X;
 
 		// Scrollen aktivieren, falls nötig
 		var hScrollBar = scrollContainer.GetHScrollBar();
 		hScrollBar.Visible = totalWidth > visibleWidth;
 	}
 
-	private void OnSettingsButtonPressed()
+	private void openBrakeMenuPressed()
 	{
 		// Szene wechseln
 		GD.Print("Settings-Button gedrückt! Wechsel zu den Einstellungen.");
-		GetTree().ChangeSceneToFile("res://Scenes/GameScenes/BrakeMenuSzene/brakeMenuSzene.tscn");
+		GetTree().ChangeSceneToFile("res://GameScenes/BrakeMenuSzene/brakeMenuSzene.tscn");
 	}
 
 	private void OnSwitchBoardButtonPressed()
 	{
 		// Szene wechseln
 		GD.Print("Switch-Board-Button gedrückt! Wechsel zur MainGameEnemySzene.");
-		GetTree().ChangeSceneToFile("res://Scenes/GameScenes/mainGameSzene/MainGameEnemySzene.tscn");
+		GetTree().ChangeSceneToFile("res://GameScenes/mainGameSzene/MainGameEnemySzene.tscn");
 	}
 }

@@ -180,3 +180,5 @@ text = "Torpedoboot"
 
 [node name="number_tbd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
 layout_mode = 2
+
+[connection signal="pressed" from="interactions/switch_board_button" to="." method="OnSwitchBoardButtonPressed"]
