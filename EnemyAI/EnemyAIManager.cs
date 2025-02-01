@@ -12,11 +12,16 @@ public partial class EnemyAIManager : Node
 
 	private int currentFightingForce = 0;
 	private int currentBonus = 0;
+
+	private EnemyShipPlacement shipPlacement;
+	private EnemyAttack attack;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		SetRequiredDependencies();
+		shipPlacement = GetNode<EnemyShipPlacement>("ShipPlacement");
+		attack = GetNode<EnemyAttack>("Attack");
 	}
 	//Calls all Function needed too generate all the Data the enemy needs for the next match
 	public void SetNewMatch()

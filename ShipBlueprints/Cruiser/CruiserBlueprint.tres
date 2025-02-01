@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ShipBlueprint" load_steps=4 format=3 uid="uid://c3lyvkbrumo55"]
+
+[ext_resource type="Resource" uid="uid://dgjmne22ffdn1" path="res://ShipBlueprints/Cruiser/Positions/Horizontal.tres" id="1_iaaam"]
+[ext_resource type="Resource" uid="uid://ib4ufyqdxkht" path="res://ShipBlueprints/Cruiser/Positions/Vertical.tres" id="2_8koua"]
+[ext_resource type="Script" path="res://Ressources/ShipBlueprint.cs" id="3_a57mo"]
+
+[resource]
+script = ExtResource("3_a57mo")
+shipType = 2
+position = Array[Object]([ExtResource("1_iaaam"), ExtResource("2_8koua")])

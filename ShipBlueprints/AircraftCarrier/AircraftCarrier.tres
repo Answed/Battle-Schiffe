@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ShipBlueprint" load_steps=6 format=3 uid="uid://qyc8tvj1tu5f"]
+
+[ext_resource type="Resource" uid="uid://jr0b0thn7ir6" path="res://ShipBlueprints/AircraftCarrier/Positions/Horizontal.tres" id="1_bqh5p"]
+[ext_resource type="Script" path="res://Ressources/ShipBlueprint.cs" id="1_xp855"]
+[ext_resource type="Resource" uid="uid://cl3uo34gc85hg" path="res://ShipBlueprints/AircraftCarrier/Positions/HorizontalFlipped.tres" id="2_grepr"]
+[ext_resource type="Resource" uid="uid://dign6dit30u4r" path="res://ShipBlueprints/AircraftCarrier/Positions/VerticalFlipped.tres" id="3_xauqv"]
+[ext_resource type="Resource" uid="uid://dijumb8im6u66" path="res://ShipBlueprints/AircraftCarrier/Positions/Vertical.tres" id="4_jls7l"]
+
+[resource]
+script = ExtResource("1_xp855")
+shipType = 0
+position = Array[Object]([ExtResource("1_bqh5p"), ExtResource("2_grepr"), ExtResource("3_xauqv"), ExtResource("4_jls7l")])

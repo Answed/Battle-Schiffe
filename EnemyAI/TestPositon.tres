@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="ShipPositionPrefab" load_steps=2 format=3 uid="uid://dyjmcqq6xfwm2"]
-
-[ext_resource type="Script" path="res://Ressources/ShipPositionPrefab.cs" id="1_g2pbs"]
-
-[resource]
-script = ExtResource("1_g2pbs")
-poitions = null

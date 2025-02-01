@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="ShipBlueprint" load_steps=2 format=3 uid="uid://w22gf5ft8mkn"]
-
-[ext_resource type="Script" path="res://Ressources/ShipBlueprint.cs" id="1_l0h8u"]
-
-[resource]
-script = ExtResource("1_l0h8u")
-shipType = 0
-position = null
