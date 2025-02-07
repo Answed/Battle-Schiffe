@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b76t0dtb153mm"]
+
+[ext_resource type="PackedScene" uid="uid://diqpx54flql5i" path="res://GameScenes/mainGameSzene/MainGameSzene.tscn" id="1_2d2rs"]
+[ext_resource type="PackedScene" uid="uid://cc3h7p1c33lcf" path="res://Ship/ShipControll.tscn" id="1_yj4qq"]
+
+[node name="MasterSzene" type="Node2D"]
+
+[node name="ShipControll" parent="." instance=ExtResource("1_yj4qq")]
+
+[node name="main_game_szene" parent="." instance=ExtResource("1_2d2rs")]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 1150.0
+offset_bottom = 646.0
