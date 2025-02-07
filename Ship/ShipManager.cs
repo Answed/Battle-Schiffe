@@ -1,16 +1,17 @@
-using System;
-using System.Threading.Tasks;
 using Godot;
-using Godot.NativeInterop;
 using static Godot.GD;
 
-public partial class ship_test_scipt : Node2D{
+public partial class ShipManager : Node2D{
 
 	Vector2 HoverSpritePosition;
 	int SpriteRotation = 0; // 0-3 top->clockwise
+	bool Selected  = false;
+	bool Hovered = false;
+	Vector2 PlacePosition;
+	
 	public override void _Process(double delta)
 	{
-		if((bool)GetMeta("Selected"))
+		if(Selected)
 		{
 			//follows mouse
 			Position = GetGlobalMousePosition();
@@ -26,17 +27,17 @@ public partial class ship_test_scipt : Node2D{
 			GetNode<AnimatedSprite2D>("AnimatedSprite2D-Hover").GlobalPosition = HoverSpritePosition;
 		}
 		//selects current ship
-		if((bool)GetMeta("Hovered") && Input.IsActionJustPressed("select"))
+		if(Hovered && Input.IsActionJustPressed("select"))
 		{
-			if((bool)GetMeta("Selected"))
+			if(Selected)
 			{
-				SetMeta("Selected", false);
-				Position = (Vector2)GetMeta("SetPosition");
+				Selected = false;
+				Position = PlacePosition;
 				GetNode<AnimatedSprite2D>("AnimatedSprite2D-Hover").Visible = false;
 			}
 			else
 			{
-				SetMeta("Selected", true);
+				Selected = true;
 				GetNode<AnimatedSprite2D>("AnimatedSprite2D-Hover").Visible = true;
 			}
 		}
@@ -44,27 +45,27 @@ public partial class ship_test_scipt : Node2D{
 	//checks if the ship is hovered over
 	public void MouseEnter()
 	{
-		SetMeta("Hovered", true);
+		Hovered = true;
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(1.1F,1.1F);
 	}
 	public void MouseExit()
 	{
-		SetMeta("Hovered", false);
+		Hovered = false;
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(1.0F,1.0F);
 	}
 	public void BodyEnter(TileMapLayer nod)
 	{
-		SetMeta("SetPosition",nod.MapToLocal(nod.LocalToMap(Position)));
+		PlacePosition = nod.MapToLocal(nod.LocalToMap(Position));
 		HoverSpriteCorection();
 
-		Print(GetMeta("SetPosition")); //for testing
+		Print(PlacePosition); //for testing
 	}
 
 
 	//extra functions
-	void HoverSpriteCorection() 
+	private void HoverSpriteCorection() 
 	{
-		HoverSpritePosition = (Vector2)GetMeta("SetPosition");
+		HoverSpritePosition = PlacePosition;
 		switch (SpriteRotation)
 		{
 			case 1:
@@ -80,5 +81,9 @@ public partial class ship_test_scipt : Node2D{
 				HoverSpritePosition.Y -= 32;
 				break;
 		}
+	}
+
+	public void DestroyShip(){
+		QueueFree();
 	}
 }

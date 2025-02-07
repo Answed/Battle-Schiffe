@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvpvdulpfd53k"]
 
-[ext_resource type="Script" path="res://Ship/TestShip/ship_test_scipt.cs" id="1_cdg2l"]
+[ext_resource type="Script" path="res://Ship/ShipManager.cs" id="1_cdg2l"]
 [ext_resource type="Texture2D" uid="uid://dssmjl4ub56xe" path="res://Ship/Textures/pixil-frame-0 (1).png" id="1_m5srh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nx700"]

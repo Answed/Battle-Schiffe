@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cc3h7p1c33lcf"]
 
-[ext_resource type="Script" path="res://Ship/ShipControl.cs" id="1_t354a"]
+[ext_resource type="Script" path="res://Ship/ShipControll.cs" id="1_rs1bc"]
 [ext_resource type="PackedScene" uid="uid://dvpvdulpfd53k" path="res://Ship/TestShip/ship_test.tscn" id="2_rexlx"]
 
 [node name="ShipControll" type="Node"]
-script = ExtResource("1_t354a")
-SpawnShip = ExtResource("2_rexlx")
+script = ExtResource("1_rs1bc")
+Ships = Array[PackedScene]([ExtResource("2_rexlx")])
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
