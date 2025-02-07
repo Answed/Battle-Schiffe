@@ -29,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("3_kwg5y")
 
 [node name="background" type="Panel" parent="."]
@@ -38,6 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_8bfbu")
 
 [node name="own_ships_display" type="VBoxContainer" parent="."]
@@ -85,6 +87,7 @@ size_flags_vertical = 3
 layout_mode = 0
 offset_right = 54.0
 offset_bottom = 45.0
+mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxTexture_b54en")
 
 [node name="game_field" type="Panel" parent="."]
