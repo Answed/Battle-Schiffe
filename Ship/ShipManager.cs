@@ -1,13 +1,16 @@
 using Godot;
 using static Godot.GD;
-
 public partial class ShipManager : Node2D{
 
-	Vector2 HoverSpritePosition;
-	int SpriteRotation = 0; // 0-3 top->clockwise
-	bool Selected  = false;
-	bool Hovered = false;
-	Vector2 PlacePosition;
+	private int SpriteRotation = 0; // 0-3 top->clockwise
+	private bool Selected  = false;
+	private bool Hovered = false;
+	private Vector2 PlacePosition;
+	private Vector2 HoverSpritePosition;
+
+	private ShipControll.ShipType ShipType;
+
+	public override void _Ready(){}
 	
 	public override void _Process(double delta)
 	{
@@ -61,7 +64,12 @@ public partial class ShipManager : Node2D{
 		Print(PlacePosition); //for testing
 	}
 
+	public void SetShipType(ShipControll.ShipType type){ShipType = type;}
+	public ShipControll.ShipType GetShipType(){return ShipType;}
 
+	public void LockingShip(){GetNode<Area2D>("Area2D-Collision").Visible = false;}
+	public void UnlockingShip(){GetNode<Area2D>("Area2D-Collision").Visible = true;}
+	public void DestroyShip(){QueueFree();}
 	//extra functions
 	private void HoverSpriteCorection() 
 	{
@@ -81,9 +89,5 @@ public partial class ShipManager : Node2D{
 				HoverSpritePosition.Y -= 32;
 				break;
 		}
-	}
-
-	public void DestroyShip(){
-		QueueFree();
 	}
 }
