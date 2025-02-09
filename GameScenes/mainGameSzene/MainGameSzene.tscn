@@ -57,7 +57,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_v76k3")
 text = "Own Ships
 "
 
-[node name="Panel" type="Panel" parent="own_ships_display"]
+[node name="own-ship-panel" type="Panel" parent="own_ships_display"]
 layout_mode = 2
 size_flags_vertical = 3
 
