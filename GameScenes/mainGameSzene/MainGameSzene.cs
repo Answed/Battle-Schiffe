@@ -87,4 +87,5 @@ public partial class MainGameSzene : Control
 		GD.Print("Switch-Board-Button gedrückt! Wechsel zur MainGameEnemySzene.");
 		GetTree().ChangeSceneToFile("res://GameScenes/mainGameSzene/MainGameEnemySzene.tscn");
 	}
+	
 }
