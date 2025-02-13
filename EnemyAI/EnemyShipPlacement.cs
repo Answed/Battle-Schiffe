@@ -37,6 +37,7 @@ public partial class EnemyShipPlacement : Node
 				if (ship.shipPosition.Count != 0)
 				{
 					currentShips.Add(ship);
+					fightForce -= shipLevel;
 				}
 			}
 		}
