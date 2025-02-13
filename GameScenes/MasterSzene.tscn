@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b76t0dtb153mm"]
+[gd_scene load_steps=5 format=3 uid="uid://b76t0dtb153mm"]
 
 [ext_resource type="PackedScene" uid="uid://diqpx54flql5i" path="res://GameScenes/mainGameSzene/MainGameSzene.tscn" id="1_2d2rs"]
 [ext_resource type="PackedScene" uid="uid://cc3h7p1c33lcf" path="res://Ship/ShipControll.tscn" id="1_yj4qq"]
+[ext_resource type="PackedScene" uid="uid://dn3h7jgrfxmrb" path="res://EnemyAI/EnemyAI.tscn" id="3_ogej7"]
+[ext_resource type="PackedScene" uid="uid://bo6mdfrldhrxq" path="res://GameManager/GameManager.tscn" id="4_oqoxq"]
 
 [node name="MasterSzene" type="Node2D"]
 
@@ -11,3 +13,7 @@
 custom_minimum_size = Vector2(100, 100)
 offset_right = 1150.0
 offset_bottom = 646.0
+
+[node name="EnemyAi" parent="." instance=ExtResource("3_ogej7")]
+
+[node name="GameManager" parent="." instance=ExtResource("4_oqoxq")]
