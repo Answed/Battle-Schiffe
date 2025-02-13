@@ -32,7 +32,7 @@ public partial class ChooseShipSzene : Control
 		_lifeOfShip.Text = $"Life: {_defaultLifeOfShip}";
 		_specialAttackShip.Text = $"Special Attack: {_defaultSpecialAttackShip}";
 		_notesShip.Text = $"Notes: {_defaultNotesShip}";
-}
+	}
 
 	private void OnBackToMenuButtonPressed()
 	{

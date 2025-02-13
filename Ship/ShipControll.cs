@@ -25,12 +25,12 @@ public partial class ShipControll : Node
 	
 	public override void _Ready()
 	{
-		AddShipStorage(ShipType.TestShip);
+		AddShipStorage(ShipType.TestShip); // For testing
 		StageBeginn();
 		PlaceLand(new Vector2I(5,5));
 	}
 	public override void _Process(double delta){}
-	public void AddShipStorage(ShipType newShip){ShipStorage.Add(newShip);}
+	public void AddShipStorage(ShipType newShip) { ShipStorage.Add(newShip); }
 
 	public void StageBeginn(){
 		//get correct CreationPostion 

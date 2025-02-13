@@ -74,7 +74,7 @@ public partial class ShipManager : Node2D{
 	public void UnhideShip(){Visible = true;}
 	public void DestroyShip(){QueueFree();}
 	//extra functions
-	private void HoverSpriteCorection() 
+	private void HoverSpriteCorection() // Hardcoded Position based on sprite
 	{
 		HoverSpritePosition = PlacePosition;
 		switch (SpriteRotation)
