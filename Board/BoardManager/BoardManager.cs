@@ -17,7 +17,14 @@ public partial class BoardManager : Node
 	protected List<Ship> ships = new List<Ship>();
 	private Node boardNode;
 	private bool isPlayerBoard;
+	
+	private GameManager gameManager;
 
+	public override void _Ready()
+	{
+		gameManager = GetNode<GameManager>("../GameManager");
+	}
+	
 	public void InitBoard(int[,] board, bool isPlayerBoard, Node boardNode) 
 	{
 		this.boardNode = boardNode;
@@ -48,9 +55,7 @@ public partial class BoardManager : Node
 	private void CheckIfAllShipsAreDead()
 	{
 		if (ships.Count == 0)
-		{
-			//Call GameManger -> GameLost transfer bool value isPlayerBoard to check in the game manager who has won
-		}
+			gameManager.PlayerHasWon(isPlayerBoard);
 	}
 
 	public void DeleteBoard()
