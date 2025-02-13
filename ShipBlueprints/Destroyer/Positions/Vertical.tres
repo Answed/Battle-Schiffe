@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ShipPositionPrefab" load_steps=2 format=3 uid="uid://b0dg1lmsixqqu"]
+
+[ext_resource type="Script" path="res://Ressources/ShipPositionPrefab.cs" id="1_jjve3"]
+
+[resource]
+script = ExtResource("1_jjve3")
+poitions = Array[PackedInt64Array]([PackedInt64Array(1, 1, 1)])

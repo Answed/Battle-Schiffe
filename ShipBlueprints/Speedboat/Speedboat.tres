@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShipBlueprint" load_steps=3 format=3 uid="uid://7etv2hr5rcoj"]
+
+[ext_resource type="Resource" uid="uid://bgreslixuog48" path="res://ShipBlueprints/Speedboat/Positions/Position.tres" id="1_au3tp"]
+[ext_resource type="Script" path="res://Ressources/ShipBlueprint.cs" id="1_d1esf"]
+
+[resource]
+script = ExtResource("1_d1esf")
+shipType = 5
+position = Array[Object]([ExtResource("1_au3tp")])

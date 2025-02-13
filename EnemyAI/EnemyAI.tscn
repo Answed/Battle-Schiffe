@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn3h7jgrfxmrb"]
+[gd_scene load_steps=10 format=3 uid="uid://dn3h7jgrfxmrb"]
 
 [ext_resource type="Script" path="res://EnemyAI/EnemyAIManager.cs" id="1_qubg8"]
+[ext_resource type="Script" path="res://EnemyAI/EnemyShipPlacement.cs" id="2_e071u"]
+[ext_resource type="Resource" uid="uid://qyc8tvj1tu5f" path="res://ShipBlueprints/AircraftCarrier/AircraftCarrier.tres" id="3_0h8or"]
+[ext_resource type="Resource" uid="uid://c41jvl3kb53h8" path="res://ShipBlueprints/AmphibousAssult/AmphibousAssult.tres" id="4_w6bds"]
+[ext_resource type="Resource" uid="uid://dsbei0157uh8t" path="res://ShipBlueprints/Corvette/Corvette.tres" id="5_b01vi"]
+[ext_resource type="Resource" uid="uid://c3lyvkbrumo55" path="res://ShipBlueprints/Cruiser/CruiserBlueprint.tres" id="6_kh4i8"]
+[ext_resource type="Resource" uid="uid://dw0s7eo1yg3b8" path="res://ShipBlueprints/Destroyer/Destroyer.tres" id="7_31avu"]
+[ext_resource type="Resource" uid="uid://7etv2hr5rcoj" path="res://ShipBlueprints/Speedboat/Speedboat.tres" id="8_i4k1m"]
+[ext_resource type="Script" path="res://EnemyAI/EnemyAttack.cs" id="9_psukt"]
 
 [node name="EnemyAi" type="Node"]
 script = ExtResource("1_qubg8")
+
+[node name="ShipPlacement" type="Node" parent="."]
+script = ExtResource("2_e071u")
+shipBlueprints = Array[Object]([ExtResource("3_0h8or"), ExtResource("4_w6bds"), ExtResource("5_b01vi"), ExtResource("6_kh4i8"), ExtResource("7_31avu"), ExtResource("8_i4k1m")])
+
+[node name="Attack" type="Node" parent="."]
+script = ExtResource("9_psukt")
