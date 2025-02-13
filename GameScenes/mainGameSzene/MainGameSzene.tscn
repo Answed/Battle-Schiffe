@@ -29,6 +29,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("3_kwg5y")
 
 [node name="background" type="Panel" parent="."]
 layout_mode = 1
@@ -37,6 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_8bfbu")
 
 [node name="own_ships_display" type="VBoxContainer" parent="."]
@@ -52,13 +55,15 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="own_ships_display"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxFlat_v76k3")
 text = "Own Ships
 "
 
-[node name="Panel" type="Panel" parent="own_ships_display"]
+[node name="own-ship-panel" type="Panel" parent="own_ships_display"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="combine_field" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -84,6 +89,7 @@ size_flags_vertical = 3
 layout_mode = 0
 offset_right = 54.0
 offset_bottom = 45.0
+mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxTexture_b54en")
 
 [node name="game_field" type="Panel" parent="."]
@@ -99,6 +105,7 @@ offset_right = 282.0
 offset_bottom = 172.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="CardManager" type="Control" parent="."]
 layout_mode = 1
@@ -112,7 +119,7 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
-script = ExtResource("3_kwg5y")
+mouse_filter = 1
 
 [node name="scrollContainer" type="ScrollContainer" parent="CardManager"]
 layout_mode = 0
@@ -205,6 +212,7 @@ offset_top = -230.0
 offset_bottom = 132.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="enemy_ship_display"]
 layout_mode = 0
@@ -213,3 +221,6 @@ offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="enemy_ship_display/ScrollContainer"]
 layout_mode = 2
+
+[connection signal="pressed" from="settings_button" to="." method="openBrakeMenuPressed"]
+[connection signal="pressed" from="interactions/Switch_board_button" to="." method="OnSwitchBoardButtonPressed"]

@@ -46,3 +46,5 @@ layout_mode = 0
 offset_right = 46.0
 offset_bottom = 41.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_3c2qa")
+
+[connection signal="pressed" from="back_to_main_menu_button" to="." method="OnBackToMainMenuButtonPressed"]
