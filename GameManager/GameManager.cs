@@ -1,46 +1,91 @@
 using Godot;
 using System;
+using BattleSchiffe.Scripts.BoardManager;
 
 public partial class GameManager : Node
 {
+	private enum GameState
+	{
+		RoundSetup,
+		RoundStart,
+		RoundEnd,
+		PlayerTurn,
+		EnemyTurn
+	}
+	
+	public int currenStage = 0;
+	public int currentRound = 0;
+
+	private EnemyAIManager enemyAiManager;
+	private ShipControll shipControll;
+	private PlayerBoardManager playerBoardManager;
+	private EnemyBoardManager enemyBoardManager;
+	
+	private GameState gameState = GameState.RoundStart;
+
 	public override void _Ready()
 	{
-		GD.Print($"GameManager aktiv. Node-Pfad: {GetPath()}");
-
-		// Suche den settings_button und verbinde sein Signal
-		var settingsButton = GetNode<Button>("/root/main_game_szene/settings_button");
-		if (settingsButton == null)
-		{
-			GD.PrintErr("settings_button nicht gefunden!");
-		}
-		else
-		{
-			settingsButton.Pressed += OnSettingsButtonPressed;
-		}
-
-		// Suche den switch_board_button und verbinde sein Signal
-		var switchBoardButton = GetNode<Button>("/root/main_game_szene/switch_board_button");
-		if (switchBoardButton == null)
-		{
-			GD.PrintErr("switch_board_button nicht gefunden!");
-		}
-		else
-		{
-			switchBoardButton.Pressed += OnSwitchBoardButtonPressed;
-		}
+		SetRequiredDependencies();
 	}
 
-	private void OnSettingsButtonPressed()
+	private void SetRequiredDependencies()
 	{
-		// Szene wechseln
-		GD.Print("Settings-Button gedrückt! Wechsel zu den Einstellungen.");
-		GetTree().ChangeSceneToFile("res://Scenes/GameScenes/brake_menu/brakeMenuSzene.tscn");
+		enemyAiManager = GetNode<EnemyAIManager>("../EnemyAi");
+		shipControll = GetNode<ShipControll>("../ShipControll");
+		playerBoardManager = GetNode<PlayerBoardManager>("../PlayerBoardManager");
+		enemyBoardManager = GetNode<EnemyBoardManager>("../EnemyBoardManager");
 	}
 
-	private void OnSwitchBoardButtonPressed()
+	private void UpdateState()
 	{
-		// Szene wechseln
-		GD.Print("Switch-Board-Button gedrückt! Wechsel zur MainGameEnemySzene.");
-		GetTree().ChangeSceneToFile("res://Scenes/GameScenes/mainGameSzene/MainGameEnemySzene.tscn");
+		switch (gameState)
+		{
+			case GameState.RoundSetup:
+				shipControll.StageBeginn();
+				gameState = GameState.RoundStart;
+				UpdateState();
+				break;
+			case GameState.RoundStart:
+				shipControll.BoardPlacementFinished();
+				enemyAiManager.SetNewMatch();
+				break;
+			case GameState.PlayerTurn:
+				break;	
+			case GameState.EnemyTurn:
+				enemyAiManager.EnemyTurn();
+				break;
+			case GameState.RoundEnd:
+				shipControll.StageEnd();
+				// Cleanup for next Stage
+				gameState = GameState.RoundSetup;
+				enemyBoardManager.DeleteBoard();
+				UpdateState();
+				break;
+		}
+	}
+	
+	public override void _Process(double delta)
+	{
+		if (currenStage % 5 == 0) 
+			enemyAiManager.UpdateCurrentBonus();
+	}
+	
+	public void ChangeToPlayerTurn()
+	{
+		gameState = GameState.PlayerTurn;
+		UpdateState();
+	}
+
+	public void ChangeToEnemyTurn()
+	{
+		gameState = GameState.EnemyTurn;
+		UpdateState();
+	}
+
+	public void PlayerHasWon(bool won)
+	{
+		//TODO: Management of the win / lose case
+		gameState = GameState.RoundEnd;
+		UpdateState();
 	}
 }

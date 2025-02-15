@@ -27,6 +27,14 @@ public partial class EnemyAIManager : Node
 	public void SetNewMatch()
 	{
 		UpdateFighhtingForce();
+		attack.SetAttackParameters(playerBoard);
+	}
+	
+	// Attacks the enemy and switches back to player after the attack is completed
+	public void EnemyTurn()
+	{
+		attack.Attack(currentShips.Count);
+		gameManager.ChangeToPlayerTurn();
 	}
 	
 	private void UpdateFighhtingForce() 
