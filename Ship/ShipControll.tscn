@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc3h7p1c33lcf"]
+[gd_scene load_steps=13 format=3 uid="uid://cc3h7p1c33lcf"]
 
 [ext_resource type="Script" path="res://Ship/ShipControll.cs" id="1_rs1bc"]
+[ext_resource type="PackedScene" uid="uid://clb3mgrxfft6g" path="res://Ship/Speedboat/Speedboat.tscn" id="2_qv2ij"]
 [ext_resource type="PackedScene" uid="uid://dvpvdulpfd53k" path="res://Ship/TestShip/ship_test.tscn" id="2_rexlx"]
+[ext_resource type="PackedScene" uid="uid://bsa3ygg0tk3p4" path="res://Ship/Corvette/Corvette.tscn" id="3_8u4oq"]
 [ext_resource type="Texture2D" uid="uid://d1dekgohh6kfv" path="res://Ship/Textures/EmptyLandSquare.png" id="3_sptrx"]
+[ext_resource type="PackedScene" uid="uid://d0qrcpkju7a0q" path="res://Ship/Destroyer/Destroyer.tscn" id="4_3wxad"]
 [ext_resource type="Texture2D" uid="uid://bfcx1mwonspd1" path="res://Ship/Textures/EmptyWaterSquare.png" id="4_hvh3s"]
+[ext_resource type="PackedScene" uid="uid://c2c088ruadatg" path="res://Ship/AmphibiousAssault/AmphibiousAssault.tscn" id="5_ker06"]
+[ext_resource type="PackedScene" uid="uid://8b5knxyadi0u" path="res://Ship/AircraftCarrier/AircraftCarrier.tscn" id="6_wh1s5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me1l5"]
 texture = ExtResource("3_sptrx")
@@ -26,7 +31,7 @@ sources/5 = SubResource("TileSetAtlasSource_41rke")
 
 [node name="ShipControll" type="Node"]
 script = ExtResource("1_rs1bc")
-Ships = Array[PackedScene]([ExtResource("2_rexlx")])
+Ships = Array[PackedScene]([ExtResource("2_qv2ij"), ExtResource("3_8u4oq"), ExtResource("4_3wxad"), ExtResource("5_ker06"), ExtResource("6_wh1s5"), ExtResource("2_rexlx")])
 
 [node name="ShipGrid" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_jcgg8")

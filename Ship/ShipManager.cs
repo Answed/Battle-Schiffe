@@ -69,15 +69,18 @@ public partial class ShipManager : Node2D{
 
 	public void LockingShip(){GetNode<Area2D>("Area2D-Collision").Visible = false;}
 	public void UnlockingShip(){GetNode<Area2D>("Area2D-Collision").Visible = true;}
+
+	public void HideShip(){Visible = false;}
+	public void UnhideShip(){Visible = true;}
 	public void DestroyShip(){QueueFree();}
 	//extra functions
-	private void HoverSpriteCorection() 
+	private void HoverSpriteCorection() // Hardcoded Position based on sprite
 	{
 		HoverSpritePosition = PlacePosition;
 		switch (SpriteRotation)
 		{
 			case 1:
-				HoverSpritePosition.X += 32;
+				HoverSpritePosition.X += 32;//number based on sprite size
 				break;
 			case 2:
 				HoverSpritePosition.Y += 32;

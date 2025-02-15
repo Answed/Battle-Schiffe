@@ -13,6 +13,11 @@ public partial class ShipControll : Node
 
 	private int MapHeight = 10;
 	public enum ShipType{
+		AircraftCarrier,
+		AmphibiousAssault,
+		Destroyer,
+		Corvette,
+		Speedboat,
 		TestShip
 	}
 
@@ -20,12 +25,12 @@ public partial class ShipControll : Node
 	
 	public override void _Ready()
 	{
-		AddShipStorage(ShipType.TestShip);
+		AddShipStorage(ShipType.TestShip); // For testing
 		StageBeginn();
 		PlaceLand(new Vector2I(5,5));
 	}
 	public override void _Process(double delta){}
-	public void AddShipStorage(ShipType newShip){ShipStorage.Add(newShip);}
+	public void AddShipStorage(ShipType newShip) { ShipStorage.Add(newShip); }
 
 	public void StageBeginn(){
 		//get correct CreationPostion 
@@ -41,6 +46,8 @@ public partial class ShipControll : Node
 		StoreShips();
 		ClearBoard();
 	}
+	public void EnemyTurn(){foreach(ShipManager X in ShipList){X.HideShip();}}
+	public void PlayerTurn(){foreach(ShipManager X in ShipList){X.UnhideShip();}}
 
 	private void StartShipPlacement(){
 		foreach (var x in ShipStorage)
@@ -60,22 +67,38 @@ public partial class ShipControll : Node
 	private void CreateShip(ShipType type){
 		switch (type)
 		{
-			case ShipType.TestShip:
+			case ShipType.Speedboat:
 				ShipList.Add((ShipManager)Ships[0].Instantiate());
 				break;
-			default://add all ship types also in the gui
+			case ShipType.Corvette:
+				ShipList.Add((ShipManager)Ships[1].Instantiate());
+				break;
+			case ShipType.Destroyer:
+				ShipList.Add((ShipManager)Ships[2].Instantiate());
+				break;
+			case ShipType.AmphibiousAssault:
+				ShipList.Add((ShipManager)Ships[3].Instantiate());
+				break;
+			case ShipType.AircraftCarrier:
+				ShipList.Add((ShipManager)Ships[4].Instantiate());
+				break;
+			case ShipType.TestShip:
+				ShipList.Add((ShipManager)Ships[5].Instantiate());
+				break;
+			default:
 				GD.PrintErr("CreateShip Error");
 				break;
 		}
 		AddChild(ShipList[^1]);
 		ShipList[^1].Position = CreationPosition;
-		ShipList[^1].SetShipType(ShipType.TestShip);
+		ShipList[^1].SetShipType(type);
 	}
 	private void CreateShipGrid(){
 		//int[,] map = GetMaop();         
 		//get map size 
 		//get map placement
 		//get tile size
+
 		int[,] map = { 	{1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, //placeholder
 						{0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
 						{1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, 
