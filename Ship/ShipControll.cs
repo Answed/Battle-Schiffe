@@ -32,17 +32,17 @@ public partial class ShipControll : Node
 	public override void _Process(double delta){}
 	public void AddShipStorage(ShipType newShip) { ShipStorage.Add(newShip); }
 
-	public void StageBeginn(){
+	private void StageBeginn(){
 		//get correct CreationPostion 
 
 		CreateShipGrid();
 		StartShipPlacement();
 	}
 
-	public void BoardPlacementFinished(){
+	private void BoardPlacementFinished(){
 		LockShips();
 	}
-	public void StageEnd(){
+	private void StageEnd(){
 		StoreShips();
 		ClearBoard();
 	}

@@ -4,6 +4,13 @@ using BattleSchiffe.Scripts.BoardManager;
 
 public partial class GameManager : Node
 {
+	[Signal] public delegate void EnemyTurnEventHandler();
+	[Signal] public delegate void EnemySetNewMatchEventHandler();
+	[Signal] public delegate void EnemyUpdateBonusEventHandler();
+	[Signal] public delegate void ShipControllStageBeginEventHandler();
+	[Signal] public delegate void ShipControllStageEndEventHandler();
+	[Signal] public delegate void ShipControllBoardPlacementFinishedEventHandler();
+	
 	private enum GameState
 	{
 		RoundSetup,
@@ -15,8 +22,7 @@ public partial class GameManager : Node
 	
 	public int currenStage = 0;
 	public int currentRound = 0;
-
-	private EnemyAIManager enemyAiManager;
+	
 	private ShipControll shipControll;
 	private PlayerBoardManager playerBoardManager;
 	private EnemyBoardManager enemyBoardManager;
@@ -30,8 +36,6 @@ public partial class GameManager : Node
 
 	private void SetRequiredDependencies()
 	{
-		enemyAiManager = GetNode<EnemyAIManager>("../EnemyAi");
-		shipControll = GetNode<ShipControll>("../ShipControll");
 		playerBoardManager = GetNode<PlayerBoardManager>("../PlayerBoardManager");
 		enemyBoardManager = GetNode<EnemyBoardManager>("../EnemyBoardManager");
 	}
@@ -41,23 +45,24 @@ public partial class GameManager : Node
 		switch (gameState)
 		{
 			case GameState.RoundSetup:
-				shipControll.StageBeginn();
+				EmitSignal(SignalName.ShipControllStageBegin);
 				gameState = GameState.RoundStart;
 				UpdateState();
 				break;
 			case GameState.RoundStart:
-				shipControll.BoardPlacementFinished();
-				enemyAiManager.SetNewMatch();
+				EmitSignal(SignalName.ShipControllBoardPlacementFinished);
+				EmitSignal(SignalName.EnemySetNewMatch);
 				break;
 			case GameState.PlayerTurn:
+				EmitSignal(SignalName.EnemyTurn);
 				break;	
 			case GameState.EnemyTurn:
-				
 				break;
 			case GameState.RoundEnd:
-				shipControll.StageEnd();
+				EmitSignal(SignalName.ShipControllStageEnd);
 				// Cleanup for next Stage
 				gameState = GameState.RoundSetup;
+				enemyBoardManager.DeleteBoard(); //TODO Create a Signal for that too -> Dont know if we have to Seperate them or use the same Signal for both
 				UpdateState();
 				break;
 		}
@@ -65,8 +70,8 @@ public partial class GameManager : Node
 	
 	public override void _Process(double delta)
 	{
-		if (currenStage % 5 == 0) 
-			enemyAiManager.UpdateCurrentBonus();
+		if (currenStage % 5 == 0)
+			EmitSignal(SignalName.EnemyUpdateBonus);
 	}
 	
 	public void ChangeToPlayerTurn()
@@ -75,16 +80,16 @@ public partial class GameManager : Node
 		UpdateState();
 	}
 
-	public void ChangeToEnemyTurn()
-	{
-		gameState = GameState.EnemyTurn;
-		UpdateState();
-	}
-
 	public void PlayerHasWon(bool won)
 	{
 		//TODO: Management of the win / lose case
 		gameState = GameState.RoundEnd;
+		UpdateState();
+	}
+
+	private void OnEnemyTurnFinished()
+	{
+		gameState = GameState.PlayerTurn;
 		UpdateState();
 	}
 }
