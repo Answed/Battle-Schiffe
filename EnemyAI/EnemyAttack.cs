@@ -7,13 +7,13 @@ public partial class EnemyAttack : Node
 	private PlayerBoardManager playerBoard;
 	private int[,] boardArray;
 
-	public void SetAttackParameters(PlayerBoardManager board)
+	private void SetAttackParameters(PlayerBoardManager board)
 	{
 		playerBoard = board;
 		boardArray = playerBoard.GetBoard();
 	}
-
-	public void Attack(int numberOfAttacks)
+	
+	private void Attack(int numberOfAttacks)
 	{
 		Random rand = new Random();
 		int xSize = boardArray.GetLength(0);
