@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+/*
 public partial class ChooseShipSzene : Control
 {
 	// Nodes for the UI elements
@@ -48,3 +48,4 @@ public partial class ChooseShipSzene : Control
 		GetTree().ChangeSceneToFile("res://GameScenes/mainGameSzene/MainGameSzene.tscn");
 	}
 }
+*/
