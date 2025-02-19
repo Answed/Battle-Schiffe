@@ -58,6 +58,7 @@ text = "Credits"
 layout_mode = 2
 text = "Spiel beenden"
 
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/open_start_new_game_button" to="." method="OnOpenLoadGameButtonPressed"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/open_settings_button" to="." method="OnOpenSettingsButtonPressed"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/open_credits_button" to="." method="OnOpenCreditsButtonPressed"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/end_game_button" to="." method="OnEndGameButtonPressed"]

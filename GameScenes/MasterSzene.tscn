@@ -1,29 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://b76t0dtb153mm"]
+[gd_scene load_steps=6 format=3 uid="uid://dv21wluvgw5bk"]
 
-[ext_resource type="PackedScene" uid="uid://diqpx54flql5i" path="res://GameScenes/mainGameSzene/MainGameSzene.tscn" id="1_2d2rs"]
 [ext_resource type="PackedScene" uid="uid://cc3h7p1c33lcf" path="res://Ship/ShipControll.tscn" id="1_yj4qq"]
 [ext_resource type="PackedScene" uid="uid://dn3h7jgrfxmrb" path="res://Scenes/ManagerScenes/EnemyAI.tscn" id="3_ogej7"]
 [ext_resource type="Script" path="res://EnemyAI/EnemyAIManager.cs" id="4_6f77q"]
-[ext_resource type="PackedScene" uid="uid://bo6mdfrldhrxq" path="res://GameManager/GameManager.tscn" id="4_oqoxq"]
+[ext_resource type="PackedScene" path="res://GameManager/GameManager.tscn" id="4_oqoxq"]
+[ext_resource type="PackedScene" uid="uid://bd81vxv8xn8y6" path="res://GameScenes/UI/UI.tscn" id="5_afl3x"]
 
 [node name="MasterSzene" type="Node2D"]
 
 [node name="ShipControll" parent="." instance=ExtResource("1_yj4qq")]
-
-[node name="main_game_szene" parent="." instance=ExtResource("1_2d2rs")]
-custom_minimum_size = Vector2(100, 100)
-offset_right = 1150.0
-offset_bottom = 646.0
 
 [node name="EnemyAi" parent="." instance=ExtResource("3_ogej7")]
 script = ExtResource("4_6f77q")
 
 [node name="GameManager" parent="." instance=ExtResource("4_oqoxq")]
 
-[connection signal="EnemyTurnFinished" from="EnemyAi" to="GameManager" method="OnEnemyTurnFinished"]
-[connection signal="EnemySetNewMatch" from="GameManager" to="EnemyAi" method="SetNewMatch"]
-[connection signal="EnemyTurn" from="GameManager" to="EnemyAi" method="EnemyTurn"]
-[connection signal="EnemyUpdateBonus" from="GameManager" to="EnemyAi" method="UpdateCurrentBonus"]
-[connection signal="ShipControllBoardPlacementFinished" from="GameManager" to="ShipControll" method="BoardPlacementFinished"]
-[connection signal="ShipControllStageBegin" from="GameManager" to="ShipControll" method="StageBeginn"]
-[connection signal="ShipControllStageEnd" from="GameManager" to="ShipControll" method="StageEnd"]
+[node name="Ui" parent="." instance=ExtResource("5_afl3x")]

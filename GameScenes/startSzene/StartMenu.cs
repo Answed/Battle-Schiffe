@@ -15,12 +15,13 @@ public partial class StartMenu : Control
 	
 	private void OnOpenLoadGameButtonPressed()
 	{
-		GetTree().ChangeSceneToFile("res://GameScenes/mainGameSzene/MainGameSzene.tscn");
+		this.Visible = false;
 	}
 	
 	private void OnOpenCreditsButtonPressed()
 	{
-		GetTree().ChangeSceneToFile("res://GameScenes/startSzene/CreditsSzene.tscn");
+		var scene = GetNode<Node>("res://GameScenes/startSzene/CreditsSzene.tscn"); // Ersetze "PfadZurSzene" mit dem richtigen Node-Pfad
+		scene.Visible = true;
 	}
 	
 	private void OnOpenSettingsButtonPressed()

@@ -55,7 +55,7 @@ public partial class EnemyAIManager : Node
 	private void SetRequiredDependencies() 
 	{
 		enemyBoard = GetNode<EnemyBoardManager>("../EnemyBoardManager");
-		playerBoard = GetNode<PlayerBoardManager>("../PlayerBoardManager");s
+		playerBoard = GetNode<PlayerBoardManager>("../PlayerBoardManager");
 	}
 	
 	// Gets Called in GameManager it only increases it by one bc of the Scaling Function.
