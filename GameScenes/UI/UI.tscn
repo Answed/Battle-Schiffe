@@ -96,6 +96,7 @@ offset_top = -3.0
 offset_bottom = -3.0
 
 [node name="BrakeMenuSzene" parent="main_game_szene" instance=ExtResource("2_i1nvj")]
+visible = false
 layout_mode = 1
 
 [node name="ChooseShipSzene" parent="main_game_szene" instance=ExtResource("3_10fpo")]

@@ -16,16 +16,27 @@ public partial class StartMenu : Control
 	private void OnOpenLoadGameButtonPressed()
 	{
 		this.Visible = false;
+		var scene = GetNode<Control>("../ChooseShipSzene"); 
+		scene.Visible = true;
 	}
 	
 	private void OnOpenCreditsButtonPressed()
 	{
-		var scene = GetNode<Node>("res://GameScenes/startSzene/CreditsSzene.tscn"); // Ersetze "PfadZurSzene" mit dem richtigen Node-Pfad
-		scene.Visible = true;
+		this.Visible = false;
+		var Creditsscene = GetNode<Control>("../CreditsSzene");
+		var Settingscene = GetNode<Control>("../SetingsSzene");
+		var BrakeScene = GetNode<Control>("../BrakeMenuSzene");
+		BrakeScene.Visible = false;
+		Creditsscene.Visible = true;
 	}
 	
 	private void OnOpenSettingsButtonPressed()
 	{
-		GetTree().ChangeSceneToFile("res://GameScenes/SettingsSzene/setingsSzene.tscn");
+		this.Visible = false;
+		var Settingscene = GetNode<Control>("../SetingsSzene");
+		var Creditsscene = GetNode<Control>("../CreditsSzene");
+		var BrakeScene = GetNode<Control>("../BrakeMenuSzene");
+		BrakeScene.Visible = false;
+		Settingscene.Visible = true;
 	}
 }
