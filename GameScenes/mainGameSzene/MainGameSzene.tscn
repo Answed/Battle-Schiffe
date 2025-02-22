@@ -65,6 +65,21 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 
+[node name="GridContainer" type="GridContainer" parent="own_ships_display"]
+layout_mode = 2
+columns = 2
+
+[node name="Button2" type="Button" parent="own_ships_display/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="own_ships_display/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+
 [node name="combine_field" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
