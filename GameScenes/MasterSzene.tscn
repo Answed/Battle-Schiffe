@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b76t0dtb153mm"]
+[gd_scene load_steps=7 format=3 uid="uid://b76t0dtb153mm"]
 
 [ext_resource type="PackedScene" uid="uid://diqpx54flql5i" path="res://GameScenes/mainGameSzene/MainGameSzene.tscn" id="1_2d2rs"]
 [ext_resource type="PackedScene" uid="uid://cc3h7p1c33lcf" path="res://Ship/ShipControll.tscn" id="1_yj4qq"]
 [ext_resource type="PackedScene" uid="uid://dn3h7jgrfxmrb" path="res://Scenes/ManagerScenes/EnemyAI.tscn" id="3_ogej7"]
 [ext_resource type="Script" path="res://EnemyAI/EnemyAIManager.cs" id="4_6f77q"]
 [ext_resource type="PackedScene" uid="uid://bo6mdfrldhrxq" path="res://GameManager/GameManager.tscn" id="4_oqoxq"]
+[ext_resource type="Script" path="res://Board/BoardGeneration/MapArray.cs" id="6_p75ql"]
 
 [node name="MasterSzene" type="Node2D"]
 
@@ -20,10 +21,5 @@ script = ExtResource("4_6f77q")
 
 [node name="GameManager" parent="." instance=ExtResource("4_oqoxq")]
 
-[connection signal="EnemyTurnFinished" from="EnemyAi" to="GameManager" method="OnEnemyTurnFinished"]
-[connection signal="EnemySetNewMatch" from="GameManager" to="EnemyAi" method="SetNewMatch"]
-[connection signal="EnemyTurn" from="GameManager" to="EnemyAi" method="EnemyTurn"]
-[connection signal="EnemyUpdateBonus" from="GameManager" to="EnemyAi" method="UpdateCurrentBonus"]
-[connection signal="ShipControllBoardPlacementFinished" from="GameManager" to="ShipControll" method="BoardPlacementFinished"]
-[connection signal="ShipControllStageBegin" from="GameManager" to="ShipControll" method="StageBeginn"]
-[connection signal="ShipControllStageEnd" from="GameManager" to="ShipControll" method="StageEnd"]
+[node name="MapArray" type="Node" parent="."]
+script = ExtResource("6_p75ql")
