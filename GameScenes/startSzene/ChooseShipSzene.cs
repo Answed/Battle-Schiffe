@@ -46,6 +46,8 @@ public partial class ChooseShipSzene : Control
 	{
 		// Load the game scene
 		GD.Print("Start Game Button Pressed");
-		GetTree().ChangeSceneToFile("res://GameScenes/mainGameSzene/MainGameSzene.tscn");
+		this.Visible = false;
+		var mainGameScene = GetNode<Control>("../main_game_szene");
+		mainGameScene.Visible = false;
 	}
 }

@@ -14,83 +14,12 @@ custom_minimum_size = Vector2(100, 100)
 offset_right = 1150.0
 offset_bottom = 646.0
 
-[node name="background_for_number_of_enemy_ships" type="Panel" parent="main_game_szene"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -177.0
-offset_top = -120.0
-offset_bottom = 120.0
-grow_horizontal = 0
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="GridContainer" type="GridContainer" parent="main_game_szene/background_for_number_of_enemy_ships"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -153.0
-offset_top = -113.5
-offset_bottom = 113.5
-grow_horizontal = 0
-grow_vertical = 2
-columns = 2
-
-[node name="label_cv" type="Label" parent="main_game_szene/background_for_number_of_enemy_ships/GridContainer"]
-layout_mode = 2
-mouse_filter = 1
-text = "Flugzeugträger:"
-
-[node name="number_cv" type="Label" parent="main_game_szene/background_for_number_of_enemy_ships/GridContainer"]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="label_ca" type="Label" parent="main_game_szene/background_for_number_of_enemy_ships/GridContainer"]
-layout_mode = 2
-mouse_filter = 1
-text = "Kreuzer"
-
-[node name="numer_ca" type="Label" parent="main_game_szene/background_for_number_of_enemy_ships/GridContainer"]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="label_dd" type="Label" parent="main_game_szene/background_for_number_of_enemy_ships/GridContainer"]
-layout_mode = 2
-mouse_filter = 1
-text = "Zerstörer"
-
-[node name="number_dd" type="Label" parent="main_game_szene/background_for_number_of_enemy_ships/GridContainer"]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="label_k" type="Label" parent="main_game_szene/background_for_number_of_enemy_ships/GridContainer"]
-layout_mode = 2
-mouse_filter = 1
-text = "Korvette"
-
-[node name="number_k" type="Label" parent="main_game_szene/background_for_number_of_enemy_ships/GridContainer"]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="label_tbd" type="Label" parent="main_game_szene/background_for_number_of_enemy_ships/GridContainer"]
-layout_mode = 2
-mouse_filter = 1
-text = "Torpedoboot"
-
-[node name="number_tbd" type="Label" parent="main_game_szene/background_for_number_of_enemy_ships/GridContainer"]
-layout_mode = 2
-mouse_filter = 1
-
 [node name="SetingsSzene" parent="main_game_szene" instance=ExtResource("2_idisb")]
+visible = false
 layout_mode = 1
 
 [node name="CreditsSzene" parent="main_game_szene" instance=ExtResource("3_fsvcu")]
+visible = false
 layout_mode = 1
 offset_top = -3.0
 offset_bottom = -3.0
@@ -100,7 +29,9 @@ visible = false
 layout_mode = 1
 
 [node name="ChooseShipSzene" parent="main_game_szene" instance=ExtResource("3_10fpo")]
+visible = false
 layout_mode = 1
 
 [node name="StartMenu" parent="main_game_szene" instance=ExtResource("4_4svg5")]
+visible = false
 layout_mode = 1
