@@ -10,6 +10,16 @@ public partial class CreditsSzene : Control
 	private void OnBackToMainMenuButtonPressed()
 	{
 		// Szene wechseln
-		GetTree().ChangeSceneToFile("res://GameScenes/startSzene/start_menu.tscn");
+		this.Visible = false;
+		var Creditsscene = GetNode<Control>("../CreditsSzene");
+		var Settingscene = GetNode<Control>("../SetingsSzene");
+		var BrakeScene = GetNode<Control>("../BrakeMenuSzene");
+		var ChooseShipScene = GetNode<Control>("../ChooseShipSzene");
+		var StartMenuScene = GetNode<Control>("../StartMenu");
+		BrakeScene.Visible = false;
+		ChooseShipScene.Visible = false;
+		Creditsscene.Visible = false;
+		Settingscene.Visible = false;
+		StartMenuScene.Visible = true;
 	}
 }

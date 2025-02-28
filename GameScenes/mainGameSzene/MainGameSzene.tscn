@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://diqpx54flql5i"]
+[gd_scene load_steps=10 format=3 uid="uid://d1o6ry5y2l8j0"]
 
 [ext_resource type="Texture2D" uid="uid://n6otvbrpmayd" path="res://GameScenes/Texturen/background_break_menu.jpg" id="1_m76x5"]
 [ext_resource type="Texture2D" uid="uid://chmwtookfrfwa" path="res://GameScenes/Texturen/settings.jpg" id="2_d8dtn"]
@@ -64,6 +64,21 @@ text = "Own Ships
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
+
+[node name="GridContainer" type="GridContainer" parent="own_ships_display"]
+layout_mode = 2
+columns = 2
+
+[node name="Button2" type="Button" parent="own_ships_display/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="own_ships_display/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 8
 
 [node name="combine_field" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -221,6 +236,79 @@ offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="enemy_ship_display/ScrollContainer"]
 layout_mode = 2
+
+[node name="background_for_number_of_enemy_ships" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -148.0
+offset_bottom = 92.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="GridContainer" type="GridContainer" parent="background_for_number_of_enemy_ships"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -113.5
+offset_bottom = 113.5
+grow_horizontal = 0
+grow_vertical = 2
+columns = 2
+
+[node name="label_cv" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Flugzeugträger:"
+
+[node name="number_cv" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="label_ca" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Kreuzer"
+
+[node name="numer_ca" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="label_dd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Zerstörer"
+
+[node name="number_dd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="label_k" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Korvette"
+
+[node name="number_k" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="label_tbd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Torpedoboot"
+
+[node name="number_tbd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+layout_mode = 2
+mouse_filter = 1
 
 [connection signal="pressed" from="settings_button" to="." method="openBrakeMenuPressed"]
 [connection signal="pressed" from="interactions/Switch_board_button" to="." method="OnSwitchBoardButtonPressed"]

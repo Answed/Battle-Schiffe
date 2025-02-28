@@ -76,19 +76,13 @@ public partial class MainGameSzene : Control
 
 	private void openBrakeMenuPressed()
 	{
-		// Szene wechseln
-		//GD.Print("Settings-Button gedrückt! Wechsel zu den Einstellungen.");
-		//GetTree().ChangeSceneToFile("res://GameScenes/BrakeMenuSzene/brakeMenuSzene.tscn");
-		var scene = GD.Load<PackedScene>("res://GameScenes/BrakeMenuSzene/brakeMenuSzene.tscn");
-		var instance = scene.Instantiate();
-		AddChild(instance);
+		this.Visible = false;
+		var BrakeScene = GetNode<Control>("../BrakeMenuSzene");
+		BrakeScene.Visible = true;
 	}
 
 	private void OnSwitchBoardButtonPressed()
 	{
-		// Szene wechseln
-		//GD.Print("Switch-Board-Button gedrückt! Wechsel zur MainGameEnemySzene.");
-		//GetTree().ChangeSceneToFile("res://GameScenes/mainGameSzene/MainGameEnemySzene.tscn");
 		var scene = GD.Load<PackedScene>("res://GameScenes/mainGameSzene/MainGameEnemySzene.tscn");
 		var instance = scene.Instantiate();
 		AddChild(instance);

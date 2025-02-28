@@ -1,6 +1,6 @@
 using Godot;
 using System;
-/*
+
 public partial class ChooseShipSzene : Control
 {
 	// Nodes for the UI elements
@@ -37,15 +37,17 @@ public partial class ChooseShipSzene : Control
 	private void OnBackToMenuButtonPressed()
 	{
 		// Load the main menu scene
-		GD.Print("Back to Menu Button Pressed");
-		GetTree().ChangeSceneToFile("res://GameScenes/startSzene/StartMenu.tscn");
+		this.Visible = false;
+		var scene = GetNode<Control>("../StartMenu"); 
+		scene.Visible = true;
 	}
 
 	private void OnStartGameButtonPressed()
 	{
 		// Load the game scene
 		GD.Print("Start Game Button Pressed");
-		GetTree().ChangeSceneToFile("res://GameScenes/mainGameSzene/MainGameSzene.tscn");
+		this.Visible = false;
+		var mainGameScene = GetNode<Control>("../main_game_szene");
+		mainGameScene.Visible = false;
 	}
 }
-*/
