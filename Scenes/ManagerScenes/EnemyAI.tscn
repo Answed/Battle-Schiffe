@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dn3h7jgrfxmrb"]
 
-[ext_resource type="Script" path="res://Scripts/EnemyAI/EnemyAIManager.cs" id="1_qubg8"]
+[ext_resource type="Script" path="res://EnemyAI/EnemyAIManager.cs" id="1_qubg8"]
 [ext_resource type="PackedScene" uid="uid://duk3eaf1ivfm4" path="res://Scenes/Components/SaveLoadManager.tscn" id="2_nlxci"]
-[ext_resource type="Script" path="res://Scripts/EnemyAI/EnemyShipPlacement.cs" id="3_dhgoj"]
+[ext_resource type="Script" path="res://EnemyAI/EnemyShipPlacement.cs" id="3_dhgoj"]
 
 [node name="EnemyAi" type="Node"]
 script = ExtResource("1_qubg8")

@@ -10,6 +10,7 @@ public partial class GameManager : Node
 	[Signal] public delegate void ShipControllStageBeginEventHandler();
 	[Signal] public delegate void ShipControllStageEndEventHandler();
 	[Signal] public delegate void ShipControllBoardPlacementFinishedEventHandler();
+	[Signal] public delegate void CallGenerateMapEventHandler(int width, int height);
 	
 	private enum GameState
 	{
@@ -46,6 +47,7 @@ public partial class GameManager : Node
 		{
 			case GameState.RoundSetup:
 				EmitSignal(SignalName.ShipControllStageBegin);
+				EmitSignal(SignalName.CallGenerateMap,20,20);
 				gameState = GameState.RoundStart;
 				UpdateState();
 				break;

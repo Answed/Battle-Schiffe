@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class MapArray : Node
+public partial class MapGen : Node
 {
 	private static int mapWidth;
 	private static int mapHeight;
@@ -65,8 +65,9 @@ public partial class MapArray : Node
 		return mapGrid;
 	}
 
-	public static void GenerateMap(int width, int height)
+	private static void GenerateMap(int width, int height)
 	{
+		GD.PrintErr("Hallo");
 		mapWidth = width;
 		mapHeight = height;
 		mapGrid = new int[mapWidth, mapHeight];

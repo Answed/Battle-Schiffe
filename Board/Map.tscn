@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://jtf48u8gilbr"]
+
+[ext_resource type="Script" path="res://Board/BoardGeneration/MapGen.cs" id="1_8wxhl"]
+[ext_resource type="Script" path="res://Board/Map.cs" id="1_bpkr7"]
+
+[node name="Map" type="Node"]
+script = ExtResource("1_bpkr7")
+
+[node name="MapGen" type="Node" parent="."]
+script = ExtResource("1_8wxhl")
+
+[connection signal="GenerateMap" from="." to="MapGen" method="GenerateMap"]
