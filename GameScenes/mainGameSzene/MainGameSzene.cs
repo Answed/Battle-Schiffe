@@ -83,9 +83,9 @@ public partial class MainGameSzene : Control
 
 	private void OnSwitchBoardButtonPressed()
 	{
-		var scene = GD.Load<PackedScene>("res://GameScenes/mainGameSzene/MainGameEnemySzene.tscn");
-		var instance = scene.Instantiate();
-		AddChild(instance);
+		this.Visible = false;
+		var BrakeScene = GetNode<Control>("../MainGameEnemySzene.tscn");
+		BrakeScene.Visible = true;
 	}
 	
 }
