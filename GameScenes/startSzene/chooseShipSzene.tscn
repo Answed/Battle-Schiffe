@@ -100,7 +100,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_simpl")
 [node name="choose_mtb" type="Panel" parent="Panel/show_ships"]
 layout_mode = 2
 
-[node name="back_to_menu_buuton" type="Button" parent="."]
+[node name="back_to_menu_button" type="Button" parent="."]
 layout_mode = 0
 offset_right = 44.0
 offset_bottom = 38.0
@@ -183,5 +183,5 @@ offset_bottom = 8.0
 grow_horizontal = 2
 text = "Spiel starten"
 
-[connection signal="pressed" from="back_to_menu_buuton" to="." method="OnBackToMenuButtonPressed"]
+[connection signal="pressed" from="back_to_menu_button" to="." method="OnBackToMenuButtonPressed"]
 [connection signal="pressed" from="Panel3/start_game_button" to="." method="OnStartGameButtonPressed"]

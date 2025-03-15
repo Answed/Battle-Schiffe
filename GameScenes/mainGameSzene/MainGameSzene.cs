@@ -9,10 +9,11 @@ public partial class MainGameSzene : Control
 
 	public override void _Ready()
 	{
-		GD.Print($"Aktueller Node: {GetPath()}");
-		GD.Print($"Parent: {GetParent().Name}");
-
-		// Prüfe Kinder des aktuellen Nodes
+		var BrakeScene = GetNode<Control>("BrakeMenu");
+		var SettingsScene = GetNode<Control>("Settings");
+		BrakeScene.Visible = false;
+		SettingsScene.Visible = false;
+		
 		foreach (Node child in GetChildren())
 		{
 			GD.Print($"Child Node: {child.Name}");
@@ -76,16 +77,13 @@ public partial class MainGameSzene : Control
 
 	private void openBrakeMenuPressed()
 	{
-		this.Visible = false;
-		var BrakeScene = GetNode<Control>("../BrakeMenuSzene");
+		var BrakeScene = GetNode<Control>("BrakeMenu");
 		BrakeScene.Visible = true;
 	}
 
 	private void OnSwitchBoardButtonPressed()
 	{
-		this.Visible = false;
-		var BrakeScene = GetNode<Control>("../MainGameEnemySzene.tscn");
-		BrakeScene.Visible = true;
+		GD.Print("Nichts passiert");
 	}
 	
 }

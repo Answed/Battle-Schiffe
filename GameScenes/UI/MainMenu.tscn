@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://np3unk580sw0"]
+
+[ext_resource type="PackedScene" uid="uid://djxnnor5gsmk6" path="res://GameScenes/SettingsSzene/setingsSzene.tscn" id="2_x0k24"]
+[ext_resource type="PackedScene" uid="uid://c0g1eqwvbhja3" path="res://GameScenes/startSzene/chooseShipSzene.tscn" id="3_tcymg"]
+[ext_resource type="PackedScene" uid="uid://5qqhghcfba01" path="res://GameScenes/startSzene/CreditsSzene.tscn" id="4_xkvgw"]
+[ext_resource type="PackedScene" uid="uid://6l1wk6uwk7jn" path="res://GameScenes/startSzene/start_menu.tscn" id="5_7l76k"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_ltelk"]
+script/source = "using Godot;
+using System;
+
+public partial class MainMenuController : Control
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+{
+	var startMenu = GetNodeOrNull<Control>(\"StartMenu\");
+	var startGameButton = startMenu.GetNodeOrNull<Button>(\"MarginContainer/Panel/VBoxContainer/open_start_new_game_button\");
+}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+
+	
+	private void OpenCreditsButtonPressed()
+	{
+		var Credits = GetNode<Control>(\"../CreditsSzene\");
+		var Settings = GetNode<Control>(\"../SetingsSzene\");
+		var ShipSelector = GetNode<Control>(\"../ChooseShipSzene\");
+		var StartMenu = GetNode<Control>(\"../StartMenu\");
+		StartMenu.Visible = false;
+		ShipSelector.Visible = false;
+		Credits.Visible = true;
+		Settings.Visible = false;
+	}
+	
+	private void LoadGameEnvironmentButtonPressed(){
+		GD.Print(\"Test\");
+		GetTree().ChangeSceneToFile(\"res://GameScenes/UI/MainMenu.tscn\");
+	}
+	
+	private void OpenSettingsButtonPressed()
+	{
+		var Credits = GetNode<Control>(\"../CreditsSzene\");
+		var Settings = GetNode<Control>(\"../SetingsSzene\");
+		var ShipSelector = GetNode<Control>(\"../ChooseShipSzene\");
+		var StartMenu = GetNode<Control>(\"../StartMenu\");
+		StartMenu.Visible = false;
+		ShipSelector.Visible = false;
+		Credits.Visible = false;
+		Settings.Visible = true;
+	}
+	
+	private void OpenShipSelectorButtonPressed()
+	{
+		var Credits = GetNode<Control>(\"../CreditsSzene\");
+		var Settings = GetNode<Control>(\"../SetingsSzene\");
+		var ShipSelector = GetNode<Control>(\"../ChooseShipSzene\");
+		var StartMenu = GetNode<Control>(\"../StartMenu\");
+		StartMenu.Visible = false;
+		ShipSelector.Visible = true;
+		Credits.Visible = false;
+		Settings.Visible = false;
+	}
+	
+	private void OpenStartMenu()
+	{
+		var Credits = GetNode<Control>(\"../CreditsSzene\");
+		var Settings = GetNode<Control>(\"../SetingsSzene\");
+		var ShipSelector = GetNode<Control>(\"../ChooseShipSzene\");
+		var StartMenu = GetNode<Control>(\"../StartMenu\");
+		StartMenu.Visible = true;
+		ShipSelector.Visible = false;
+		Credits.Visible = false;
+		Settings.Visible = false;
+	}
+	
+	private void CloseGameButtonPressed()
+	{
+		GetTree().Quit();
+	}
+}
+"
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("CSharpScript_ltelk")
+
+[node name="Settings" parent="." instance=ExtResource("2_x0k24")]
+visible = false
+layout_mode = 1
+
+[node name="ShipSelector" parent="." instance=ExtResource("3_tcymg")]
+visible = false
+layout_mode = 1
+
+[node name="Credits" parent="." instance=ExtResource("4_xkvgw")]
+visible = false
+layout_mode = 1
+offset_top = -3.0
+offset_bottom = -3.0
+
+[node name="StartMenu" parent="." instance=ExtResource("5_7l76k")]
+layout_mode = 1
