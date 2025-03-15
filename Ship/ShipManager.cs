@@ -1,13 +1,12 @@
 using Godot;
 using static Godot.GD;
 public partial class ShipManager : Node2D{
-
+	
+	private int HoverCorrection = 0; //before 32 std: 100
 	private int SpriteRotation = 0; // 0-3 top->clockwise
 	private bool Selected  = false;
 	private bool Hovered = false;
 	private Vector2 PlacePosition;
-	private Vector2 HoverSpritePosition;
-
 	private ShipControll.ShipType ShipType;
 
 	public override void _Ready(){}
@@ -24,10 +23,9 @@ public partial class ShipManager : Node2D{
 				RotationDegrees += 90;
 				if(SpriteRotation == 3){ SpriteRotation = 0;}
 				else{SpriteRotation++;}
-				HoverSpriteCorection();
 			}
 			//Hover Sprite
-			GetNode<AnimatedSprite2D>("AnimatedSprite2D-Hover").GlobalPosition = HoverSpritePosition;
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D-Hover").GlobalPosition = PlacePosition;
 		}
 		//selects current ship
 		if(Hovered && Input.IsActionJustPressed("select"))
@@ -59,7 +57,6 @@ public partial class ShipManager : Node2D{
 	public void BodyEnter(TileMapLayer nod)
 	{
 		PlacePosition = nod.MapToLocal(nod.LocalToMap(Position));
-		HoverSpriteCorection();
 
 		Print(PlacePosition); //for testing
 	}
@@ -73,24 +70,5 @@ public partial class ShipManager : Node2D{
 	public void HideShip(){Visible = false;}
 	public void UnhideShip(){Visible = true;}
 	public void DestroyShip(){QueueFree();}
-	//extra functions
-	private void HoverSpriteCorection() // Hardcoded Position based on sprite
-	{
-		HoverSpritePosition = PlacePosition;
-		switch (SpriteRotation)
-		{
-			case 1:
-				HoverSpritePosition.X += 32;//number based on sprite size
-				break;
-			case 2:
-				HoverSpritePosition.Y += 32;
-				break;
-			case 3:
-				HoverSpritePosition.X -= 32;
-				break;
-			default:
-				HoverSpritePosition.Y -= 32;
-				break;
-		}
-	}
+	public void ScaleShip(float Scale){this.Scale = new Vector2(Scale,Scale);}
 }

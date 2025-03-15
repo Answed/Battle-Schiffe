@@ -15,7 +15,3 @@
 [node name="EnemyAi" parent="." instance=ExtResource("3_ogej7")]
 
 [node name="GameManager" parent="." instance=ExtResource("4_oqoxq")]
-
-[node name="Ui" parent="." instance=ExtResource("5_afl3x")]
-
-[connection signal="CallGenerateMap" from="GameManager" to="Map" method="CallGenerateMap"]

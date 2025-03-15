@@ -1,22 +1,22 @@
 [gd_scene load_steps=6 format=3 uid="uid://d0qrcpkju7a0q"]
 
 [ext_resource type="Script" path="res://Ship/ShipManager.cs" id="1_yx5gd"]
-[ext_resource type="Texture2D" uid="uid://dssmjl4ub56xe" path="res://Ship/Textures/pixil-frame-0 (1).png" id="2_eiwqo"]
+[ext_resource type="Texture2D" uid="uid://lq2glv1dxcon" path="res://Ship/Destroyer/Destroyer.png" id="2_c46fk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nx700"]
-size = Vector2(16, 16)
+size = Vector2(50, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnb01"]
-size = Vector2(48, 112)
+size = Vector2(200, 600)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_yimdo"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3m5jm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_eiwqo")
+"texture": ExtResource("2_c46fk")
 }],
 "loop": true,
-"name": &"default",
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -34,18 +34,17 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D-Collision"]
-position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_bnb01")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -32)
-sprite_frames = SubResource("SpriteFrames_yimdo")
+sprite_frames = SubResource("SpriteFrames_3m5jm")
+animation = &"new_animation"
 
 [node name="AnimatedSprite2D-Hover" type="AnimatedSprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.392157)
-position = Vector2(0, -32)
-sprite_frames = SubResource("SpriteFrames_yimdo")
+sprite_frames = SubResource("SpriteFrames_3m5jm")
+animation = &"new_animation"
 
 [connection signal="body_entered" from="Area2D-Snap" to="." method="BodyEnter"]
 [connection signal="mouse_entered" from="Area2D-Collision" to="." method="MouseEnter"]

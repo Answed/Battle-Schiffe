@@ -19,7 +19,3 @@ shipBlueprints = Array[Object]([ExtResource("3_0h8or"), ExtResource("4_w6bds"), 
 
 [node name="Attack" type="Node" parent="."]
 script = ExtResource("9_psukt")
-
-[connection signal="Attack" from="." to="Attack" method="Attack"]
-[connection signal="SetAttackParameters" from="." to="Attack" method="SetAttackParameters"]
-[connection signal="TestString" from="." to="Attack" method="TestString"]

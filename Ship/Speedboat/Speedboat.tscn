@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://clb3mgrxfft6g"]
+[gd_scene load_steps=6 format=3 uid="uid://clb3mgrxfft6g"]
 
 [ext_resource type="Script" path="res://Ship/ShipManager.cs" id="1_aeh12"]
-[ext_resource type="Texture2D" uid="uid://cdgrfuh3g2n86" path="res://Ship/Speedboat/Sprite.png" id="2_wpxni"]
+[ext_resource type="Texture2D" uid="uid://dmu5by6ur823h" path="res://Ship/Speedboat/Speedboat.png" id="2_anqs8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nx700"]
 size = Vector2(16, 16)
@@ -13,18 +13,7 @@ size = Vector2(48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_wpxni")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_yimdo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_wpxni")
+"texture": ExtResource("2_anqs8")
 }],
 "loop": true,
 "name": &"default",
@@ -51,9 +40,8 @@ shape = SubResource("RectangleShape2D_bnb01")
 sprite_frames = SubResource("SpriteFrames_bgxgu")
 
 [node name="AnimatedSprite2D-Hover" type="AnimatedSprite2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.392157)
-sprite_frames = SubResource("SpriteFrames_yimdo")
+sprite_frames = SubResource("SpriteFrames_bgxgu")
 
 [connection signal="body_entered" from="Area2D-Snap" to="." method="BodyEnter"]
 [connection signal="mouse_entered" from="Area2D-Collision" to="." method="MouseEnter"]
