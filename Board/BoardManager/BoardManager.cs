@@ -22,7 +22,7 @@ public partial class BoardManager : Node
 
 	public override void _Ready()
 	{
-		gameManager = GetNode<GameManager>("../GameManager");
+		//gameManager = GetNode<GameManager>("../GameManager");
 	}
 	
 	public void InitBoard(int[,] board, bool isPlayerBoard, Node boardNode) 
@@ -37,12 +37,13 @@ public partial class BoardManager : Node
 		int[,] position = {{x},{y}};
 		if (shipsPositions[position[0, 0], position[0,1]] >= 2)
 		{
+			//Gets the ShipValue from the Bord and substracts -2 to get the fitting index from ships
 			ships[shipsPositions[position[0, 0], position[0,1]] - 2].shipPosition.Remove(position);
 			if (ships[shipsPositions[position[0, 0], position[0, 1]] - 2].shipPosition.Count == 0)
 			{
 				//ships[shipsPositions[position[0, 0], position[0, 1]] - 2].shipManager.DestroyShip();
-				ships.RemoveAt(shipsPositions[position[0, 0], position[0,1]] - 2); // -2 because or ship index on the map starts with 2 and the list with 0. So the first ship in the list is the ship 2 on the maps
-				CheckIfAllShipsAreDead();
+				ships.RemoveAt(shipsPositions[position[0, 0], position[0,1]] - 2); 
+				//CheckIfAllShipsAreDead();
 			}
 			//Set X on position
 		}
@@ -74,6 +75,7 @@ public partial class BoardManager : Node
 			}
 			currentShipIndex++;
 		}
+		PrintBoard();
 	}
 
 	public List<Ship> GetShips()
@@ -84,5 +86,18 @@ public partial class BoardManager : Node
 	public int[,] GetBoard()
 	{
 		return shipsPositions;
+	}
+
+	public void PrintBoard()
+	{
+		for (int i = 0; i < shipsPositions.GetLength(0); i++)
+		{
+			string line = "";
+			for (int j = 0; j < shipsPositions.GetLength(1); j++)
+			{
+				line += shipsPositions[i, j] + " ";
+			}
+			GD.Print(line);
+		}
 	}
 }

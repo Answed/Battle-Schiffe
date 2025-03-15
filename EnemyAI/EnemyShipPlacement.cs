@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using BattleSchiffe.Scripts.BoardManager;
 
 public partial class EnemyShipPlacement : Node
@@ -9,7 +10,12 @@ public partial class EnemyShipPlacement : Node
 	private Godot.Collections.Array<ShipBlueprint> shipBlueprints;
 	private List<Ship> currentShips;
 	private int[,] board;
-	
+
+	public override void _Ready()
+	{
+		currentShips = new List<Ship>();
+	}
+
 	public List<Ship> PlaceShips(int fightForce, int[,] board )
 	{
 		this.board = board;
@@ -36,8 +42,13 @@ public partial class EnemyShipPlacement : Node
 				ship.shipPosition = PlaceSelectedShip(shipBlueprint);
 				if (ship.shipPosition.Count != 0)
 				{
+					foreach (var VARIABLE in ship.shipPosition)
+					{
+						GD.Print(VARIABLE[0, 0] + " " + VARIABLE[0, 1]);
+					}
 					currentShips.Add(ship);
 					fightForce -= shipLevel;
+					GD.Print(fightForce);
 				}
 			}
 		}
@@ -51,38 +62,44 @@ public partial class EnemyShipPlacement : Node
 		int breakCount = 0;
 		while (success != true)
 		{
-			int[] startPosition = {rand.Next(0, board.GetLength(0)), rand.Next(0, board.GetLength(1))};
-			int[] positionCounter = { 0, 0 }; 
 			int selectedShipRotation = rand.Next(0, ship.position.Count);
+			int maxXValue = ship.position[selectedShipRotation].positions.Count;
+			int maxYValue = ship.position[selectedShipRotation].positions[0].GetLength(0);
+			int[] startPosition = {rand.Next(0, board.GetLength(0)- maxXValue - 1), rand.Next(0, board.GetLength(1) - maxYValue - 1)};
+			int[] currentPosition = new int[2] { startPosition[0], startPosition[1] };
+
+			bool shipFits = true;
 			
-			for (int ix = startPosition[0]; ix < board.GetLength(0) + startPosition[0]; ix++)
+			for (int ix = 0; ix < maxXValue; ix++)
 			{
-				for (int iy = startPosition[1]; iy < board.GetLength(1) + startPosition[1]; iy++)
+				for (int iy = 0; iy < maxYValue; iy++)
 				{
-					if (board[ix, iy] == 1)
-						goto END; // I hate it too but it is the best way to break out of both loops without needing to call another function or using two if statements and an extra bool
+					if (board[currentPosition[0], currentPosition[1]] != 0)
+					{
+						shipFits = false;
+						positions.Clear();
+						break;
+					}
 					
-					if (ship.position[selectedShipRotation].poitions[positionCounter[0]][positionCounter[1]]== 1)
+					if (ship.position[selectedShipRotation].positions[ix][iy] == 1)
 					{
-						int[,] shipPosition = new int[,] { { ix, iy } };
+						int[,] shipPosition = { { currentPosition[0], currentPosition[1] } };
 						positions.Add(shipPosition);
-						positionCounter[0]++;
-						positionCounter[1]++;
 					}
-					else if (ship.position[selectedShipRotation].poitions[positionCounter[0]][positionCounter[1]]== 1)
-					{
-						positionCounter[0]++;
-						positionCounter[1]++;
-					}
+					currentPosition[1]++;
 				}
-				success = true;
+				if (shipFits == false)
+					break;
+				currentPosition[1] = startPosition[1];
+				currentPosition[0]++;
 			}
-			END: ;
 			breakCount++;
 			
 			if(breakCount == 100) // 100 Example Number to prevent infinite loop.
 				break;
+			if(shipFits)
+				return positions;
 		}
-		return positions;
+		return null;
 	}
 }
