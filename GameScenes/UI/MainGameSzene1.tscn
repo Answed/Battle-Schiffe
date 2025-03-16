@@ -1,13 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1o6ry5y2l8j0"]
+[gd_scene load_steps=10 format=3 uid="uid://dusu35jmyfh68"]
 
-[ext_resource type="Texture2D" uid="uid://n6otvbrpmayd" path="res://GameScenes/Texturen/background_break_menu.jpg" id="1_m76x5"]
-[ext_resource type="Texture2D" uid="uid://chmwtookfrfwa" path="res://GameScenes/Texturen/settings.jpg" id="2_d8dtn"]
-[ext_resource type="Script" path="res://GameScenes/mainGameSzene/MainGameSzene.cs" id="3_kwg5y"]
-[ext_resource type="PackedScene" uid="uid://2wjgpkal8a73" path="res://GameScenes/BrakeMenuSzene/brakeMenuSzene.tscn" id="4_pd0ue"]
-[ext_resource type="PackedScene" uid="uid://djxnnor5gsmk6" path="res://GameScenes/SettingsSzene/setingsSzene.tscn" id="5_hnfqt"]
+[ext_resource type="Script" path="res://GameScenes/mainGameSzene/MainGameSzene.cs" id="1_mowcw"]
+[ext_resource type="Texture2D" uid="uid://n6otvbrpmayd" path="res://GameScenes/Texturen/background_break_menu.jpg" id="2_fbov2"]
+[ext_resource type="Texture2D" uid="uid://chmwtookfrfwa" path="res://GameScenes/Texturen/settings.jpg" id="3_notue"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8bfbu"]
-texture = ExtResource("1_m76x5")
+texture = ExtResource("2_fbov2")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v76k3"]
 bg_color = Color(0, 0, 0, 1)
@@ -16,7 +14,7 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b54en"]
-texture = ExtResource("2_d8dtn")
+texture = ExtResource("3_notue")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyf6p"]
 bg_color = Color(0, 0, 0, 1)
@@ -32,7 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("3_kwg5y")
+script = ExtResource("1_mowcw")
 
 [node name="background" type="Panel" parent="."]
 layout_mode = 1
@@ -311,12 +309,6 @@ text = "Torpedoboot"
 [node name="number_tbd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
-
-[node name="BrakeMenu" parent="." instance=ExtResource("4_pd0ue")]
-layout_mode = 1
-
-[node name="Settings" parent="." instance=ExtResource("5_hnfqt")]
-layout_mode = 1
 
 [connection signal="pressed" from="settings_button" to="." method="openBrakeMenuPressed"]
 [connection signal="pressed" from="interactions/Switch_board_button" to="." method="OnSwitchBoardButtonPressed"]
