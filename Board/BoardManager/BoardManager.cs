@@ -14,6 +14,7 @@ public struct Ship
 public partial class BoardManager : Node
 {
 	private int[,] shipsPositions;
+	private int [,] oldBoardPositions;
 	protected List<Ship> ships = new List<Ship>();
 	private Node boardNode;
 	private bool isPlayerBoard;
@@ -75,7 +76,6 @@ public partial class BoardManager : Node
 			}
 			currentShipIndex++;
 		}
-		PrintBoard();
 	}
 
 	public List<Ship> GetShips()
@@ -86,18 +86,5 @@ public partial class BoardManager : Node
 	public int[,] GetBoard()
 	{
 		return shipsPositions;
-	}
-
-	public void PrintBoard()
-	{
-		for (int i = 0; i < shipsPositions.GetLength(0); i++)
-		{
-			string line = "";
-			for (int j = 0; j < shipsPositions.GetLength(1); j++)
-			{
-				line += shipsPositions[i, j] + " ";
-			}
-			GD.Print(line);
-		}
 	}
 }

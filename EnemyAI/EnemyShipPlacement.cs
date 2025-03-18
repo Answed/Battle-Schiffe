@@ -42,10 +42,7 @@ public partial class EnemyShipPlacement : Node
 				ship.shipPosition = PlaceSelectedShip(shipBlueprint);
 				if (ship.shipPosition.Count != 0)
 				{
-					foreach (var VARIABLE in ship.shipPosition)
-					{
-						GD.Print(VARIABLE[0, 0] + " " + VARIABLE[0, 1]);
-					}
+					GD.Print(shipBlueprint.shipType);
 					currentShips.Add(ship);
 					fightForce -= shipLevel;
 					GD.Print(fightForce);
@@ -77,6 +74,7 @@ public partial class EnemyShipPlacement : Node
 					if (board[currentPosition[0], currentPosition[1]] != 0)
 					{
 						shipFits = false;
+						ResetBoard(positions);
 						positions.Clear();
 						break;
 					}
@@ -85,6 +83,7 @@ public partial class EnemyShipPlacement : Node
 					{
 						int[,] shipPosition = { { currentPosition[0], currentPosition[1] } };
 						positions.Add(shipPosition);
+						board[currentPosition[0], currentPosition[1]] = 2;
 					}
 					currentPosition[1]++;
 				}
@@ -101,5 +100,15 @@ public partial class EnemyShipPlacement : Node
 				return positions;
 		}
 		return null;
+	}
+	
+	// Board sets position where a ship is to 2 but the change gets applied after all ships have been placed
+	// To prevent this the positions gets temporaly set and resettet when a ship does not fit.
+	private void ResetBoard(List<int[,]> shipPositions)
+	{
+		foreach (var position in shipPositions)
+		{
+			board[position[0, 0], position[0, 1]] = 0;
+		}
 	}
 }
