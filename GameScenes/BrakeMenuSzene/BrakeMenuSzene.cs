@@ -9,23 +9,27 @@ public partial class BrakeMenuSzene : Control
 
 	private void OnContinueButtonPressed()
 	{
-		// Szene wechseln
-		var BrakeScene = GetNode<Control>("../BrakeMenuSzene");
-		BrakeScene.Visible = false;
+		this.Visible = false;
+	}
+	
+	private void OnRestartButtonPressed(){
+		GetTree().ChangeSceneToFile("res://GameScenes/UI/start_menu_1.tscn");
 	}
 	
 	private void OnReturnToMainMenuButtonPressed()
 	{
-		//Szene wechseln
-		this.Visible = false;
-		var StartMenuScene = GetNode<Control>("../StartMenu");
-		StartMenuScene.Visible = true;
+		GetTree().ChangeSceneToFile("res://GameScenes/UI/start_menu_1.tscn");
+	}
+	
+	private void OnSettingsButtonPressed()
+	{
+		var SettingsScene = GetNode<Control>("../Settings");
+		SettingsScene.Visible = true;
 	}
 	
 
 	private void OnCloseGameButtonPressed()
 	{
-		// Spiel beenden
 		GetTree().Quit();
 	}
 }

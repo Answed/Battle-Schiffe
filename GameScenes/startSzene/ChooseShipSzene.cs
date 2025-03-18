@@ -22,15 +22,15 @@ public partial class ChooseShipSzene : Control
 		// Get references to the nodes
 		_classOfShip = GetNode<Label>("stats/stats_GridContainer/class_of_ship");
 		_lifeOfShip = GetNode<Label>("stats/stats_GridContainer/life_of_ship");
-		_specialAttackShip = GetNode<Label>("stats/stats_GridContainer/special_attack_ship");
+		//_specialAttackShip = GetNode<Label>("stats/stats_GridContainer/special_attack_ship");
 		_notesShip = GetNode<Label>("stats/stats_GridContainer/notes_ship");
 		_backToMenuButton = GetNode<Button>("back_to_menu_button");
-		_startGameButton = GetNode<Button>("start_game_button");
+		_startGameButton = GetNode<Button>("Panel3/start_game_button");
 
 		// Set default values
 		_classOfShip.Text = _defaultClassOfShip;
 		_lifeOfShip.Text = $"Life: {_defaultLifeOfShip}";
-		_specialAttackShip.Text = $"Special Attack: {_defaultSpecialAttackShip}";
+		//_specialAttackShip.Text = $"Special Attack: {_defaultSpecialAttackShip}";
 		_notesShip.Text = $"Notes: {_defaultNotesShip}";
 	}
 
@@ -38,16 +38,12 @@ public partial class ChooseShipSzene : Control
 	{
 		// Load the main menu scene
 		this.Visible = false;
-		var scene = GetNode<Control>("../StartMenu"); 
-		scene.Visible = true;
+		//var scene = GetNode<Control>("../StartMenu"); 
+		//scene.Visible = true;
 	}
 
 	private void OnStartGameButtonPressed()
 	{
-		// Load the game scene
-		GD.Print("Start Game Button Pressed");
-		this.Visible = false;
-		var mainGameScene = GetNode<Control>("../main_game_szene");
-		mainGameScene.Visible = false;
+		GetTree().ChangeSceneToFile("res://GameScenes/UI/GameUI.tscn");
 	}
 }
