@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_jjve3")
-poitions = Array[PackedInt64Array]([PackedInt64Array(1, 1, 1)])
+positions = Array[PackedInt64Array]([PackedInt64Array(1, 1, 1)])

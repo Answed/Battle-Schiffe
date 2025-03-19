@@ -15,7 +15,7 @@ public partial class EnemyAIManager : Node
 	private EnemyBoardManager enemyBoard;
 	private PlayerBoardManager playerBoard;
 
-	private int currentFightingForce = 0;
+	private int currentFightingForce = 10;
 	private int currentBonus = 0;
 
 	private EnemyShipPlacement shipPlacement;
@@ -29,9 +29,10 @@ public partial class EnemyAIManager : Node
 	//Calls all Function needed too generate all the Data the enemy needs for the next match
 	private void SetNewMatch()
 	{
-		UpdateFighhtingForce();
+		//UpdateFighhtingForce();
 		currentShips = shipPlacement.PlaceShips(currentFightingForce, playerBoard.GetBoard());
 		EmitSignal(SignalName.SetAttackParameters, playerBoard);
+		enemyBoard.SetShips(currentShips);
 	}
 	
 	// Attacks the enemy and switches back to player after the attack is completed

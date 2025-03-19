@@ -1,20 +1,21 @@
+namespace BattleSchiffe.Scripts.MapGen;
 using Godot;
 using System;
 using System.Collections.Generic;
 
 public partial class MapGen : Node
 {
-	private static int mapWidth;
-	private static int mapHeight;
-	private static int[,] mapGrid;
+	private int mapWidth;
+	private int mapHeight;
+	private int[,] mapGrid;
 
-	private static List<int[,]> presets = new List<int[,]>
+	private List<int[,]> presets = new List<int[,]>
 	{
 		new int[,] {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}},
 		new int[,] {{1, 1}, {1, 1}}
 	};
 
-	private static bool CanPlacePreset(int[,] preset, int x, int y)
+	private bool CanPlacePreset(int[,] preset, int x, int y)
 	{
 		int presetHeight = preset.GetLength(0);
 		int presetWidth = preset.GetLength(1);
@@ -33,7 +34,7 @@ public partial class MapGen : Node
 		return true;
 	}
 
-	private static void PlacePreset(int[,] preset, int x, int y)
+	private void PlacePreset(int[,] preset, int x, int y)
 	{
 		int presetHeight = preset.GetLength(0);
 		int presetWidth = preset.GetLength(1);
@@ -48,7 +49,7 @@ public partial class MapGen : Node
 		}
 	}
 
-	private static double CalculateCoverage()
+	private double CalculateCoverage()
 	{
 		int filledCells = 0;
 		foreach (int cell in mapGrid)
@@ -60,12 +61,12 @@ public partial class MapGen : Node
 		return (filledCells / (double)totalCells) * 100;
 	}
 
-	public static int[,] GetMapGrid()
+	public int[,] GetMapGrid()
 	{
 		return mapGrid;
 	}
 
-	private static void GenerateMap(int width, int height)
+	public void GenerateMap(int width, int height)
 	{
 		GD.PrintErr("Hallo");
 		mapWidth = width;
