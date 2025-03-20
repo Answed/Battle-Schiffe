@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://fnfspt0tixv6"]
+
+[ext_resource type="PackedScene" uid="uid://2wjgpkal8a73" path="res://GameScenes/BrakeMenuSzene/brakeMenuSzene.tscn" id="2_myk8w"]
+[ext_resource type="PackedScene" uid="uid://djxnnor5gsmk6" path="res://GameScenes/SettingsSzene/setingsSzene.tscn" id="3_cd8ly"]
+[ext_resource type="PackedScene" uid="uid://d1o6ry5y2l8j0" path="res://GameScenes/mainGameSzene/MainGameSzene.tscn" id="4_48dhm"]
+
+[node name="GameUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameEnvironment" parent="." instance=ExtResource("4_48dhm")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+
+[node name="BrakeMenu" parent="GameEnvironment" instance=ExtResource("2_myk8w")]
+layout_mode = 1
+
+[node name="Settings" parent="GameEnvironment" instance=ExtResource("3_cd8ly")]
+layout_mode = 1

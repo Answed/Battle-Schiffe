@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd81vxv8xn8y6"]
+[gd_scene load_steps=7 format=3 uid="uid://dxxdg3xicym5i"]
 
 [ext_resource type="PackedScene" uid="uid://d1o6ry5y2l8j0" path="res://GameScenes/mainGameSzene/MainGameSzene.tscn" id="1_najc8"]
 [ext_resource type="PackedScene" uid="uid://2wjgpkal8a73" path="res://GameScenes/BrakeMenuSzene/brakeMenuSzene.tscn" id="2_i1nvj"]

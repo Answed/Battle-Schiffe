@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://jtf48u8gilbr" path="res://Board/Map.tscn" id="1_8d6tv"]
 [ext_resource type="PackedScene" uid="uid://cc3h7p1c33lcf" path="res://Ship/ShipControll.tscn" id="1_yj4qq"]
 [ext_resource type="PackedScene" uid="uid://dn3h7jgrfxmrb" path="res://Scenes/ManagerScenes/EnemyAI.tscn" id="3_ogej7"]
-[ext_resource type="PackedScene" uid="uid://bo6mdfrldhrxq" path="res://GameManager/GameManager.tscn" id="4_oqoxq"]
-[ext_resource type="PackedScene" uid="uid://bd81vxv8xn8y6" path="res://GameScenes/UI/UI.tscn" id="5_afl3x"]
+[ext_resource type="PackedScene" path="res://GameManager/GameManager.tscn" id="4_oqoxq"]
+[ext_resource type="PackedScene" uid="uid://dxxdg3xicym5i" path="res://GameScenes/Texturen/UI.tscn" id="5_afl3x"]
 
 [node name="MasterSzene" type="Node2D"]
 
@@ -15,3 +15,5 @@
 [node name="EnemyAi" parent="." instance=ExtResource("3_ogej7")]
 
 [node name="GameManager" parent="." instance=ExtResource("4_oqoxq")]
+
+[node name="Ui" parent="." instance=ExtResource("5_afl3x")]

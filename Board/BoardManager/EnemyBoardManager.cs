@@ -9,5 +9,14 @@ public partial class EnemyBoardManager : BoardManager
 		public void SetShips(List<Ship> ships)
 		{
 				this.ships = ships;
+				SetShipArray();
+		}
+
+		private void PrintAllShips()
+		{
+			foreach (var ship in ships)
+			{
+				GD.Print(ship);
+			}
 		}
 }

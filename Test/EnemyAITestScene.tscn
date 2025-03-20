@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkj4p1tt1lcfe"]
+
+[ext_resource type="PackedScene" uid="uid://dn3h7jgrfxmrb" path="res://Scenes/ManagerScenes/EnemyAI.tscn" id="1_1th78"]
+[ext_resource type="Script" path="res://Test/EnemyAiTest.cs" id="1_6ogmp"]
+[ext_resource type="PackedScene" uid="uid://jtf48u8gilbr" path="res://Board/Map.tscn" id="3_4d10h"]
+[ext_resource type="Script" path="res://Board/BoardGeneration/MapGen.cs" id="4_pccxx"]
+[ext_resource type="Script" path="res://Board/BoardManager/EnemyBoardManager.cs" id="5_3iqc2"]
+[ext_resource type="Script" path="res://Board/BoardManager/PlayerBoardManager.cs" id="6_ovqxc"]
+
+[node name="EnemyAiTestScene" type="Node2D"]
+script = ExtResource("1_6ogmp")
+
+[node name="EnemyAi" parent="." instance=ExtResource("1_1th78")]
+
+[node name="MapGen" parent="." instance=ExtResource("3_4d10h")]
+script = ExtResource("4_pccxx")
+
+[node name="EnemyBoardManager" type="Node" parent="."]
+script = ExtResource("5_3iqc2")
+
+[node name="PlayerBoardManager" type="Node" parent="."]
+script = ExtResource("6_ovqxc")
+
+[connection signal="TestShipPlacemenr" from="." to="EnemyAi" method="SetNewMatch"]
