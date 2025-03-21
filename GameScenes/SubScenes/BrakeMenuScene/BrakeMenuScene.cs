@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class BrakeMenuSzene : Control
+public partial class BrakeMenuScene : Control
 {
 	public override void _Ready()
 	{
@@ -19,7 +19,7 @@ public partial class BrakeMenuSzene : Control
 	
 	private void OnReturnToMainMenuButtonPressed()
 	{
-		GetTree().ChangeSceneToFile("res://GameScenes/startSzene/start_menu.tscn");
+		GetTree().ChangeSceneToFile("res://GameScenes/StartMenu/StarMenu.tscn");
 	}
 	
 	private void OnSettingsButtonPressed()

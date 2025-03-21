@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://5qqhghcfba01"]
 
-[ext_resource type="Script" path="res://GameScenes/SubScenes/CreditsSzene/CreditsSzene.cs" id="1_n2cji"]
+[ext_resource type="Script" path="res://GameScenes/SubScenes/CreditsScene/CreditsScene.cs" id="1_n2cji"]
 [ext_resource type="Texture2D" uid="uid://6qq457r73asn" path="res://GameScenes/Texturen/Arrow_back.png" id="2_0xwbw"]
 [ext_resource type="Texture2D" uid="uid://n6otvbrpmayd" path="res://GameScenes/Texturen/background_break_menu.jpg" id="2_tokar"]
 
@@ -87,10 +87,10 @@ text = "Elias"
 label_settings = SubResource("LabelSettings_3fyp2")
 horizontal_alignment = 1
 
-[node name="back_to_main_menu_button" type="Button" parent="."]
+[node name="ReturnButton" type="Button" parent="."]
 layout_mode = 0
 offset_right = 46.0
 offset_bottom = 41.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_3c2qa")
 
-[connection signal="pressed" from="back_to_main_menu_button" to="." method="OnBackToMainMenuButtonPressed"]
+[connection signal="pressed" from="ReturnButton" to="." method="OnBackToMainMenuButtonPressed"]

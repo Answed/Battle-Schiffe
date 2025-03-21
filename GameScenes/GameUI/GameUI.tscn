@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://n6otvbrpmayd" path="res://GameScenes/Texturen/background_break_menu.jpg" id="1_m76x5"]
 [ext_resource type="Texture2D" uid="uid://chmwtookfrfwa" path="res://GameScenes/Texturen/settings.jpg" id="2_d8dtn"]
-[ext_resource type="Script" path="res://GameScenes/mainGameSzene/MainGameSzene.cs" id="3_kwg5y"]
-[ext_resource type="PackedScene" uid="uid://2wjgpkal8a73" path="res://GameScenes/SubScenes/BrakeMenuSzene/brakeMenuSzene.tscn" id="4_pd0ue"]
+[ext_resource type="Script" path="res://GameScenes/GameUI/GameUI.cs" id="3_kwg5y"]
+[ext_resource type="PackedScene" uid="uid://2wjgpkal8a73" path="res://GameScenes/SubScenes/BrakeMenuScene/BrakeMenuScene.tscn" id="4_pd0ue"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8bfbu"]
 texture = ExtResource("1_m76x5")
@@ -23,7 +23,7 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_773p7"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="main_game_szene" type="Control"]
+[node name="GameUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,7 +33,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("3_kwg5y")
 
-[node name="background" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,7 +43,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_8bfbu")
 
-[node name="own_ships_display" type="VBoxContainer" parent="."]
+[node name="OwnShips" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -54,34 +54,36 @@ offset_right = 197.0
 offset_bottom = 84.0
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="own_ships_display"]
+[node name="Label" type="Label" parent="OwnShips"]
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxFlat_v76k3")
 text = "Own Ships
 "
+horizontal_alignment = 1
 
-[node name="ownShipPanel" type="Panel" parent="own_ships_display"]
+[node name="ShipSpawnArea" type="Panel" parent="OwnShips"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="GridContainer" type="GridContainer" parent="own_ships_display"]
+[node name="ShipSelect-TBI" type="GridContainer" parent="OwnShips"]
+visible = false
 layout_mode = 2
 columns = 2
 
-[node name="Button2" type="Button" parent="own_ships_display/GridContainer"]
+[node name="Button2" type="Button" parent="OwnShips/ShipSelect-TBI"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Button" type="Button" parent="own_ships_display/GridContainer"]
+[node name="Button" type="Button" parent="OwnShips/ShipSelect-TBI"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="combine_field_DEPRICATED" type="VBoxContainer" parent="."]
+[node name="CombinationField_DEPRICATED" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 2
@@ -93,23 +95,23 @@ offset_right = 221.0
 offset_bottom = -23.0
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="combine_field_DEPRICATED"]
+[node name="Label" type="Label" parent="CombinationField_DEPRICATED"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_vrgx0")
 text = "Combine Field"
 
-[node name="Panel" type="Panel" parent="combine_field_DEPRICATED"]
+[node name="Panel" type="Panel" parent="CombinationField_DEPRICATED"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="settings_button" type="Button" parent="."]
+[node name="SettingsButton" type="Button" parent="."]
 layout_mode = 0
 offset_right = 54.0
 offset_bottom = 45.0
 mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxTexture_b54en")
 
-[node name="game_field" type="Panel" parent="."]
+[node name="Board" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,7 +126,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="interactions" type="VBoxContainer" parent="."]
+[node name="SwitchBoardButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 862.0
+offset_top = 69.0
+offset_right = 940.0
+offset_bottom = 130.0
+text = "Switch
+Board"
+
+[node name="NextRoundButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 958.0
+offset_top = 542.0
+offset_right = 1120.0
+offset_bottom = 573.0
+text = "Next Round"
+
+[node name="Interactions_DEPRICATED" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -138,15 +158,8 @@ offset_bottom = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Switch_board_button" type="Button" parent="interactions"]
-layout_mode = 2
-text = "Switch Board"
-
-[node name="end_turn_button" type="Button" parent="interactions"]
-layout_mode = 2
-text = "Next Round"
-
-[node name="Round_info" type="VBoxContainer" parent="."]
+[node name="RoundInfo_DEPRICATED" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -156,30 +169,28 @@ offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="Panel" type="Panel" parent="Round_info"]
-layout_mode = 2
-
-[node name="GridMap" type="GridContainer" parent="Round_info"]
+[node name="GridMap" type="GridContainer" parent="RoundInfo_DEPRICATED"]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="Round_info/GridMap"]
+[node name="Label" type="Label" parent="RoundInfo_DEPRICATED/GridMap"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_cyf6p")
 text = "Stage:
 "
 
-[node name="Label2" type="Label" parent="Round_info/GridMap"]
+[node name="Label2" type="Label" parent="RoundInfo_DEPRICATED/GridMap"]
 layout_mode = 2
 text = "2"
 
-[node name="Label3" type="Label" parent="Round_info/GridMap"]
+[node name="Label3" type="Label" parent="RoundInfo_DEPRICATED/GridMap"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_773p7")
 text = "Round
 "
 
-[node name="background_for_number_of_enemy_ships" type="Panel" parent="."]
+[node name="EnemyShips-TBI" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -193,7 +204,7 @@ grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="GridContainer" type="GridContainer" parent="background_for_number_of_enemy_ships"]
+[node name="GridContainer" type="GridContainer" parent="EnemyShips-TBI"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -207,48 +218,48 @@ grow_horizontal = 0
 grow_vertical = 2
 columns = 2
 
-[node name="label_cv" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+[node name="label_cv" type="Label" parent="EnemyShips-TBI/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
 text = "Flugzeugträger:"
 
-[node name="number_cv" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+[node name="number_cv" type="Label" parent="EnemyShips-TBI/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="label_ca" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+[node name="label_ca" type="Label" parent="EnemyShips-TBI/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
 text = "Kreuzer"
 
-[node name="numer_ca" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+[node name="numer_ca" type="Label" parent="EnemyShips-TBI/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="label_dd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+[node name="label_dd" type="Label" parent="EnemyShips-TBI/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
 text = "Zerstörer"
 
-[node name="number_dd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+[node name="number_dd" type="Label" parent="EnemyShips-TBI/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="label_k" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+[node name="label_k" type="Label" parent="EnemyShips-TBI/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
 text = "Korvette"
 
-[node name="number_k" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+[node name="number_k" type="Label" parent="EnemyShips-TBI/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="label_tbd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+[node name="label_tbd" type="Label" parent="EnemyShips-TBI/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
 text = "Torpedoboot"
 
-[node name="number_tbd" type="Label" parent="background_for_number_of_enemy_ships/GridContainer"]
+[node name="number_tbd" type="Label" parent="EnemyShips-TBI/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
 
@@ -256,5 +267,5 @@ mouse_filter = 1
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="settings_button" to="." method="openBrakeMenuPressed"]
-[connection signal="pressed" from="interactions/Switch_board_button" to="." method="OnSwitchBoardButtonPressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="openBrakeMenuPressed"]
+[connection signal="pressed" from="SwitchBoardButton" to="." method="OnSwitchBoardButtonPressed"]

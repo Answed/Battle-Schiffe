@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class MainGameSzene : Control
+public partial class GameUI : Control
 {
 	private Texture2D placeholderTexture;
 	private ScrollContainer scrollContainer;
@@ -16,15 +16,14 @@ public partial class MainGameSzene : Control
 	}
 
 	public Vector2 getGameFieldPosition(){
-		return GetNode<Control>("game_field").Position;
+		return GetNode<Control>("Board").Position;
 	}
 	public Vector2 getGameFieldSize(){
-		return GetNode<Control>("game_field").Size;
+		return GetNode<Control>("Board").Size;
 	}
 	public Vector2 getSpawnPosition(){
-		BoxContainer SpawnArea = GetNode<BoxContainer>("own_ships_display");
+		BoxContainer SpawnArea = GetNode<BoxContainer>("OwnShips");
 		return SpawnArea.Position + (SpawnArea.Size / 2);
-
 	}
 
 	private void openBrakeMenuPressed()

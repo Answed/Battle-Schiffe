@@ -26,11 +26,11 @@ public partial class ShipControll : Node
 	}
 
 	[Export] public PackedScene[] Ships;
-	MainGameSzene mainGameSzene;
+	GameUI gameUI;
 	public override void _Ready()
 	{
-		mainGameSzene = GetNode<MainGameSzene>("../GameUI");
-		CreationPosition = mainGameSzene.getSpawnPosition();
+		gameUI = GetNode<GameUI>("../GameUI");
+		CreationPosition = gameUI.getSpawnPosition();
 		GD.Print(CreationPosition);
 		AddShipStorage(ShipType.Speedboat); // For testing
 		AddShipStorage(ShipType.Destroyer);
@@ -114,8 +114,8 @@ public partial class ShipControll : Node
 		//int[,] map = GetMaop();         
 		//get map size 
 
-		MapGridPosition = mainGameSzene.getGameFieldPosition();
-		MapSize = mainGameSzene.getGameFieldSize();
+		MapGridPosition = gameUI.getGameFieldPosition();
+		MapSize = gameUI.getGameFieldSize();
 
 		int[,] map = { 	{1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, //placeholder
 						{0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
