@@ -36,14 +36,11 @@ public partial class ChooseShipSzene : Control
 
 	private void OnBackToMenuButtonPressed()
 	{
-		// Load the main menu scene
 		this.Visible = false;
-		//var scene = GetNode<Control>("../StartMenu"); 
-		//scene.Visible = true;
 	}
 
 	private void OnStartGameButtonPressed()
 	{
-		GetTree().ChangeSceneToFile("res://GameScenes/UI/GameUI.tscn");
+		GetTree().ChangeSceneToFile("res://GameScenes/MasterSzene.tscn");
 	}
 }

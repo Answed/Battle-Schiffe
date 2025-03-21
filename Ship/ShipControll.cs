@@ -26,12 +26,15 @@ public partial class ShipControll : Node
 	}
 
 	[Export] public PackedScene[] Ships;
-	
+	MainGameSzene mainGameSzene;
 	public override void _Ready()
 	{
-		ScaleShips(0.5F);
+		mainGameSzene = GetNode<MainGameSzene>("../GameUI");
+		CreationPosition = mainGameSzene.getSpawnPosition();
+		GD.Print(CreationPosition);
 		AddShipStorage(ShipType.Speedboat); // For testing
 		AddShipStorage(ShipType.Destroyer);
+
 		StageBeginn();
 	}
 	public override void _Process(double delta){}
@@ -110,8 +113,9 @@ public partial class ShipControll : Node
 	private void CreateShipGrid(){
 		//int[,] map = GetMaop();         
 		//get map size 
-		//get map placement
-		//get tile size
+
+		MapGridPosition = mainGameSzene.getGameFieldPosition();
+		MapSize = mainGameSzene.getGameFieldSize();
 
 		int[,] map = { 	{1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, //placeholder
 						{0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
@@ -123,9 +127,16 @@ public partial class ShipControll : Node
 						{0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
 						{1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, 
 						{0, 1, 0, 1, 0, 1, 0, 1, 0, 1} };
+
+		setShipScaling();
 		PlaceShipGrid();
 		GenerateShipGrid(map);
 	}
+
+	private void setShipScaling(){
+		ShipScale = (MapSize.X / MapHeight) / 200; //200, bc 200 is default size of the sprites
+	}
+
 	private void GenerateShipGrid(int[,] map){
 		for (int i = 0; i < MapWidth; i++)
 		{

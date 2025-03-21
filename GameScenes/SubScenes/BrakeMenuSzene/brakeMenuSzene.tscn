@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://2wjgpkal8a73"]
+[gd_scene load_steps=5 format=3 uid="uid://2wjgpkal8a73"]
 
-[ext_resource type="Script" path="res://GameScenes/BrakeMenuSzene/BrakeMenuSzene.cs" id="1_p1o7j"]
+[ext_resource type="Script" path="res://GameScenes/SubScenes/BrakeMenuSzene/BrakeMenuSzene.cs" id="1_p1o7j"]
+[ext_resource type="PackedScene" uid="uid://djxnnor5gsmk6" path="res://GameScenes/SubScenes/SettingsSzene/setingsSzene.tscn" id="2_ail45"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uovud"]
 load_path = "res://.godot/imported/background_break_menu.jpg-32a03f1877435659a5f4bc8d5dcc7b19.ctex"
@@ -60,6 +61,10 @@ text = "Settings"
 [node name="close_game_button" type="Button" parent="background/options"]
 layout_mode = 2
 text = "Close Game"
+
+[node name="Settings" parent="." instance=ExtResource("2_ail45")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="background/options/continue_button" to="." method="OnContinueButtonPressed"]
 [connection signal="pressed" from="background/options/restart_game_button" to="." method="OnRestartButtonPressed"]

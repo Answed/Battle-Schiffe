@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c0g1eqwvbhja3"]
 
-[ext_resource type="Script" path="res://GameScenes/startSzene/ChooseShipSzene.cs" id="1_wta5o"]
+[ext_resource type="Script" path="res://GameScenes/SubScenes/ChooseShipSzene/ChooseShipSzene.cs" id="1_wta5o"]
 [ext_resource type="Texture2D" uid="uid://n6otvbrpmayd" path="res://GameScenes/Texturen/background_break_menu.jpg" id="2_4ow4o"]
 [ext_resource type="Texture2D" uid="uid://c3voneuudvcw3" path="res://GameScenes/Texturen/Spielkarten.webp" id="3_j3tsf"]
 [ext_resource type="Texture2D" uid="uid://6qq457r73asn" path="res://GameScenes/Texturen/Arrow_back.png" id="4_v8f72"]

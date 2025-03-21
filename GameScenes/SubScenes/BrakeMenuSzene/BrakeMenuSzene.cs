@@ -13,18 +13,18 @@ public partial class BrakeMenuSzene : Control
 	}
 	
 	private void OnRestartButtonPressed(){
-		GetTree().ChangeSceneToFile("res://GameScenes/UI/start_menu_1.tscn");
+		//GetTree().ChangeSceneToFile("res://GameScenes/UI/start_menu_1.tscn");
+		GD.Print("RESART IMPLEMENTIEREN");
 	}
 	
 	private void OnReturnToMainMenuButtonPressed()
 	{
-		GetTree().ChangeSceneToFile("res://GameScenes/UI/start_menu_1.tscn");
+		GetTree().ChangeSceneToFile("res://GameScenes/startSzene/start_menu.tscn");
 	}
 	
 	private void OnSettingsButtonPressed()
 	{
-		var SettingsScene = GetNode<Control>("../Settings");
-		SettingsScene.Visible = true;
+		GetNode<Control>("Settings").Visible = true;
 	}
 	
 
