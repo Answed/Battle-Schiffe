@@ -55,6 +55,7 @@ public partial class EnemyAiTest : Node2D
 		EmitSignal(SignalName.TestShipAttack);
 		PrintBoard(playerBoard.GetBoard());
 		GD.Print(CountHits(playerBoard.GetBoard()) == enemyAI.GetCurrentShipCount());
+		PrintBoard(copyBoard);
 	}
 	
 	private void CopyBoard(int[,] originalBoard)
