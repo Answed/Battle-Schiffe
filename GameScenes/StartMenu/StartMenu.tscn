@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://6l1wk6uwk7jn"]
+
+[ext_resource type="Script" path="res://GameScenes/StartMenu/StartMenu.cs" id="1_mmckw"]
+[ext_resource type="Texture2D" uid="uid://dvqbjud1i7cw7" path="res://GameScenes/Texturen/Background_start_menu.webp" id="2_v2nkb"]
+[ext_resource type="PackedScene" uid="uid://5qqhghcfba01" path="res://GameScenes/SubScenes/CreditsScene/CreditsSzene.tscn" id="3_dpr06"]
+[ext_resource type="PackedScene" uid="uid://c0g1eqwvbhja3" path="res://GameScenes/SubScenes/ChooseShipScene/ChooseShipScene.tscn" id="4_o4idq"]
+[ext_resource type="PackedScene" uid="uid://djxnnor5gsmk6" path="res://GameScenes/SubScenes/SettingsSzene/SettingsScene.tscn" id="5_tbhkg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btqhr"]
+texture = ExtResource("2_v2nkb")
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mmckw")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_btqhr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -47.0
+offset_right = 125.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+theme_override_constants/separation = 25
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Neues Spiel starten"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Einstellungen"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Spiel beenden"
+
+[node name="MarginContainer-DEPRICATED" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Credits" parent="." instance=ExtResource("3_dpr06")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_top = -3.0
+offset_bottom = -3.0
+
+[node name="ShipSelector" parent="." instance=ExtResource("4_o4idq")]
+visible = false
+layout_mode = 1
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
+
+[node name="Settings" parent="." instance=ExtResource("5_tbhkg")]
+visible = false
+layout_mode = 1
+offset_left = -1.0
+offset_top = -6.0
+offset_right = -1.0
+offset_bottom = -6.0
+
+[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="OnOpenShipSelectorButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="OnOpenSettingsButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="OnOpenCreditsButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="CloseGameButtonPressed"]

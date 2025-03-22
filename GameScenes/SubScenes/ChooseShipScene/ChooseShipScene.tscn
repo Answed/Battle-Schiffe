@@ -1,0 +1,187 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0g1eqwvbhja3"]
+
+[ext_resource type="Script" path="res://GameScenes/SubScenes/ChooseShipScene/ChooseShipScene.cs" id="1_wta5o"]
+[ext_resource type="Texture2D" uid="uid://n6otvbrpmayd" path="res://GameScenes/Texturen/background_break_menu.jpg" id="2_4ow4o"]
+[ext_resource type="Texture2D" uid="uid://c3voneuudvcw3" path="res://GameScenes/Texturen/Spielkarten.webp" id="3_j3tsf"]
+[ext_resource type="Texture2D" uid="uid://6qq457r73asn" path="res://GameScenes/Texturen/Arrow_back.png" id="4_v8f72"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mg54q"]
+texture = ExtResource("2_4ow4o")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mk2pv"]
+texture = ExtResource("4_v8f72")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y8tkx"]
+texture = ExtResource("3_j3tsf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16eqb"]
+texture = ExtResource("3_j3tsf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_euwfc"]
+texture = ExtResource("3_j3tsf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1kd84"]
+texture = ExtResource("3_j3tsf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_simpl"]
+texture = ExtResource("3_j3tsf")
+
+[node name="ChooseShipSzene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wta5o")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mg54q")
+
+[node name="back_to_menu_button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 38.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_mk2pv")
+
+[node name="stats_DEPRICATED" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -199.0
+offset_top = -197.0
+offset_right = 212.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="stats_GridContainer" type="GridContainer" parent="stats_DEPRICATED"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 7.0
+offset_right = -12.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="class_label" type="Label" parent="stats_DEPRICATED/stats_GridContainer"]
+layout_mode = 2
+text = "Klasse:"
+
+[node name="class_of_ship" type="Label" parent="stats_DEPRICATED/stats_GridContainer"]
+layout_mode = 2
+
+[node name="life_label" type="Label" parent="stats_DEPRICATED/stats_GridContainer"]
+layout_mode = 2
+text = "Leben:"
+
+[node name="life_of_ship" type="Label" parent="stats_DEPRICATED/stats_GridContainer"]
+layout_mode = 2
+
+[node name="special_attack_label" type="Label" parent="stats_DEPRICATED/stats_GridContainer"]
+layout_mode = 2
+text = "Spezialfähigkeit:"
+
+[node name="spacial_attack_ship" type="Label" parent="stats_DEPRICATED/stats_GridContainer"]
+layout_mode = 2
+
+[node name="notes_label" type="Label" parent="stats_DEPRICATED/stats_GridContainer"]
+layout_mode = 2
+text = "Besonderheiten:"
+
+[node name="notes_ship" type="Label" parent="stats_DEPRICATED/stats_GridContainer"]
+layout_mode = 2
+
+[node name="Panel3_DEPRICATED" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = -173.0
+offset_right = -12.0
+offset_bottom = -41.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="start_game_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 403.0
+offset_top = 473.0
+offset_right = -417.0
+offset_bottom = 576.0
+grow_horizontal = 2
+text = "Spiel starten"
+
+[node name="ShipSelection" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = -126.0
+offset_right = 362.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 13
+columns = 6
+
+[node name="CV" type="Panel" parent="ShipSelection"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_y8tkx")
+
+[node name="AAS" type="Panel" parent="ShipSelection"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_16eqb")
+
+[node name="CA" type="Panel" parent="ShipSelection"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_euwfc")
+
+[node name="DD" type="Panel" parent="ShipSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_1kd84")
+
+[node name="CV2" type="Panel" parent="ShipSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_simpl")
+
+[node name="MTB" type="Panel" parent="ShipSelection"]
+layout_mode = 2
+
+[connection signal="pressed" from="back_to_menu_button" to="." method="OnBackToMenuButtonPressed"]
+[connection signal="pressed" from="start_game_button" to="." method="OnStartGameButtonPressed"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://dv21wluvgw5bk"]
+
+[ext_resource type="PackedScene" uid="uid://d1o6ry5y2l8j0" path="res://GameScenes/GameUI/GameUI.tscn" id="1_ocejk"]
+[ext_resource type="PackedScene" uid="uid://jtf48u8gilbr" path="res://Board/Map.tscn" id="2_jyyom"]
+[ext_resource type="PackedScene" uid="uid://cc3h7p1c33lcf" path="res://Ship/ShipControll.tscn" id="3_3drfb"]
+[ext_resource type="PackedScene" uid="uid://dn3h7jgrfxmrb" path="res://Scenes/ManagerScenes/EnemyAI.tscn" id="4_sthdx"]
+[ext_resource type="PackedScene" uid="uid://bo6mdfrldhrxq" path="res://GameManager/GameManager.tscn" id="5_vhx54"]
+
+[node name="MasterScene" type="Node2D"]
+
+[node name="GameUI" parent="." instance=ExtResource("1_ocejk")]
+offset_right = 1152.0
+offset_bottom = 647.0
+
+[node name="Map" parent="." instance=ExtResource("2_jyyom")]
+
+[node name="EnemyAi" parent="." instance=ExtResource("4_sthdx")]
+
+[node name="GameManager" parent="." instance=ExtResource("5_vhx54")]
+
+[node name="ShipControll" parent="." instance=ExtResource("3_3drfb")]
+
+[connection signal="GenerateMap" from="Map" to="Map/MapGen" method="GenerateMap"]

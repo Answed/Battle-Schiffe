@@ -85,6 +85,8 @@ public partial class MapGen : Node
 			if (CanPlacePreset(preset, x, y))
 			{
 				PlacePreset(preset, x, y);
+				//safe which preset and preset psotion
+				//all preset need to be alligined to their top left corner with scene center
 			}
 		}
 	}

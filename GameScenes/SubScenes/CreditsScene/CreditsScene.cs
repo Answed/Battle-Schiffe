@@ -1,9 +1,8 @@
 using Godot;
 using System;
 
-public partial class SetingsSzene : Control
+public partial class CreditsScene : Control
 {
-
 	public override void _Ready()
 	{
 	}

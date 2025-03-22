@@ -1,3 +1,4 @@
+using BattleSchiffe.Scripts.BoardManager;
 using Godot;
 using System.Collections.Generic;
 
@@ -9,6 +10,8 @@ public partial class ShipControll : Node
 	private Vector2 MapGridPosition = new(100.0F,100.0F);
 	private Vector2 MapSize = new(100.0F,100.0F);
 
+	private float ShipScale = 1; //ship width = 200
+
 	private int MapWidth = 10;
 
 	private int MapHeight = 10;
@@ -16,18 +19,23 @@ public partial class ShipControll : Node
 		AircraftCarrier,
 		AmphibiousAssault,
 		Destroyer,
+		Cruiser,
 		Corvette,
 		Speedboat,
 		TestShip
 	}
 
 	[Export] public PackedScene[] Ships;
-	
+	GameUI gameUI;
 	public override void _Ready()
 	{
-		AddShipStorage(ShipType.TestShip); // For testing
+		gameUI = GetNode<GameUI>("../GameUI");
+		CreationPosition = gameUI.getSpawnPosition();
+		GD.Print(CreationPosition);
+		AddShipStorage(ShipType.Speedboat); // For testing
+		AddShipStorage(ShipType.Destroyer);
+
 		StageBeginn();
-		PlaceLand(new Vector2I(5,5));
 	}
 	public override void _Process(double delta){}
 	public void AddShipStorage(ShipType newShip) { ShipStorage.Add(newShip); }
@@ -58,6 +66,11 @@ public partial class ShipControll : Node
 		ShipStorage.Clear();
 	}
 
+	public void ScaleShips(float Scale){
+		ShipScale = Scale;
+		foreach (ShipManager X in ShipList){X.ScaleShip(ShipScale);}
+	}
+
 	private void StoreShips(){foreach(ShipManager X in ShipList){AddShipStorage(X.GetShipType());}}
 	private void ClearBoard(){foreach(ShipManager X in ShipList){X.DestroyShip();}}
 	private void LockShips(){foreach(ShipManager X in ShipList){X.LockingShip();}}
@@ -76,14 +89,17 @@ public partial class ShipControll : Node
 			case ShipType.Destroyer:
 				ShipList.Add((ShipManager)Ships[2].Instantiate());
 				break;
-			case ShipType.AmphibiousAssault:
+			case ShipType.Cruiser:
 				ShipList.Add((ShipManager)Ships[3].Instantiate());
 				break;
-			case ShipType.AircraftCarrier:
+			case ShipType.AmphibiousAssault:
 				ShipList.Add((ShipManager)Ships[4].Instantiate());
 				break;
-			case ShipType.TestShip:
+			case ShipType.AircraftCarrier:
 				ShipList.Add((ShipManager)Ships[5].Instantiate());
+				break;
+			case ShipType.TestShip:
+				ShipList.Add((ShipManager)Ships[6].Instantiate());
 				break;
 			default:
 				GD.PrintErr("CreateShip Error");
@@ -92,12 +108,14 @@ public partial class ShipControll : Node
 		AddChild(ShipList[^1]);
 		ShipList[^1].Position = CreationPosition;
 		ShipList[^1].SetShipType(type);
+		ShipList[^1].ScaleShip(ShipScale);
 	}
 	private void CreateShipGrid(){
 		//int[,] map = GetMaop();         
 		//get map size 
-		//get map placement
-		//get tile size
+
+		MapGridPosition = gameUI.getGameFieldPosition();
+		MapSize = gameUI.getGameFieldSize();
 
 		int[,] map = { 	{1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, //placeholder
 						{0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
@@ -109,9 +127,16 @@ public partial class ShipControll : Node
 						{0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
 						{1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, 
 						{0, 1, 0, 1, 0, 1, 0, 1, 0, 1} };
+
+		setShipScaling();
 		PlaceShipGrid();
 		GenerateShipGrid(map);
 	}
+
+	private void setShipScaling(){
+		ShipScale = (MapSize.X / MapHeight) / 200; //200, bc 200 is default size of the sprites
+	}
+
 	private void GenerateShipGrid(int[,] map){
 		for (int i = 0; i < MapWidth; i++)
 		{
