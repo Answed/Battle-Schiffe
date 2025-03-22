@@ -29,14 +29,14 @@ public partial class BoardManager : Node
 	public void InitBoard(int[,] board, bool isPlayerBoard, Node boardNode) 
 	{
 		this.boardNode = boardNode;
-		shipsPositions = board;
+		shipsPositions = CopyBoard(board);
 		this.isPlayerBoard = isPlayerBoard;
 	}
 
 	public void AttackField(int x, int y)
 	{
 		int[,] position = {{x},{y}};
-		/*if (shipsPositions[x, y] >= 2)
+		/*if (shipsPositions[x, y] >= 2) Cant test attack without any ships...
 		{
 			//Gets the ShipValue from the Bord and substracts -2 to get the fitting index from ships
 			//ships[shipsPositions[x, y] - 2].shipPosition.Remove(position);
@@ -87,5 +87,17 @@ public partial class BoardManager : Node
 	public int[,] GetBoard()
 	{
 		return shipsPositions;
+	}
+	private int[,] CopyBoard(int[,] originalBoard) // It needs to be copied to prevent overwriting the other bord
+	{
+		int[,] newBoard = new int[originalBoard.GetLength(0), originalBoard.GetLength(1)];
+		for (int i = 0; i < originalBoard.GetLength(0); i++)
+		{
+			for (int j = 0; j < originalBoard.GetLength(1); j++)
+			{
+				newBoard[i, j] = originalBoard[i, j];
+			}
+		}	
+		return newBoard;
 	}
 }
