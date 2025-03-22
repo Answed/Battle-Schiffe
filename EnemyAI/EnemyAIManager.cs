@@ -71,4 +71,9 @@ public partial class EnemyAIManager : Node
 		currentShips.Add(ship);
 	}
 
+	public int GetCurrentShipCount()
+	{
+		return currentShips.Count;
+	}
+
 }

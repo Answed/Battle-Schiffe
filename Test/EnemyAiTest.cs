@@ -6,17 +6,21 @@ using BattleSchiffe.Scripts.MapGen;
 public partial class EnemyAiTest : Node2D
 {
 
-	[Signal] public delegate void TestShipPlacemenrEventHandler();
+	[Signal] public delegate void TestShipPlacementEventHandler();
+	[Signal] public delegate void TestShipAttackEventHandler();
 	
 	private EnemyBoardManager enemyBoard;
 	private PlayerBoardManager playerBoard;
+	private EnemyAIManager enemyAI;
 	private MapGen mapGen;
 	private int[,] copyBoard;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		//needs to be called for the setup
 		ShipPlacementTest();
+		ShipAttackTest();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,6 +32,7 @@ public partial class EnemyAiTest : Node2D
 		mapGen = GetNode<MapGen>("MapGen");
 		enemyBoard = GetNode<EnemyBoardManager>("EnemyBoardManager");
 		playerBoard = GetNode<PlayerBoardManager>("PlayerBoardManager");
+		enemyAI = GetNode<EnemyAIManager>("EnemyAi");
 	}
 	
 	// All Steps needed for testing the Ship Placement in the EnemyAITestScene
@@ -40,9 +45,16 @@ public partial class EnemyAiTest : Node2D
 		enemyBoard.InitBoard(mapGen.GetMapGrid(), false, enemyBoard);
 		playerBoard.InitBoard(mapGen.GetMapGrid(), true, playerBoard);
 		PrintBoard(mapGen.GetMapGrid());
-		EmitSignal(SignalName.TestShipPlacemenr);
+		EmitSignal(SignalName.TestShipPlacement);
 		PrintBoard(enemyBoard.GetBoard());
 		GD.Print(CompareBoard(copyBoard, enemyBoard.GetBoard()));
+	}
+
+	private void ShipAttackTest()
+	{
+		EmitSignal(SignalName.TestShipAttack);
+		PrintBoard(playerBoard.GetBoard());
+		GD.Print(CountHits(playerBoard.GetBoard()) == enemyAI.GetCurrentShipCount());
 	}
 	
 	private void CopyBoard(int[,] originalBoard)
@@ -80,5 +92,19 @@ public partial class EnemyAiTest : Node2D
 			}
 		}
 		return true;
+	}
+
+	private int CountHits(int[,] board)
+	{
+		int hits = 0;
+		for (int i = 0; i < board.GetLength(0); i++)
+		{
+			for (int j = 0; j < board.GetLength(1); j++)
+			{
+				if(board[i, j] == -1)
+					hits++;
+			}
+		}
+		return hits;
 	}
 }

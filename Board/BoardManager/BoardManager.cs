@@ -36,14 +36,14 @@ public partial class BoardManager : Node
 	public void AttackField(int x, int y)
 	{
 		int[,] position = {{x},{y}};
-		if (shipsPositions[position[0, 0], position[0,1]] >= 2)
+		/*if (shipsPositions[x, y] >= 2)
 		{
 			//Gets the ShipValue from the Bord and substracts -2 to get the fitting index from ships
-			ships[shipsPositions[position[0, 0], position[0,1]] - 2].shipPosition.Remove(position);
-			if (ships[shipsPositions[position[0, 0], position[0, 1]] - 2].shipPosition.Count == 0)
+			//ships[shipsPositions[x, y] - 2].shipPosition.Remove(position);
+			if (ships[shipsPositions[x, y] - 2].shipPosition.Count == 0)
 			{
 				//ships[shipsPositions[position[0, 0], position[0, 1]] - 2].shipManager.DestroyShip();
-				ships.RemoveAt(shipsPositions[position[0, 0], position[0,1]] - 2); 
+				ships.RemoveAt(shipsPositions[x, y] - 2); 
 				//CheckIfAllShipsAreDead();
 			}
 			//Set X on position
@@ -51,7 +51,8 @@ public partial class BoardManager : Node
 		else
 		{
 			// Set 0 on position
-		}
+		}*/
+		shipsPositions[x, y] = -1; // Marks all hittet fields negativ Currently just for testing
 	}
 
 	private void CheckIfAllShipsAreDead()
