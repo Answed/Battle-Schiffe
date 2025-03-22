@@ -24,13 +24,12 @@ public partial class EnemyAIManager : Node
 	public override void _Ready()
 	{
 		SetRequiredDependencies();
-		shipPlacement = GetNode<EnemyShipPlacement>("ShipPlacement");
 	}
-	//Calls all Function needed too generate all the Data the enemy needs for the next match
+	//Calls all Function needed to generate all the Data the enemy needs for the next match
 	private void SetNewMatch()
 	{
 		//UpdateFighhtingForce();
-		currentShips = shipPlacement.PlaceShips(currentFightingForce, playerBoard.GetBoard());
+		currentShips = shipPlacement.PlaceShips(currentFightingForce, enemyBoard.GetBoard());
 		EmitSignal(SignalName.SetAttackParameters, playerBoard);
 		enemyBoard.SetShips(currentShips);
 	}
@@ -55,6 +54,7 @@ public partial class EnemyAIManager : Node
 	// ../ is needed to access the Nodes on the same tree height.
 	private void SetRequiredDependencies() 
 	{
+		shipPlacement = GetNode<EnemyShipPlacement>("ShipPlacement");
 		enemyBoard = GetNode<EnemyBoardManager>("../EnemyBoardManager");
 		playerBoard = GetNode<PlayerBoardManager>("../PlayerBoardManager");
 	}
@@ -69,6 +69,11 @@ public partial class EnemyAIManager : Node
 	public void AddShip(Ship ship)
 	{
 		currentShips.Add(ship);
+	}
+
+	public int GetCurrentShipCount()
+	{
+		return currentShips.Count;
 	}
 
 }

@@ -21,4 +21,5 @@ script = ExtResource("5_3iqc2")
 [node name="PlayerBoardManager" type="Node" parent="."]
 script = ExtResource("6_ovqxc")
 
-[connection signal="TestShipPlacemenr" from="." to="EnemyAi" method="SetNewMatch"]
+[connection signal="TestShipAttack" from="." to="EnemyAi" method="EnemyTurn"]
+[connection signal="TestShipPlacement" from="." to="EnemyAi" method="SetNewMatch"]

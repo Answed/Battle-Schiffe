@@ -29,21 +29,21 @@ public partial class BoardManager : Node
 	public void InitBoard(int[,] board, bool isPlayerBoard, Node boardNode) 
 	{
 		this.boardNode = boardNode;
-		shipsPositions = board;
+		shipsPositions = CopyBoard(board);
 		this.isPlayerBoard = isPlayerBoard;
 	}
 
 	public void AttackField(int x, int y)
 	{
 		int[,] position = {{x},{y}};
-		if (shipsPositions[position[0, 0], position[0,1]] >= 2)
+		/*if (shipsPositions[x, y] >= 2) Cant test attack without any ships...
 		{
 			//Gets the ShipValue from the Bord and substracts -2 to get the fitting index from ships
-			ships[shipsPositions[position[0, 0], position[0,1]] - 2].shipPosition.Remove(position);
-			if (ships[shipsPositions[position[0, 0], position[0, 1]] - 2].shipPosition.Count == 0)
+			//ships[shipsPositions[x, y] - 2].shipPosition.Remove(position);
+			if (ships[shipsPositions[x, y] - 2].shipPosition.Count == 0)
 			{
 				//ships[shipsPositions[position[0, 0], position[0, 1]] - 2].shipManager.DestroyShip();
-				ships.RemoveAt(shipsPositions[position[0, 0], position[0,1]] - 2); 
+				ships.RemoveAt(shipsPositions[x, y] - 2); 
 				//CheckIfAllShipsAreDead();
 			}
 			//Set X on position
@@ -51,7 +51,8 @@ public partial class BoardManager : Node
 		else
 		{
 			// Set 0 on position
-		}
+		}*/
+		shipsPositions[x, y] = -1; // Marks all hittet fields negativ Currently just for testing
 	}
 
 	private void CheckIfAllShipsAreDead()
@@ -86,5 +87,17 @@ public partial class BoardManager : Node
 	public int[,] GetBoard()
 	{
 		return shipsPositions;
+	}
+	private int[,] CopyBoard(int[,] originalBoard) // It needs to be copied to prevent overwriting the other bord
+	{
+		int[,] newBoard = new int[originalBoard.GetLength(0), originalBoard.GetLength(1)];
+		for (int i = 0; i < originalBoard.GetLength(0); i++)
+		{
+			for (int j = 0; j < originalBoard.GetLength(1); j++)
+			{
+				newBoard[i, j] = originalBoard[i, j];
+			}
+		}	
+		return newBoard;
 	}
 }
