@@ -3,11 +3,25 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+public enum IslandType
+{
+	Chunker, // 0
+	Smallboy // 1
+}
+
+public struct IslandInfo
+{
+	public Vector2I cordinate;
+	public IslandType Type;
+}
+
 public partial class MapGen : Node
 {
+	public IslandInfo islandInfo = new IslandInfo();
 	private int mapWidth;
 	private int mapHeight;
 	private int[,] mapGrid;
+
 
 	private List<int[,]> presets = new List<int[,]>
 	{
@@ -68,6 +82,7 @@ public partial class MapGen : Node
 
 	public void GenerateMap(int width, int height)
 	{
+		islandInfo = new IslandInfo();
 		GD.PrintErr("Hallo");
 		mapWidth = width;
 		mapHeight = height;
@@ -78,16 +93,35 @@ public partial class MapGen : Node
 
 		while (CalculateCoverage() < targetCoverage)
 		{
-			int[,] preset = presets[random.Next(presets.Count)];
+			int choosenIsland = random.Next(presets.Count);
+			int[,] preset = presets[choosenIsland];
 			int x = random.Next(0, mapWidth);
 			int y = random.Next(0, mapHeight);
+			
 
 			if (CanPlacePreset(preset, x, y))
 			{
 				PlacePreset(preset, x, y);
 				//safe which preset and preset psotion
 				//all preset need to be alligined to their top left corner with scene center
+				saveIsland(choosenIsland, x,y);
 			}
 		}
 	}
+
+	private void saveIsland(int island, int x, int y){
+		islandInfo.cordinate = new Vector2I(x,y);
+		switch (island)
+		{
+			case 0:
+				islandInfo.Type = IslandType.Chunker;
+				break;
+			case 1:
+				islandInfo.Type = IslandType.Smallboy;
+				break;
+			default:
+				break;
+		}
+	}
+	public int getMapWidth(){ GD.Print(mapWidth);return mapWidth; }
 }

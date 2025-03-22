@@ -8,15 +8,15 @@
 
 [node name="MasterScene" type="Node2D"]
 
+[node name="EnemyAi" parent="." instance=ExtResource("4_sthdx")]
+
+[node name="GameManager" parent="." instance=ExtResource("5_vhx54")]
+
 [node name="GameUI" parent="." instance=ExtResource("1_ocejk")]
 offset_right = 1152.0
 offset_bottom = 647.0
 
 [node name="Map" parent="." instance=ExtResource("2_jyyom")]
-
-[node name="EnemyAi" parent="." instance=ExtResource("4_sthdx")]
-
-[node name="GameManager" parent="." instance=ExtResource("5_vhx54")]
 
 [node name="ShipControll" parent="." instance=ExtResource("3_3drfb")]
 
