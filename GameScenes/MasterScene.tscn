@@ -20,4 +20,5 @@ offset_bottom = 647.0
 
 [node name="ShipControll" parent="." instance=ExtResource("3_3drfb")]
 
+[connection signal="CallGenerateMap" from="GameManager" to="Map" method="CallGenerateMap"]
 [connection signal="GenerateMap" from="Map" to="Map/MapGen" method="GenerateMap"]

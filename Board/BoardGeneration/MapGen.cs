@@ -2,31 +2,47 @@ namespace BattleSchiffe.Scripts.MapGen;
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 
 public enum IslandType
 {
 	Chunker, // 0
-	Smallboy // 1
+	//Smallboy // 1
 }
 
 public struct IslandInfo
 {
 	public Vector2I cordinate;
-	public IslandType Type;
+	public int Type;
 }
 
 public partial class MapGen : Node
 {
-	public IslandInfo islandInfo = new IslandInfo();
+	public enum IslandType
+	{
+		Chunker, // 0
+		//Smallboy // 1
+	}
+
+	public struct IslandInfo
+	{
+		public Vector2I cordinate;
+		public IslandType Type;
+	}
+	[Signal] public delegate void MapGenerationFinishedEventHandler();
+	[Signal] public delegate void GivingIslandsEventHandler();
 	private int mapWidth;
 	private int mapHeight;
 	private int[,] mapGrid;
 
+	public List<IslandInfo> islandData = new();
 
 	private List<int[,]> presets = new List<int[,]>
 	{
-		new int[,] {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}},
-		new int[,] {{1, 1}, {1, 1}}
+		//new int[,] {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}},
+		//new int[,] {{1, 1}, {1, 1}}
+		new int [,] {{1,1,1},{1,1,1},{1,1,1}} // 0
 	};
 
 	private bool CanPlacePreset(int[,] preset, int x, int y)
@@ -82,8 +98,7 @@ public partial class MapGen : Node
 
 	public void GenerateMap(int width, int height)
 	{
-		islandInfo = new IslandInfo();
-		GD.PrintErr("Hallo");
+		islandData = new();
 		mapWidth = width;
 		mapHeight = height;
 		mapGrid = new int[mapWidth, mapHeight];
@@ -107,21 +122,37 @@ public partial class MapGen : Node
 				saveIsland(choosenIsland, x,y);
 			}
 		}
+		for (int i = 0; i < mapGrid.GetLength(0); i++)
+		{
+			string line = "";
+			for (int j = 0; j < mapGrid.GetLength(1); j++)
+			{
+				line += mapGrid[i, j] + " ";
+			}
+			GD.Print(line);
+		}	
+		EmitSignal("MapGenerationFinished"); //struct is to complex for emitsignal
+		EmitSignal("GivingIslands");
 	}
 
 	private void saveIsland(int island, int x, int y){
-		islandInfo.cordinate = new Vector2I(x,y);
+		IslandInfo currentAddIsland = new IslandInfo();
+		currentAddIsland.cordinate = new Vector2I(x,y);
+
 		switch (island)
 		{
 			case 0:
-				islandInfo.Type = IslandType.Chunker;
+				currentAddIsland.Type = 0;
 				break;
 			case 1:
-				islandInfo.Type = IslandType.Smallboy;
+				//islandInfo.Type = IslandType.Smallboy;
 				break;
 			default:
 				break;
 		}
+		islandData.Add(currentAddIsland);
 	}
 	public int getMapWidth(){ GD.Print(mapWidth);return mapWidth; }
+
+	public List<IslandInfo> GetIslandInfos() { return islandData; }
 }

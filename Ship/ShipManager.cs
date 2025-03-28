@@ -54,11 +54,13 @@ public partial class ShipManager : Node2D{
 		Hovered = false;
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(1.0F,1.0F);
 	}
-	public void BodyEnter(TileMapLayer nod)
+	public void BodyEnter(TileMapLayer nod)//gives wrong position
 	{
-		PlacePosition = nod.MapToLocal(nod.LocalToMap(Position));
+		PlacePosition = nod.MapToLocal(nod.LocalToMap(Position-nod.Position));
 
 		Print(PlacePosition); //for testing
+		Print(nod.LocalToMap(Position-nod.Position));
+		Print(nod.LocalToMap(Position));
 	}
 
 	public void SetShipType(ShipControll.ShipType type){ShipType = type;}

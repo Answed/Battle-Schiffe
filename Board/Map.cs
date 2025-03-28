@@ -1,6 +1,8 @@
 
+using BattleSchiffe.Scripts.MapGen;
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Map : Node
 {
@@ -12,7 +14,7 @@ public partial class Map : Node
 	private int MapWidth = 10;
 	private void CallGenerateMap(int width, int height)
 	{
-		EmitSignal(SignalName.GenerateMap,10,10);
+		EmitSignal(SignalName.GenerateMap,width,height);
 		MapWidth = width;
 	}
 
@@ -22,4 +24,5 @@ public partial class Map : Node
 		EmitSignal("SendSize",gameUI.getGameFieldSize());
 	}
 	public int getMapWidth() { return MapWidth; }
+	public void GetIslandInfos() { GetNode<MapUI>("MapUI").setIslandInfos(GetNode<MapGen>("MapGen").GetIslandInfos());}
 }

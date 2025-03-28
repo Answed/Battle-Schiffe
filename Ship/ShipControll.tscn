@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cc3h7p1c33lcf"]
+[gd_scene load_steps=16 format=3 uid="uid://cc3h7p1c33lcf"]
 
 [ext_resource type="Script" path="res://Ship/ShipControll.cs" id="1_rs1bc"]
 [ext_resource type="PackedScene" uid="uid://clb3mgrxfft6g" path="res://Ship/Speedboat/Speedboat.tscn" id="2_qv2ij"]
@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://c2c088ruadatg" path="res://Ship/AmphibiousAssault/AmphibiousAssault.tscn" id="5_ker06"]
 [ext_resource type="PackedScene" uid="uid://behs8xqptytid" path="res://Ship/Cruiser/Cruiser.tscn" id="5_mq5kc"]
 [ext_resource type="PackedScene" uid="uid://8b5knxyadi0u" path="res://Ship/AircraftCarrier/AircraftCarrier.tscn" id="6_wh1s5"]
+[ext_resource type="Texture2D" uid="uid://dnpnuf835rd6y" path="res://Ship/Textures/pixil-frame-0.png" id="9_jdla3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ly5fm"]
+texture = ExtResource("9_jdla3")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, -4, 4, 4, 4, 4, -4)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_me1l5"]
 texture = ExtResource("3_sptrx")
@@ -29,6 +35,7 @@ physics_layer_1/collision_layer = 0
 physics_layer_1/collision_mask = 0
 sources/4 = SubResource("TileSetAtlasSource_me1l5")
 sources/5 = SubResource("TileSetAtlasSource_41rke")
+sources/0 = SubResource("TileSetAtlasSource_ly5fm")
 
 [node name="ShipControll" type="Node"]
 script = ExtResource("1_rs1bc")
