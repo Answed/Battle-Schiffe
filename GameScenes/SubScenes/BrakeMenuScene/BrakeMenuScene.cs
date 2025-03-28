@@ -19,7 +19,7 @@ public partial class BrakeMenuScene : Control
 	
 	private void OnReturnToMainMenuButtonPressed()
 	{
-		GetTree().ChangeSceneToFile("res://GameScenes/StartMenu/StarMenu.tscn");
+		GetTree().ChangeSceneToFile("res://GameScenes/StartMenu/StartMenu.tscn");
 	}
 	
 	private void OnSettingsButtonPressed()

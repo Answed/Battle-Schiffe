@@ -7,6 +7,7 @@ public partial class GameUI : Control
 	private ScrollContainer scrollContainer;
 	private HBoxContainer hboxContainer;
 
+	private bool playerBoard = true;
 	public override void _Ready()
 	{
 		foreach (Node child in GetChildren())
@@ -33,6 +34,15 @@ public partial class GameUI : Control
 
 	private void OnSwitchBoardButtonPressed()
 	{
-		GD.Print("BOARD CHANGE");
+		//signals for hiding TBI
+		if(playerBoard)
+		{
+			GetNode<Label>("CurrentBoard").Text = "Enemy";
+		}
+		else
+		{
+			GetNode<Label>("CurrentBoard").Text = "Player";
+		}
+		playerBoard =! playerBoard;
 	}
 }

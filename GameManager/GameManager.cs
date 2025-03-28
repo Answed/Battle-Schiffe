@@ -28,11 +28,12 @@ public partial class GameManager : Node
 	private PlayerBoardManager playerBoardManager;
 	private EnemyBoardManager enemyBoardManager;
 	
-	private GameState gameState = GameState.RoundStart;
+	private GameState gameState = GameState.RoundSetup;
 
 	public override void _Ready()
 	{
 		SetRequiredDependencies();
+		UpdateState(); //vor test starting game logic
 	}
 
 	private void SetRequiredDependencies()
@@ -47,7 +48,7 @@ public partial class GameManager : Node
 		{
 			case GameState.RoundSetup:
 				EmitSignal(SignalName.ShipControllStageBegin);
-				EmitSignal(SignalName.CallGenerateMap,20,20);
+				EmitSignal(SignalName.CallGenerateMap,10,10);
 				gameState = GameState.RoundStart;
 				UpdateState();
 				break;

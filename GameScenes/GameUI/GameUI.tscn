@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1o6ry5y2l8j0"]
+[gd_scene load_steps=12 format=3 uid="uid://d1o6ry5y2l8j0"]
 
 [ext_resource type="Texture2D" uid="uid://n6otvbrpmayd" path="res://GameScenes/Texturen/background_break_menu.jpg" id="1_m76x5"]
 [ext_resource type="Texture2D" uid="uid://chmwtookfrfwa" path="res://GameScenes/Texturen/settings.jpg" id="2_d8dtn"]
@@ -22,6 +22,9 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_773p7"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_40syl"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -188,6 +191,15 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_773p7")
 text = "Round
 "
+
+[node name="CurrentBoard" type="Label" parent="."]
+layout_mode = 0
+offset_left = 341.0
+offset_top = 44.0
+offset_right = 390.0
+offset_bottom = 67.0
+text = "Player"
+label_settings = SubResource("LabelSettings_40syl")
 
 [node name="EnemyShips-TBI" type="Panel" parent="."]
 visible = false

@@ -9,11 +9,10 @@ public partial class ShipControll : Node
 	private Vector2 CreationPosition = new(500.0F,500.0F);
 	private Vector2 MapGridPosition = new(100.0F,100.0F);
 	private Vector2 MapSize = new(100.0F,100.0F);
-
 	private float ShipScale = 1; //ship width = 200
-
-	private int MapWidth = 10;
-
+	private int MapWidth = 5;
+	private GameUI gameUI;
+	private Map map;
 	private int MapHeight = 10;
 	public enum ShipType{
 		AircraftCarrier,
@@ -26,10 +25,11 @@ public partial class ShipControll : Node
 	}
 
 	[Export] public PackedScene[] Ships;
-	GameUI gameUI;
+	
 	public override void _Ready()
 	{
 		gameUI = GetNode<GameUI>("../GameUI");
+		map = GetNode<Map>("../Map");
 		CreationPosition = gameUI.getSpawnPosition();
 		GD.Print(CreationPosition);
 		AddShipStorage(ShipType.Speedboat); // For testing
@@ -111,13 +111,13 @@ public partial class ShipControll : Node
 		ShipList[^1].ScaleShip(ShipScale);
 	}
 	private void CreateShipGrid(){
-		//int[,] map = GetMaop();         
-		//get map size 
-
+		//int[,] map = GetMaop();   
+			  
 		MapGridPosition = gameUI.getGameFieldPosition();
 		MapSize = gameUI.getGameFieldSize();
+		MapWidth = map.getMapWidth();
 
-		int[,] map = { 	{1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, //placeholder
+		int[,] maptest = { 	{1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, //placeholder
 						{0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
 						{1, 0, 1, 0, 1, 0, 1, 0, 1, 0}, 
 						{0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
@@ -130,17 +130,17 @@ public partial class ShipControll : Node
 
 		setShipScaling();
 		PlaceShipGrid();
-		GenerateShipGrid(map);
+		GenerateShipGrid(maptest);
 	}
 
 	private void setShipScaling(){
-		ShipScale = (MapSize.X / MapHeight) / 200; //200, bc 200 is default size of the sprites
+		ShipScale = (MapSize.X / MapHeight) / 200; // 200 is default size of the sprites
 	}
 
 	private void GenerateShipGrid(int[,] map){
 		for (int i = 0; i < MapWidth; i++)
 		{
-			for (int j = 0; j < MapHeight; j++)
+			for (int j = 0; j < MapWidth; j++)
 			{
 				Vector2I PlacmentVector = new Vector2I(j,i);
 				if(map[i,j] == 0){PlaceWater(PlacmentVector);}
@@ -150,7 +150,8 @@ public partial class ShipControll : Node
 	}
 	private void PlaceShipGrid(){
 		GetNode<TileMapLayer>("ShipGrid").Position = MapGridPosition;
-		//set size of tiles
+		float mapscale = (MapSize.X / MapHeight) / 16; // 16 is the map tile size
+		GetNode<TileMapLayer>("ShipGrid").Scale = new Vector2 (mapscale,mapscale);
 	}
 	private void PlaceLand(Vector2I position){GetNode<TileMapLayer>("ShipGrid").SetCell(position,4,new Vector2I(0,0),0);}
 	private void PlaceWater(Vector2I position){GetNode<TileMapLayer>("ShipGrid").SetCell(position,5,new Vector2I(0,0),0);}
