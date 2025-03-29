@@ -21,6 +21,7 @@ public partial class MapUI : Node2D
 	private bool pReady = false;
 	private bool sReady = false;
 	private bool mReady = false;
+	private bool wReady = false;
 	public override void _Ready()
 	{
 		EmitSignal("GetUIData");
@@ -32,7 +33,7 @@ public partial class MapUI : Node2D
 
 	public override void _Process(double delta)
 	{
-		if(pReady && sReady && mReady)
+		if(pReady && sReady && mReady && wReady)
 		{
 			scale = boardWidth / ( 200F * mapWidth );
 			waterLayer.Scale = new Vector2(scale,scale);
@@ -45,6 +46,7 @@ public partial class MapUI : Node2D
 			pReady = false;
 			sReady = false;
 			mReady = false;
+			wReady = false;
 		}
 	}
 	public void generateUI(){
@@ -105,5 +107,9 @@ public partial class MapUI : Node2D
 	{ 
 		boardWidth = size.X; 
 		sReady = true;
+	}
+	private void GetWidth(int width){
+		mapWidth = width;
+		wReady = true;
 	}
 }

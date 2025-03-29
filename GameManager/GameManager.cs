@@ -48,7 +48,7 @@ public partial class GameManager : Node
 		{
 			case GameState.RoundSetup:
 				EmitSignal(SignalName.ShipControllStageBegin);
-				EmitSignal(SignalName.CallGenerateMap,10,10);
+				EmitSignal(SignalName.CallGenerateMap,20,20);
 				gameState = GameState.RoundStart;
 				UpdateState();
 				break;

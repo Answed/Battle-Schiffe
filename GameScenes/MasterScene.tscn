@@ -21,4 +21,10 @@ offset_bottom = 647.0
 [node name="ShipControll" parent="." instance=ExtResource("3_3drfb")]
 
 [connection signal="CallGenerateMap" from="GameManager" to="Map" method="CallGenerateMap"]
+[connection signal="HidePlayerShips" from="GameUI" to="ShipControll" method="EnemyTurn"]
+[connection signal="MenuClosedMap" from="GameUI" to="Map" method="ShowMap"]
+[connection signal="MenuClosedShips" from="GameUI" to="ShipControll" method="PlayerTurn"]
+[connection signal="MenuOpenMap" from="GameUI" to="Map" method="HideMap"]
+[connection signal="MenuOpenShips" from="GameUI" to="ShipControll" method="EnemyTurn"]
+[connection signal="ShowPlayerShips" from="GameUI" to="ShipControll" method="PlayerTurn"]
 [connection signal="GenerateMap" from="Map" to="Map/MapGen" method="GenerateMap"]

@@ -122,7 +122,8 @@ public partial class MapGen : Node
 				saveIsland(choosenIsland, x,y);
 			}
 		}
-		for (int i = 0; i < mapGrid.GetLength(0); i++)
+		//debug prints map
+		/*for (int i = 0; i < mapGrid.GetLength(0); i++)
 		{
 			string line = "";
 			for (int j = 0; j < mapGrid.GetLength(1); j++)
@@ -130,7 +131,7 @@ public partial class MapGen : Node
 				line += mapGrid[i, j] + " ";
 			}
 			GD.Print(line);
-		}	
+		}*/
 		EmitSignal("MapGenerationFinished"); //struct is to complex for emitsignal
 		EmitSignal("GivingIslands");
 	}
@@ -152,7 +153,7 @@ public partial class MapGen : Node
 		}
 		islandData.Add(currentAddIsland);
 	}
-	public int getMapWidth(){ GD.Print(mapWidth);return mapWidth; }
+	public int getMapWidth(){return mapWidth; }
 
 	public List<IslandInfo> GetIslandInfos() { return islandData; }
 }
