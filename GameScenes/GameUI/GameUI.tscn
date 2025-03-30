@@ -281,3 +281,4 @@ layout_mode = 1
 
 [connection signal="pressed" from="SettingsButton" to="." method="openBrakeMenuPressed"]
 [connection signal="pressed" from="SwitchBoardButton" to="." method="OnSwitchBoardButtonPressed"]
+[connection signal="BreakMenuClose" from="BrakeMenu" to="." method="CloseBreakMenu"]

@@ -44,6 +44,7 @@ tile_set = SubResource("TileSet_hy4lx")
 script = ExtResource("1_8wxhl")
 
 [connection signal="GenerateMap" from="." to="MapGen" method="GenerateMap"]
+[connection signal="SendMapWidth" from="." to="MapUI" method="GetWidth"]
 [connection signal="SendPosition" from="." to="MapUI" method="GetPosition"]
 [connection signal="SendSize" from="." to="MapUI" method="GetSize"]
 [connection signal="GetUIData" from="MapUI" to="." method="GetUIData"]

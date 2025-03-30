@@ -3,13 +3,14 @@ using System;
 
 public partial class BrakeMenuScene : Control
 {
-	public override void _Ready()
-	{
-	}
+	[Signal] public delegate void BreakMenuCloseEventHandler();
+
+	public override void _Ready(){}
 
 	private void OnContinueButtonPressed()
 	{
 		this.Visible = false;
+		EmitSignal("BreakMenuClose");
 	}
 	
 	private void OnRestartButtonPressed(){

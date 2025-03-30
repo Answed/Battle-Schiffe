@@ -1,3 +1,5 @@
+using System.Net.Security;
+using System.Runtime.InteropServices;
 using Godot;
 using static Godot.GD;
 public partial class ShipManager : Node2D{
@@ -6,6 +8,7 @@ public partial class ShipManager : Node2D{
 	private int SpriteRotation = 0; // 0-3 top->clockwise
 	private bool Selected  = false;
 	private bool Hovered = false;
+	private float MapScale = 1F;
 	private Vector2 PlacePosition;
 	private ShipControll.ShipType ShipType;
 
@@ -54,17 +57,15 @@ public partial class ShipManager : Node2D{
 		Hovered = false;
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(1.0F,1.0F);
 	}
-	public void BodyEnter(TileMapLayer nod)//gives wrong position
+	public void BodyEnter(TileMapLayer nod) 
 	{
-		PlacePosition = nod.MapToLocal(nod.LocalToMap(Position-nod.Position));
-
-		Print(PlacePosition); //for testing
-		Print(nod.LocalToMap(Position-nod.Position));
-		Print(nod.LocalToMap(Position));
+		Vector2 helper = (Position - nod.Position) / 16 / MapScale; // 16 = map tile size
+		helper = new Vector2((int)helper.X,(int)helper.Y);
+		PlacePosition = (helper * (200F * Scale)) + nod.Position + (Scale * 100F); 
 	}
 
-	public void SetShipType(ShipControll.ShipType type){ShipType = type;}
-	public ShipControll.ShipType GetShipType(){return ShipType;}
+	public void SetShipType(ShipControll.ShipType type) { ShipType = type; }
+	public ShipControll.ShipType GetShipType() { return ShipType; }
 
 	public void LockingShip(){GetNode<Area2D>("Area2D-Collision").Visible = false;}
 	public void UnlockingShip(){GetNode<Area2D>("Area2D-Collision").Visible = true;}
@@ -73,4 +74,5 @@ public partial class ShipManager : Node2D{
 	public void UnhideShip(){Visible = true;}
 	public void DestroyShip(){QueueFree();}
 	public void ScaleShip(float Scale){this.Scale = new Vector2(Scale,Scale);}
+	public void SetMapScale(float mscale){MapScale = mscale;}
 }
