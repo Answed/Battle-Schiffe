@@ -8,6 +8,7 @@ public partial class EnemyAiTest : Node2D
 
 	[Signal] public delegate void TestShipPlacementEventHandler();
 	[Signal] public delegate void TestShipAttackEventHandler();
+	[Signal] public delegate void CallGenerateMapEventHandler(int width, int height);
 	
 	private EnemyBoardManager enemyBoard;
 	private PlayerBoardManager playerBoard;
@@ -39,11 +40,11 @@ public partial class EnemyAiTest : Node2D
 	private void ShipPlacementTest()
 	{
 		SetRequiredDependencies();
-		mapGen.GenerateMap(20, 20);
+		EmitSignal("CallGenerateMap", 20, 20);
 		copyBoard = new int[20, 20];
 		CopyBoard(mapGen.GetMapGrid());
-		enemyBoard.InitBoard(mapGen.GetMapGrid(), false, enemyBoard);
-		playerBoard.InitBoard(mapGen.GetMapGrid(), true, playerBoard);
+		enemyBoard.InitBoard(mapGen.GetMapGrid(), false);
+		playerBoard.InitBoard(mapGen.GetMapGrid(), true);
 		PrintBoard(mapGen.GetMapGrid());
 		EmitSignal(SignalName.TestShipPlacement);
 		PrintBoard(enemyBoard.GetBoard());

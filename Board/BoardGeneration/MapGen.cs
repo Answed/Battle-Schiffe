@@ -96,7 +96,7 @@ public partial class MapGen : Node
 		return mapGrid;
 	}
 
-	public void GenerateMap(int width, int height)
+	private void GenerateMap(int width, int height)
 	{
 		islandData = new();
 		mapWidth = width;

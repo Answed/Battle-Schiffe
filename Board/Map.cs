@@ -11,6 +11,9 @@ public partial class Map : Node
 	[Signal] public delegate void SendSizeEventHandler(Vector2 size);
 	[Signal] public delegate void SendMapWidthEventHandler(int width);
 	
+	[Signal] public delegate void SetHitMarkerEventHandler(string grid, Vector2I position);
+	[Signal] public delegate void SetMissMarkerEventHandler(string grid, Vector2I position);
+	
 	private GameUI gameUI;
 	private int MapWidth = 10;
 	private void CallGenerateMap(int width, int height)
@@ -33,4 +36,14 @@ public partial class Map : Node
 	public void HideMap() { GetNode<Node2D>("MapUI").Visible = false; }
 	
 	public void ShowMap() { GetNode<Node2D>("MapUI").Visible = true; }
+
+	private void TransferHitSignal(string grid, Vector2I position)
+	{
+		EmitSignal("SetHitMarker", grid, position);
+	}
+
+	private void TranserMissSignal(string grid, Vector2I position)
+	{
+		EmitSignal("SetMissMarker", grid, position);
+	}
 }

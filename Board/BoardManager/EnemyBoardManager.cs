@@ -19,4 +19,5 @@ public partial class EnemyBoardManager : BoardManager
 				GD.Print(ship);
 			}
 		}
+		
 }

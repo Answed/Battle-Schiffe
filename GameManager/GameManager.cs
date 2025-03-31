@@ -65,7 +65,6 @@ public partial class GameManager : Node
 				EmitSignal(SignalName.ShipControllStageEnd);
 				// Cleanup for next Stage
 				gameState = GameState.RoundSetup;
-				enemyBoardManager.DeleteBoard(); //TODO Create a Signal for that too -> Dont know if we have to Seperate them or use the same Signal for both
 				UpdateState();
 				break;
 		}

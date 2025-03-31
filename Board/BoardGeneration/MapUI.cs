@@ -27,7 +27,6 @@ public partial class MapUI : Node2D
 		EmitSignal("GetUIData");
 		waterLayer = GetNode<TileMapLayer>("Water");
 		gridLayer = GetNode<TileMapLayer>("Grid");
-
 	}
 
 
@@ -40,7 +39,7 @@ public partial class MapUI : Node2D
 			waterLayer.Position = mapPositon;
 			gridLayer.Scale = new Vector2(scale,scale);
 			gridLayer.Position = mapPositon;
-
+			GD.Print("Hello");
 			generateUI();
 			//reset
 			pReady = false;
@@ -50,7 +49,20 @@ public partial class MapUI : Node2D
 		}
 	}
 	public void generateUI(){
-		//fills board with water
+		// fills board with water
+		GenerateTileMap("Water");
+		// adds guidelines to make the grid visible for the player.
+		GenerateTileMap("Grid");
+		// adds the islands
+		placeIslands();
+		
+		// Creates empty maps which will later be used to indicate hits
+		//GenerateTileMap("PlayerGrid");
+		//GenerateTileMap("EnemyGrid");
+	}
+
+	private void GenerateTileMap(string mapName)
+	{
 		for (int i = 0; i < mapWidth; i++)
 		{
 			for (int j = 0; j < mapWidth; j++)
@@ -59,16 +71,6 @@ public partial class MapUI : Node2D
 				GetNode<TileMapLayer>("Water").SetCell(position,0,new Vector2I(0,0),0);
 			}
 		}
-		for (int i = 0; i < mapWidth; i++)
-		{
-			for (int j = 0; j < mapWidth; j++)
-			{
-				Vector2I position = new Vector2I(i,j);
-				GetNode<TileMapLayer>("Grid").SetCell(position,0,new Vector2I(0,0),0);
-			}
-		}
-		//adds the islands
-		placeIslands();
 	}
 
 	private void placeIslands(){
@@ -111,5 +113,15 @@ public partial class MapUI : Node2D
 	private void GetWidth(int width){
 		mapWidth = width;
 		wReady = true;
+	}
+
+	private void PlaceHitMarker(string grid, Vector2I pos)
+	{
+		GetNode<TileMapLayer>(grid).SetCell(pos,1,new Vector2I(0,0),0);
+	}
+
+	private void PlaceMissMarker(string grid, Vector2I pos)
+	{
+		GetNode<TileMapLayer>(grid).SetCell(pos,2,new Vector2I(0,0),0);
 	}
 }
