@@ -138,6 +138,14 @@ offset_bottom = 130.0
 text = "Switch
 Board"
 
+[node name="PlacmentFinishedButton" type="Button" parent="."]
+offset_left = 862.0
+offset_top = 133.0
+offset_right = 940.0
+offset_bottom = 194.0
+text = "Switch
+Board"
+
 [node name="NextRoundButton" type="Button" parent="."]
 layout_mode = 2
 offset_left = 958.0
@@ -281,4 +289,5 @@ layout_mode = 1
 
 [connection signal="pressed" from="SettingsButton" to="." method="openBrakeMenuPressed"]
 [connection signal="pressed" from="SwitchBoardButton" to="." method="OnSwitchBoardButtonPressed"]
+[connection signal="pressed" from="PlacmentFinishedButton" to="." method="PlacementFinishedPressed"]
 [connection signal="BreakMenuClose" from="BrakeMenu" to="." method="CloseBreakMenu"]

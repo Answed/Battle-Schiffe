@@ -57,4 +57,8 @@ public partial class GameUI : Control
 		}
 		playerBoard =! playerBoard;
 	}
+
+	private void PlacementFinishedPressed(){
+		//send signal to end board setup
+	}
 }

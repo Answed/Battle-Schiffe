@@ -27,4 +27,3 @@ offset_bottom = 647.0
 [connection signal="MenuOpenMap" from="GameUI" to="Map" method="HideMap"]
 [connection signal="MenuOpenShips" from="GameUI" to="ShipControll" method="EnemyTurn"]
 [connection signal="ShowPlayerShips" from="GameUI" to="ShipControll" method="PlayerTurn"]
-[connection signal="GenerateMap" from="Map" to="Map/MapGen" method="GenerateMap"]
