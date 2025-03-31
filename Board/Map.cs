@@ -20,7 +20,8 @@ public partial class Map : Node
 		EmitSignal(SignalName.SendMapWidth, width);
 	}
 
-	private void GetUIData(){
+	private void GetUIData()
+	{
 		gameUI = GetNode<GameUI>("../GameUI");
 		EmitSignal("SendPosition",gameUI.getGameFieldPosition());
 		EmitSignal("SendSize",gameUI.getGameFieldSize());

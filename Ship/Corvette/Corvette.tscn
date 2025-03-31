@@ -42,7 +42,6 @@ position = Vector2(0, -100)
 sprite_frames = SubResource("SpriteFrames_yimdo")
 
 [node name="AnimatedSprite2D-Hover" type="AnimatedSprite2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(0, -100)
 sprite_frames = SubResource("SpriteFrames_yimdo")

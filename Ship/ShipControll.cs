@@ -15,6 +15,8 @@ public partial class ShipControll : Node
 	private GameUI gameUI;
 	private Map map;
 	private int MapHeight = 10;
+
+	private bool PlaceShips = false;
 	public enum ShipType{
 		AircraftCarrier,
 		AmphibiousAssault,
@@ -34,18 +36,39 @@ public partial class ShipControll : Node
 		CreationPosition = gameUI.getSpawnPosition();
 
 		AddShipStorage(ShipType.Speedboat); // For testing
-		AddShipStorage(ShipType.Destroyer);
+		AddShipStorage(ShipType.Corvette);
+		//AddShipStorage(ShipType.Destroyer);
+		//AddShipStorage(ShipType.Cruiser);
 
 		StageBeginn();
 	}
-	public override void _Process(double delta){
-			//add code for new ships place with signal
+	public override void _Process(double delta)
+	{
+		if(PlaceShips)
+		{
+			if(ShipList.Count == 0)
+			{
+				CreateShip(ShipStorage[0]);
+				ShipStorage.Remove(ShipStorage[0]);
+			}
+			else
+			{
+				if(ShipList[^1].IsPlaced())
+				{
+					CreateShip(ShipStorage[0]);
+					ShipStorage.Remove(ShipStorage[0]);
+				}
+			}
+			if(ShipStorage.Count == 0) { 
+				PlaceShips = false; 
+				//call GetCords fpr list of Vector2I cords
+				//send cords to board manager
+			}
+		}
 	}
 	public void AddShipStorage(ShipType newShip) { ShipStorage.Add(newShip); }
 
 	private void StageBeginn(){
-		//get correct CreationPostion 
-
 		CreateShipGrid();
 		StartShipPlacement();
 	}
@@ -60,14 +83,7 @@ public partial class ShipControll : Node
 	public void EnemyTurn(){foreach(ShipManager X in ShipList){X.HideShip();}}
 	public void PlayerTurn(){foreach(ShipManager X in ShipList){X.UnhideShip();}}
 
-	private void StartShipPlacement(){//goes into process
-		foreach (var x in ShipStorage)
-		{
-			CreateShip(x);
-			//waiting Ship interaction
-		}
-		ShipStorage.Clear();
-	}
+	private void StartShipPlacement() { PlaceShips = true; }
 
 	public void ScaleShips(float Scale){
 		ShipScale = Scale;
