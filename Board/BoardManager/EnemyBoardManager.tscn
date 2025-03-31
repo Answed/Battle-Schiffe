@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0hm2le5q14yi"]
+
+[ext_resource type="Script" path="res://Board/BoardManager/EnemyBoardManager.cs" id="1_8s3od"]
+
+[node name="EnemyBoardManager" type="Node"]
+script = ExtResource("1_8s3od")

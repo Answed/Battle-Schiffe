@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://jtf48u8gilbr"]
+[gd_scene load_steps=18 format=3 uid="uid://jtf48u8gilbr"]
 
 [ext_resource type="Script" path="res://Board/BoardGeneration/MapGen.cs" id="1_8wxhl"]
 [ext_resource type="Script" path="res://Board/Map.cs" id="1_bpkr7"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://Board/BoardGeneration/MapUI.cs" id="3_fjbga"]
 [ext_resource type="Texture2D" uid="uid://lgo6lehcj5bm" path="res://Board/Textures/Water.png" id="3_h6o2v"]
 [ext_resource type="Texture2D" uid="uid://exb2v7jtj11y" path="res://Board/Textures/Grid.png" id="5_8chl2"]
+[ext_resource type="Texture2D" uid="uid://dc0136q0kpgb6" path="res://GameScenes/Texturen/empty.png" id="6_7fmre"]
+[ext_resource type="Texture2D" uid="uid://boqcssaeymrqa" path="res://GameScenes/Texturen/HitMarker.png" id="7_0d6oi"]
+[ext_resource type="Texture2D" uid="uid://wtthnabj1xvd" path="res://GameScenes/Texturen/MissMarker.png" id="8_u7fco"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0v2b0"]
 texture = ExtResource("3_h6o2v")
@@ -26,6 +29,24 @@ texture_region_size = Vector2i(200, 200)
 tile_size = Vector2i(200, 200)
 sources/0 = SubResource("TileSetAtlasSource_lvtlu")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rlins"]
+texture = ExtResource("6_7fmre")
+texture_region_size = Vector2i(200, 200)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s7pq6"]
+texture = ExtResource("7_0d6oi")
+texture_region_size = Vector2i(200, 200)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ror0d"]
+texture = ExtResource("8_u7fco")
+texture_region_size = Vector2i(200, 200)
+
+[sub_resource type="TileSet" id="TileSet_e0rir"]
+tile_size = Vector2i(200, 200)
+sources/2 = SubResource("TileSetAtlasSource_ror0d")
+sources/1 = SubResource("TileSetAtlasSource_s7pq6")
+sources/0 = SubResource("TileSetAtlasSource_rlins")
+
 [node name="Map" type="Node"]
 script = ExtResource("1_bpkr7")
 
@@ -40,6 +61,12 @@ tile_set = SubResource("TileSet_3l8b2")
 z_index = 1
 tile_set = SubResource("TileSet_hy4lx")
 
+[node name="PlayerGrid" type="TileMapLayer" parent="MapUI"]
+tile_set = SubResource("TileSet_e0rir")
+
+[node name="EnemyGrid" type="TileMapLayer" parent="MapUI"]
+tile_set = SubResource("TileSet_e0rir")
+
 [node name="MapGen" type="Node" parent="."]
 script = ExtResource("1_8wxhl")
 
@@ -47,6 +74,8 @@ script = ExtResource("1_8wxhl")
 [connection signal="SendMapWidth" from="." to="MapUI" method="GetWidth"]
 [connection signal="SendPosition" from="." to="MapUI" method="GetPosition"]
 [connection signal="SendSize" from="." to="MapUI" method="GetSize"]
+[connection signal="SetHitMarker" from="." to="MapUI" method="PlaceHitMarker"]
+[connection signal="SetMissMarker" from="." to="MapUI" method="PlaceMissMarker"]
 [connection signal="GetUIData" from="MapUI" to="." method="GetUIData"]
 [connection signal="GivingIslands" from="MapGen" to="." method="GetIslandInfos"]
 [connection signal="MapGenerationFinished" from="MapGen" to="MapUI" method="MapReady"]

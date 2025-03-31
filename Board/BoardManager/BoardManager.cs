@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public struct Ship
 {
-	//public ShipManager shipManager;  TODO add ShipManger
+	public ShipManager shipManager;  
 	public List<int[,]> shipPosition;
 }
 
@@ -13,59 +13,55 @@ public struct Ship
 
 public partial class BoardManager : Node
 {
-	private int[,] shipsPositions;
-	private int [,] oldBoardPositions;
+	[Signal] public delegate void SetHitMarkerEventHandler(string grid, Vector2I position);
+	[Signal] public delegate void SetMissMarkerEventHandler(string grid, Vector2I position);
+	
+	private int[,] _shipsPositions;
+	private int [,] _oldBoardPositions;
 	protected List<Ship> ships = new List<Ship>();
-	private Node boardNode;
-	private bool isPlayerBoard;
+	private string _gridName;
+	private bool _isPlayerBoard;
 	
 	private GameManager gameManager;
 
 	public override void _Ready()
-	{
-		//gameManager = GetNode<GameManager>("../GameManager");
+	{ 
+		gameManager = GetNode<GameManager>("../GameManager");
 	}
 	
-	public void InitBoard(int[,] board, bool isPlayerBoard, Node boardNode) 
+	public void InitBoard(int[,] board, bool isPlayerBoard) 
 	{
-		this.boardNode = boardNode;
-		shipsPositions = CopyBoard(board);
-		this.isPlayerBoard = isPlayerBoard;
+		_shipsPositions = CopyBoard(board);
+		this._isPlayerBoard = isPlayerBoard;
+		_gridName = isPlayerBoard ? "PlayerGrid" : "EnemyGrid";
 	}
 
 	public void AttackField(int x, int y)
 	{
 		int[,] position = {{x},{y}};
-		/*if (shipsPositions[x, y] >= 2) Cant test attack without any ships...
+		if (_shipsPositions[x, y] >= 2) 
 		{
 			//Gets the ShipValue from the Bord and substracts -2 to get the fitting index from ships
-			//ships[shipsPositions[x, y] - 2].shipPosition.Remove(position);
-			if (ships[shipsPositions[x, y] - 2].shipPosition.Count == 0)
+			ships[_shipsPositions[x, y] - 2].shipPosition.Remove(position);
+			if (ships[_shipsPositions[x, y] - 2].shipPosition.Count == 0)
 			{
-				//ships[shipsPositions[position[0, 0], position[0, 1]] - 2].shipManager.DestroyShip();
-				ships.RemoveAt(shipsPositions[x, y] - 2); 
-				//CheckIfAllShipsAreDead();
+				ships[_shipsPositions[position[0, 0], position[0, 1]] - 2].shipManager.DestroyShip();
+				ships.RemoveAt(_shipsPositions[x, y] - 2); 
+				CheckIfAllShipsAreDead();
 			}
-			//Set X on position
+			EmitSignal("SetHitMaker",_gridName, new Vector2I(x,y));
 		}
 		else
-		{
-			// Set 0 on position
-		}*/
-		shipsPositions[x, y] = -1; // Marks all hittet fields negativ Currently just for testing
+			EmitSignal("SetMissMarker",_gridName, new Vector2I(x,y));
+		
+		_shipsPositions[x, y] = -1; // Marks all hittet fields negativ Currently just for testing
 	}
 
 	private void CheckIfAllShipsAreDead()
 	{
 		if (ships.Count == 0)
-			gameManager.PlayerHasWon(isPlayerBoard);
+			gameManager.PlayerHasWon(_isPlayerBoard);
 	}
-
-	public void DeleteBoard()
-	{
-		boardNode.QueueFree();
-	}
-
 	public void SetShipArray()
 	{
 		int currentShipIndex = 2;
@@ -73,7 +69,7 @@ public partial class BoardManager : Node
 		{
 			foreach (int[,] position in ship.shipPosition)
 			{
-				shipsPositions[position[0, 0], position[0,1]] = currentShipIndex;
+				_shipsPositions[position[0, 0], position[0,1]] = currentShipIndex;
 			}
 			currentShipIndex++;
 		}
@@ -86,7 +82,7 @@ public partial class BoardManager : Node
 
 	public int[,] GetBoard()
 	{
-		return shipsPositions;
+		return _shipsPositions;
 	}
 	private int[,] CopyBoard(int[,] originalBoard) // It needs to be copied to prevent overwriting the other bord
 	{
