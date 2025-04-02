@@ -8,8 +8,5 @@ public partial class SettingsScene : Control
 	{
 	}
 
-	private void OnBackToMainMenuButtonPressed()
-	{
-		this.Visible = false;
-	}
+	private void OnBackToMainMenuButtonPressed() { this.Visible = false; }
 }

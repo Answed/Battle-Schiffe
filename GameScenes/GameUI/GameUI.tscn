@@ -139,6 +139,7 @@ text = "Switch
 Board"
 
 [node name="PlacmentFinishedButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 862.0
 offset_top = 133.0
 offset_right = 940.0

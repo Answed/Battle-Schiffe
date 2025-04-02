@@ -13,8 +13,5 @@ public partial class PlayerBoardManager : BoardManager
 		ships.Add(newShip);
 	}*/
 
-	public int GetShipCount()
-	{
-		return ships.Count;
-	}
+	public int GetShipCount() { return ships.Count; }
 }

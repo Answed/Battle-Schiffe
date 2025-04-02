@@ -74,8 +74,6 @@ script = ExtResource("1_8wxhl")
 [connection signal="SendMapWidth" from="." to="MapUI" method="GetWidth"]
 [connection signal="SendPosition" from="." to="MapUI" method="GetPosition"]
 [connection signal="SendSize" from="." to="MapUI" method="GetSize"]
-[connection signal="SetHitMarker" from="." to="MapUI" method="PlaceHitMarker"]
-[connection signal="SetMissMarker" from="." to="MapUI" method="PlaceMissMarker"]
 [connection signal="GetUIData" from="MapUI" to="." method="GetUIData"]
 [connection signal="GivingIslands" from="MapGen" to="." method="GetIslandInfos"]
 [connection signal="MapGenerationFinished" from="MapGen" to="MapUI" method="MapReady"]

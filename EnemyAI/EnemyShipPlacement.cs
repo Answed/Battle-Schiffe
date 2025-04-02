@@ -22,11 +22,8 @@ public partial class EnemyShipPlacement : Node
 		SelectShip(fightForce);
 		return currentShips;
 	}
-
-	public void ClearShips() // to Clear Memory
-	{
-		currentShips.Clear();
-	}
+	// to Clear Memory
+	public void ClearShips() { currentShips.Clear(); }
 
 	private void SelectShip(int fightForce)
 	{

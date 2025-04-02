@@ -30,8 +30,10 @@ public partial class MapGen : Node
 		public Vector2I cordinate;
 		public IslandType Type;
 	}
+	
 	[Signal] public delegate void MapGenerationFinishedEventHandler();
 	[Signal] public delegate void GivingIslandsEventHandler();
+	
 	private int mapWidth;
 	private int mapHeight;
 	private int[,] mapGrid;
@@ -91,10 +93,7 @@ public partial class MapGen : Node
 		return (filledCells / (double)totalCells) * 100;
 	}
 
-	public int[,] GetMapGrid()
-	{
-		return mapGrid;
-	}
+	public int[,] GetMapGrid() { return mapGrid; }
 
 	private void GenerateMap(int width, int height)
 	{
@@ -122,16 +121,6 @@ public partial class MapGen : Node
 				saveIsland(choosenIsland, x,y);
 			}
 		}
-		//debug prints map
-		/*for (int i = 0; i < mapGrid.GetLength(0); i++)
-		{
-			string line = "";
-			for (int j = 0; j < mapGrid.GetLength(1); j++)
-			{
-				line += mapGrid[i, j] + " ";
-			}
-			GD.Print(line);
-		}*/
 		EmitSignal("MapGenerationFinished"); //struct is to complex for emitsignal
 		EmitSignal("GivingIslands");
 	}

@@ -29,8 +29,5 @@ public partial class BrakeMenuScene : Control
 	}
 	
 
-	private void OnCloseGameButtonPressed()
-	{
-		GetTree().Quit();
-	}
+	private void OnCloseGameButtonPressed() { GetTree().Quit(); }
 }

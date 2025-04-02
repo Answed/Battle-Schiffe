@@ -6,18 +6,14 @@ public partial class EnemyAIManager : Node
 {
 	
 	[Signal] public delegate void EnemyTurnFinishedEventHandler();
-
 	[Signal] public delegate void AttackEventHandler(int shipCount);
 	[Signal] public delegate void SetAttackParametersEventHandler(PlayerBoardManager boardManager);
 	
 	private List<Ship> currentShips;
-
 	private EnemyBoardManager enemyBoard;
 	private PlayerBoardManager playerBoard;
-
 	private int currentFightingForce = 10;
 	private int currentBonus = 0;
-
 	private EnemyShipPlacement shipPlacement;
 	
 	// Called when the node enters the scene tree for the first time.
@@ -61,19 +57,7 @@ public partial class EnemyAIManager : Node
 	
 	// Gets Called in GameManager it only increases it by one bc of the Scaling Function.
 	// For more Info Check GDD Enemy AI
-	private void UpdateCurrentBonus()
-	{
-		currentBonus++;
-	}
-
-	public void AddShip(Ship ship)
-	{
-		currentShips.Add(ship);
-	}
-
-	public int GetCurrentShipCount()
-	{
-		return currentShips.Count;
-	}
-
+	private void UpdateCurrentBonus() { currentBonus++; }
+	public void AddShip(Ship ship) { currentShips.Add(ship); }
+	public int GetCurrentShipCount() { return currentShips.Count; }
 }

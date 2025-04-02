@@ -74,16 +74,6 @@ public partial class BoardManager : Node
 			currentShipIndex++;
 		}
 	}
-
-	public List<Ship> GetShips()
-	{
-		return ships;
-	}
-
-	public int[,] GetBoard()
-	{
-		return _shipsPositions;
-	}
 	private int[,] CopyBoard(int[,] originalBoard) // It needs to be copied to prevent overwriting the other bord
 	{
 		int[,] newBoard = new int[originalBoard.GetLength(0), originalBoard.GetLength(1)];
@@ -96,4 +86,6 @@ public partial class BoardManager : Node
 		}	
 		return newBoard;
 	}
+	public List<Ship> GetShips() { return ships; }
+	public int[,] GetBoard() { return _shipsPositions; }
 }

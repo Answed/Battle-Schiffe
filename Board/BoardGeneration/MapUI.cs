@@ -16,19 +16,18 @@ public partial class MapUI : Node2D
 	private float boardWidth = 418F;
 	private int mapWidth = 10;
 	private Vector2 mapPositon;
-
 	private List<MapGen.IslandInfo> IslandInfo;
 	private bool pReady = false;
 	private bool sReady = false;
 	private bool mReady = false;
 	private bool wReady = false;
+	
 	public override void _Ready()
 	{
 		EmitSignal("GetUIData");
 		waterLayer = GetNode<TileMapLayer>("Water");
 		gridLayer = GetNode<TileMapLayer>("Grid");
 	}
-
 
 	public override void _Process(double delta)
 	{
@@ -48,7 +47,8 @@ public partial class MapUI : Node2D
 			wReady = false;
 		}
 	}
-	public void generateUI(){
+	public void generateUI()
+	{
 		// fills board with water
 		GenerateTileMap("Water");
 		// adds guidelines to make the grid visible for the player.
@@ -68,12 +68,13 @@ public partial class MapUI : Node2D
 			for (int j = 0; j < mapWidth; j++)
 			{
 				Vector2I position = new Vector2I(i,j);
-				GetNode<TileMapLayer>("Water").SetCell(position,0,new Vector2I(0,0),0);
+				GetNode<TileMapLayer>(mapName).SetCell(position,0,new Vector2I(0,0),0);
 			}
 		}
 	}
 
-	private void placeIslands(){
+	private void placeIslands()
+	{
 		foreach (MapGen.IslandInfo X in IslandInfo)
 		{
 			Islands.Add(new Sprite2D());
@@ -93,7 +94,8 @@ public partial class MapUI : Node2D
 		}
 		foreach (Sprite2D X in Islands) { AddChild(X); }
 	}
-	public void setIslandInfos(List<MapGen.IslandInfo> Infos) { 
+	public void setIslandInfos(List<MapGen.IslandInfo> Infos)
+	{ 
 		mReady = true;
 		IslandInfo = Infos; 
 	}
@@ -110,18 +112,11 @@ public partial class MapUI : Node2D
 		boardWidth = size.X; 
 		sReady = true;
 	}
-	private void GetWidth(int width){
+	private void GetWidth(int width)
+	{
 		mapWidth = width;
 		wReady = true;
 	}
-
-	private void PlaceHitMarker(string grid, Vector2I pos)
-	{
-		GetNode<TileMapLayer>(grid).SetCell(pos,1,new Vector2I(0,0),0);
-	}
-
-	private void PlaceMissMarker(string grid, Vector2I pos)
-	{
-		GetNode<TileMapLayer>(grid).SetCell(pos,2,new Vector2I(0,0),0);
-	}
+	private void PlaceHitMarker(string grid, Vector2I pos) { GetNode<TileMapLayer>(grid).SetCell(pos,1,new Vector2I(0,0),0); }
+	private void PlaceMissMarker(string grid, Vector2I pos) { GetNode<TileMapLayer>(grid).SetCell(pos,2,new Vector2I(0,0),0); }
 }

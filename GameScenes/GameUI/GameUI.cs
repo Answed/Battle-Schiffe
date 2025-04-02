@@ -19,29 +19,24 @@ public partial class GameUI : Control
 	{
 		//foreach (Node child in GetChildren()){GD.Print($"Child Node: {child.Name}");}
 	}
-
-	public Vector2 getGameFieldPosition(){
-		return GetNode<Control>("Board").Position;
-	}
-	public Vector2 getGameFieldSize(){
-		return GetNode<Control>("Board").Size;
-	}
-	public Vector2 getSpawnPosition(){
+	public Vector2 getGameFieldPosition() { return GetNode<Control>("Board").Position; }
+	public Vector2 getGameFieldSize() { return GetNode<Control>("Board").Size; }
+	public Vector2 getSpawnPosition()
+	{
 		BoxContainer SpawnArea = GetNode<BoxContainer>("OwnShips");
 		return SpawnArea.Position + (SpawnArea.Size / 2);
 	}
-
 	private void openBrakeMenuPressed()
 	{
 		EmitSignal("MenuOpenMap");
 		EmitSignal("MenuOpenShips");
 		GetNode<Control>("BrakeMenu").Visible = true;
 	}
-	private void CloseBreakMenu(){
+	private void CloseBreakMenu()
+	{
 		EmitSignal("MenuClosedMap");
 		EmitSignal("MenuClosedShips");
 	}
-
 	private void OnSwitchBoardButtonPressed()
 	{
 		//signals for hiding TBI
@@ -57,8 +52,8 @@ public partial class GameUI : Control
 		}
 		playerBoard =! playerBoard;
 	}
-
-	private void PlacementFinishedPressed(){
+	private void PlacementFinishedPressed()
+	{
 		//send signal to end board setup
 	}
 }
