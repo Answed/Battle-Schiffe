@@ -1,0 +1,113 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.2.3">
+  <diagram name="Seite-1" id="S278MCB8RyE6sVEHYK0x">
+    <mxGraphModel dx="1428" dy="751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7xSByA9pngwSIA-kH0zt-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" target="7xSByA9pngwSIA-kH0zt-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="423" y="90" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-1" value="X und Y Variable für Mapgröße" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="363" y="30" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-2" target="7xSByA9pngwSIA-kH0zt-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-2" value="Prozentuale Coverage" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="363" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-7" target="7xSByA9pngwSIA-kH0zt-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-7" target="7xSByA9pngwSIA-kH0zt-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-7" value="Versuch der Inselplatzierung an zufälliger Position" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="356" y="210" width="134" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-8" target="7xSByA9pngwSIA-kH0zt-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-8" value="Platzierung erfolgreich" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="234" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-9" target="7xSByA9pngwSIA-kH0zt-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-9" value="Platzierung nicht möglich" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="474" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-12" target="7xSByA9pngwSIA-kH0zt-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-12" value="Insel am entsprechenden Platz im 2D-Array mit einsen eingetragen" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="234" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-16" target="7xSByA9pngwSIA-kH0zt-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-16" target="7xSByA9pngwSIA-kH0zt-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-16" value="Berechnung Coverage" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="254" y="550" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-18" target="7xSByA9pngwSIA-kH0zt-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="194" y="720" />
+              <mxPoint x="100" y="720" />
+              <mxPoint x="100" y="243" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-18" value="Gewünschte Coverage noch nicht erreicht" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="134" y="635.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-19" target="7xSByA9pngwSIA-kH0zt-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-19" value="Coverage erreicht" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="334" y="635.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-22" value="Mapgenerierung vollendet" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="344" y="715.5" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-25" target="7xSByA9pngwSIA-kH0zt-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-25" target="7xSByA9pngwSIA-kH0zt-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-25" value="Testen anderer Presets" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="494" y="400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-28" target="7xSByA9pngwSIA-kH0zt-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="434" y="560" />
+              <mxPoint x="314" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-28" value="Platzieren eines anderen Presets erfolgreich" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="374" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7xSByA9pngwSIA-kH0zt-30" target="7xSByA9pngwSIA-kH0zt-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="634" y="560" />
+              <mxPoint x="730" y="560" />
+              <mxPoint x="730" y="243" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7xSByA9pngwSIA-kH0zt-30" value="Platzierung anderer Presets nicht möglich" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="574" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
