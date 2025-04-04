@@ -5,8 +5,6 @@ public partial class BrakeMenuScene : Control
 {
 	[Signal] public delegate void BreakMenuCloseEventHandler();
 
-	public override void _Ready(){}
-
 	private void OnContinueButtonPressed()
 	{
 		this.Visible = false;

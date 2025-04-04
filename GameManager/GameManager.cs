@@ -24,11 +24,10 @@ public partial class GameManager : Node
 	public int currenStage = 0;
 	public int currentRound = 0;
 	
-	private ShipControll shipControll;
-	private PlayerBoardManager playerBoardManager;
-	private EnemyBoardManager enemyBoardManager;
+	private PlayerBoardManager _playerBoardManager;
+	private EnemyBoardManager _enemyBoardManager;
 	
-	private GameState gameState = GameState.RoundSetup;
+	private GameState _gameState = GameState.RoundSetup;
 
 	public override void _Ready()
 	{
@@ -38,18 +37,18 @@ public partial class GameManager : Node
 
 	private void SetRequiredDependencies()
 	{
-		playerBoardManager = GetNode<PlayerBoardManager>("../PlayerBoardManager");
-		enemyBoardManager = GetNode<EnemyBoardManager>("../EnemyBoardManager");
+		_playerBoardManager = GetNode<PlayerBoardManager>("../PlayerBoardManager");
+		_enemyBoardManager = GetNode<EnemyBoardManager>("../EnemyBoardManager");
 	}
 
 	private void UpdateState()
 	{
-		switch (gameState)
+		switch (_gameState)
 		{
 			case GameState.RoundSetup:
 				EmitSignal(SignalName.ShipControllStageBegin);
 				EmitSignal(SignalName.CallGenerateMap,10,10);
-				gameState = GameState.RoundStart;
+				_gameState = GameState.RoundStart;
 				UpdateState();
 				break;
 			case GameState.RoundStart:
@@ -64,7 +63,7 @@ public partial class GameManager : Node
 			case GameState.RoundEnd:
 				EmitSignal(SignalName.ShipControllStageEnd);
 				// Cleanup for next Stage
-				gameState = GameState.RoundSetup;
+				_gameState = GameState.RoundSetup;
 				UpdateState();
 				break;
 		}
@@ -76,22 +75,22 @@ public partial class GameManager : Node
 			EmitSignal(SignalName.EnemyUpdateBonus);
 	}
 	
-	public void ChangeToPlayerTurn()
+	private void ChangeToPlayerTurn()
 	{
-		gameState = GameState.PlayerTurn;
+		_gameState = GameState.PlayerTurn;
 		UpdateState();
 	}
 
-	public void PlayerHasWon(bool won)
+	private void PlayerHasWon(bool won)
 	{
 		//TODO: Management of the win / lose case
-		gameState = GameState.RoundEnd;
+		_gameState = GameState.RoundEnd;
 		UpdateState();
 	}
 
 	private void OnEnemyTurnFinished()
 	{
-		gameState = GameState.PlayerTurn;
+		_gameState = GameState.PlayerTurn;
 		UpdateState();
 	}
 }

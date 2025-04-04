@@ -10,23 +10,16 @@ public partial class GameUI : Control
 	[Signal] public delegate void MenuClosedMapEventHandler();
 	[Signal] public delegate void MenuOpenShipsEventHandler();
 	[Signal] public delegate void MenuClosedShipsEventHandler();	
-	private Texture2D placeholderTexture;
-	private ScrollContainer scrollContainer;
-	private HBoxContainer hboxContainer;
 
-	private bool playerBoard = true;
-	public override void _Ready()
+	private bool _playerBoard = true;
+	public Vector2 GetGameFieldPosition() { return GetNode<Control>("Board").Position; }
+	public Vector2 GetGameFieldSize() { return GetNode<Control>("Board").Size; }
+	public Vector2 GetSpawnPosition()
 	{
-		//foreach (Node child in GetChildren()){GD.Print($"Child Node: {child.Name}");}
+		BoxContainer spawnArea = GetNode<BoxContainer>("OwnShips");
+		return spawnArea.Position + (spawnArea.Size / 2);
 	}
-	public Vector2 getGameFieldPosition() { return GetNode<Control>("Board").Position; }
-	public Vector2 getGameFieldSize() { return GetNode<Control>("Board").Size; }
-	public Vector2 getSpawnPosition()
-	{
-		BoxContainer SpawnArea = GetNode<BoxContainer>("OwnShips");
-		return SpawnArea.Position + (SpawnArea.Size / 2);
-	}
-	private void openBrakeMenuPressed()
+	private void OpenBrakeMenuPressed()
 	{
 		EmitSignal("MenuOpenMap");
 		EmitSignal("MenuOpenShips");
@@ -40,7 +33,7 @@ public partial class GameUI : Control
 	private void OnSwitchBoardButtonPressed()
 	{
 		//signals for hiding TBI
-		if(playerBoard)
+		if(_playerBoard)
 		{
 			GetNode<Label>("CurrentBoard").Text = "Enemy";
 			EmitSignal("HidePlayerShips");
@@ -50,7 +43,7 @@ public partial class GameUI : Control
 			GetNode<Label>("CurrentBoard").Text = "Player";
 			EmitSignal("ShowPlayerShips");
 		}
-		playerBoard =! playerBoard;
+		_playerBoard =! _playerBoard;
 	}
 	private void PlacementFinishedPressed()
 	{

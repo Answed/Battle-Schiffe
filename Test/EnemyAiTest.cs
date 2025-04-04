@@ -10,11 +10,11 @@ public partial class EnemyAiTest : Node2D
 	[Signal] public delegate void TestShipAttackEventHandler();
 	[Signal] public delegate void CallGenerateMapEventHandler(int width, int height);
 	
-	private EnemyBoardManager enemyBoard;
-	private PlayerBoardManager playerBoard;
-	private EnemyAIManager enemyAI;
-	private MapGen mapGen;
-	private int[,] copyBoard;
+	private EnemyBoardManager _enemyBoard;
+	private PlayerBoardManager _playerBoard;
+	private EnemyAIManager _enemyAi;
+	private MapGen _mapGen;
+	private int[,] _copyBoard;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -30,10 +30,10 @@ public partial class EnemyAiTest : Node2D
 	}
 	private void SetRequiredDependencies() 
 	{
-		mapGen = GetNode<MapGen>("MapGen");
-		enemyBoard = GetNode<EnemyBoardManager>("EnemyBoardManager");
-		playerBoard = GetNode<PlayerBoardManager>("PlayerBoardManager");
-		enemyAI = GetNode<EnemyAIManager>("EnemyAi");
+		_mapGen = GetNode<MapGen>("MapGen");
+		_enemyBoard = GetNode<EnemyBoardManager>("EnemyBoardManager");
+		_playerBoard = GetNode<PlayerBoardManager>("PlayerBoardManager");
+		_enemyAi = GetNode<EnemyAIManager>("EnemyAi");
 	}
 	
 	// All Steps needed for testing the Ship Placement in the EnemyAITestScene
@@ -41,22 +41,22 @@ public partial class EnemyAiTest : Node2D
 	{
 		SetRequiredDependencies();
 		EmitSignal("CallGenerateMap", 20, 20);
-		copyBoard = new int[20, 20];
-		CopyBoard(mapGen.GetMapGrid());
-		enemyBoard.InitBoard(mapGen.GetMapGrid(), false);
-		playerBoard.InitBoard(mapGen.GetMapGrid(), true);
-		PrintBoard(mapGen.GetMapGrid());
+		_copyBoard = new int[20, 20];
+		CopyBoard(_mapGen.GetMapGrid());
+		_enemyBoard.InitBoard(_mapGen.GetMapGrid(), false);
+		_playerBoard.InitBoard(_mapGen.GetMapGrid(), true);
+		PrintBoard(_mapGen.GetMapGrid());
 		EmitSignal(SignalName.TestShipPlacement);
-		PrintBoard(enemyBoard.GetBoard());
-		GD.Print(CompareBoard(copyBoard, enemyBoard.GetBoard()));
+		PrintBoard(_enemyBoard.GetBoard());
+		GD.Print(CompareBoard(_copyBoard, _enemyBoard.GetBoard()));
 	}
 
 	private void ShipAttackTest()
 	{
 		EmitSignal(SignalName.TestShipAttack);
-		PrintBoard(playerBoard.GetBoard());
-		GD.Print(CountHits(playerBoard.GetBoard()) == enemyAI.GetCurrentShipCount());
-		PrintBoard(copyBoard);
+		PrintBoard(_playerBoard.GetBoard());
+		GD.Print(CountHits(_playerBoard.GetBoard()) == _enemyAi.GetCurrentShipCount());
+		PrintBoard(_copyBoard);
 	}
 	
 	private void CopyBoard(int[,] originalBoard)
@@ -65,7 +65,7 @@ public partial class EnemyAiTest : Node2D
 		{
 			for (int j = 0; j < originalBoard.GetLength(1); j++)
 			{
-				copyBoard[i, j] = originalBoard[i, j];
+				_copyBoard[i, j] = originalBoard[i, j];
 			}
 		}	
 	}

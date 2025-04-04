@@ -2,8 +2,6 @@ using Godot;
 
 public partial class StartMenu : Control
 {
-
-	public override void _Ready(){}
 	private void OnOpenShipSelectorButtonPressed()
 	{
 		GetNode<Control>("ShipSelector").Visible = true;

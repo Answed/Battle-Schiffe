@@ -7,23 +7,23 @@ using BattleSchiffe.Scripts.BoardManager;
 public partial class EnemyShipPlacement : Node
 {
 	[Export]
-	private Godot.Collections.Array<ShipBlueprint> shipBlueprints;
-	private List<Ship> currentShips;
-	private int[,] board;
+	private Godot.Collections.Array<ShipBlueprint> _shipBlueprints;
+	private List<Ship> _currentShips;
+	private int[,] _board;
 
 	public override void _Ready()
 	{
-		currentShips = new List<Ship>();
+		_currentShips = new List<Ship>();
 	}
 
 	public List<Ship> PlaceShips(int fightForce, int[,] board )
 	{
-		this.board = board;
+		this._board = board;
 		SelectShip(fightForce);
-		return currentShips;
+		return _currentShips;
 	}
 	// to Clear Memory
-	public void ClearShips() { currentShips.Clear(); }
+	private void ClearShips() { _currentShips.Clear(); }
 
 	private void SelectShip(int fightForce)
 	{
@@ -35,12 +35,12 @@ public partial class EnemyShipPlacement : Node
 			if (fightForce - shipLevel >= 0)
 			{
 				Ship ship = new Ship();
-				ShipBlueprint shipBlueprint = shipBlueprints[rand.Next(0, shipBlueprints.Count)];
+				ShipBlueprint shipBlueprint = _shipBlueprints[rand.Next(0, _shipBlueprints.Count)];
 				ship.shipPosition = PlaceSelectedShip(shipBlueprint);
 				if (ship.shipPosition.Count != 0)
 				{
 					GD.Print(shipBlueprint.shipType);
-					currentShips.Add(ship);
+					_currentShips.Add(ship);
 					fightForce -= shipLevel;
 					GD.Print(fightForce);
 				}
@@ -48,18 +48,17 @@ public partial class EnemyShipPlacement : Node
 		}
 	}
 
-	public List<int[,]> PlaceSelectedShip(ShipBlueprint ship)
+	private List<int[,]> PlaceSelectedShip(ShipBlueprint ship)
 	{
-		bool success = false; // Checks if the Ship can be placed there.
 		Random rand = new Random();
 		List<int[,]> positions = new List<int[,]>();
 		int breakCount = 0;
-		while (success != true)
+		while (true) // Has a break condition so it cant run for ever.
 		{
 			int selectedShipRotation = rand.Next(0, ship.position.Count);
 			int maxXValue = ship.position[selectedShipRotation].positions.Count;
 			int maxYValue = ship.position[selectedShipRotation].positions[0].GetLength(0);
-			int[] startPosition = {rand.Next(0, board.GetLength(0)- maxXValue - 1), rand.Next(0, board.GetLength(1) - maxYValue - 1)};
+			int[] startPosition = {rand.Next(0, _board.GetLength(0)- maxXValue - 1), rand.Next(0, _board.GetLength(1) - maxYValue - 1)};
 			int[] currentPosition = new int[2] { startPosition[0], startPosition[1] };
 
 			bool shipFits = true;
@@ -68,7 +67,7 @@ public partial class EnemyShipPlacement : Node
 			{
 				for (int iy = 0; iy < maxYValue; iy++)
 				{
-					if (board[currentPosition[0], currentPosition[1]] != 0)
+					if (_board[currentPosition[0], currentPosition[1]] != 0)
 					{
 						shipFits = false;
 						ResetBoard(positions);
@@ -80,7 +79,7 @@ public partial class EnemyShipPlacement : Node
 					{
 						int[,] shipPosition = { { currentPosition[0], currentPosition[1] } };
 						positions.Add(shipPosition);
-						board[currentPosition[0], currentPosition[1]] = 2;
+						_board[currentPosition[0], currentPosition[1]] = 2;
 					}
 					currentPosition[1]++;
 				}
@@ -105,7 +104,7 @@ public partial class EnemyShipPlacement : Node
 	{
 		foreach (var position in shipPositions)
 		{
-			board[position[0, 0], position[0, 1]] = 0;
+			_board[position[0, 0], position[0, 1]] = 0;
 		}
 	}
 }

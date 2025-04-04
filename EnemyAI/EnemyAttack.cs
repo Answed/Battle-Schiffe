@@ -4,29 +4,29 @@ using BattleSchiffe.Scripts.BoardManager;
 
 public partial class EnemyAttack : Node
 {
-	private PlayerBoardManager playerBoard;
-	private int[,] boardArray;
+	private PlayerBoardManager _playerBoardManager;
+	private int[,] _board;
 
 	private void SetAttackParameters(PlayerBoardManager board)
 	{
-		playerBoard = board;
-		boardArray = playerBoard.GetBoard();
+		_playerBoardManager = board;
+		_board = _playerBoardManager.GetBoard();
 	}
 	
 	private void Attack(int numberOfAttacks)
 	{
 		Random rand = new Random();
-		int xSize = boardArray.GetLength(0);
-		int ySize = boardArray.GetLength(1);
+		int xSize = _board.GetLength(0);
+		int ySize = _board.GetLength(1);
 		GD.Print("x: " + xSize + ", y: " + ySize);
 		while (numberOfAttacks > 0)
 		{
 			int randomX = rand.Next(0, xSize);
 			int randomY = rand.Next(0, ySize);
 			GD.Print("x: " + randomX + ", y: " + randomY);
-			if (Math.Abs(boardArray[randomX, randomY]) != 1) // Checks if position is a island = 1 or allready attacked = -1
+			if (Math.Abs(_board[randomX, randomY]) != 1) // Checks if position is a island = 1 or allready attacked = -1
 			{
-				playerBoard.AttackField(randomX, randomY);
+				_playerBoardManager.AttackField(randomX, randomY);
 				numberOfAttacks--;
 			}
 		}
