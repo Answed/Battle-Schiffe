@@ -3,11 +3,7 @@ using Godot;
 public partial class StartMenu : Control
 {
 
-	public override void _Ready()
-	{	
-
-	}
-	
+	public override void _Ready(){}
 	private void OnOpenShipSelectorButtonPressed()
 	{
 		GetNode<Control>("ShipSelector").Visible = true;
@@ -16,14 +12,9 @@ public partial class StartMenu : Control
 	{
 		GetNode<Control>("Settings").Visible = true;
 	}
-
 	private void OnOpenCreditsButtonPressed()
 	{
 		GetNode<Control>("Credits").Visible = true;
 	}
-	
-	private void CloseGameButtonPressed()
-	{
-		GetTree().Quit();
-	}
+	private void CloseGameButtonPressed() { GetTree().Quit(); }
 }

@@ -7,8 +7,5 @@ public partial class CreditsScene : Control
 	{
 	}
 
-	private void OnBackToMainMenuButtonPressed()
-	{
-		this.Visible = false;
-	}
+	private void OnBackToMainMenuButtonPressed() { this.Visible = false; }
 }

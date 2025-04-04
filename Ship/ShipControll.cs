@@ -72,30 +72,22 @@ public partial class ShipControll : Node
 		CreateShipGrid();
 		StartShipPlacement();
 	}
-
-	private void BoardPlacementFinished(){
-		LockShips();
-	}
+	private void BoardPlacementFinished() { LockShips(); }
 	private void StageEnd(){
 		StoreShips();
 		ClearBoard();
 	}
 	public void EnemyTurn(){foreach(ShipManager X in ShipList){X.HideShip();}}
 	public void PlayerTurn(){foreach(ShipManager X in ShipList){X.UnhideShip();}}
-
 	private void StartShipPlacement() { PlaceShips = true; }
-
 	public void ScaleShips(float Scale){
 		ShipScale = Scale;
 		foreach (ShipManager X in ShipList){X.ScaleShip(ShipScale);}
 	}
-
 	private void StoreShips(){foreach(ShipManager X in ShipList){AddShipStorage(X.GetShipType());}}
 	private void ClearBoard(){foreach(ShipManager X in ShipList){X.DestroyShip();}}
 	private void LockShips(){foreach(ShipManager X in ShipList){X.LockingShip();}}
 	private void UnlockShips(){foreach(ShipManager X in ShipList){X.UnlockingShip();}}
-
-	//extra functions
 	private void CreateShip(ShipType type){
 		switch (type)
 		{
@@ -143,11 +135,9 @@ public partial class ShipControll : Node
 		PlaceShipGrid();
 		GenerateShipGrid(Board);
 	}
-
 	private void setShipScaling(){
 		ShipScale = (MapSize.X / MapWidth) / 200; // 200 is default size of the sprites
 	}
-
 	private void GenerateShipGrid(int[,] map){
 		for (int i = 0; i < MapWidth; i++)
 		{

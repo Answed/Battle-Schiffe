@@ -16,6 +16,7 @@ public partial class Map : Node
 	
 	private GameUI gameUI;
 	private int MapWidth = 10;
+	
 	private void CallGenerateMap(int width, int height)
 	{
 		EmitSignal(SignalName.GenerateMap,width,height);
@@ -32,18 +33,8 @@ public partial class Map : Node
 	public int getMapWidth() { return MapWidth; }
 	public void GetIslandInfos() { GetNode<MapUI>("MapUI").setIslandInfos(GetNode<MapGen>("MapGen").GetIslandInfos());}
 	public int[,] GetMap() { return GetNode<MapGen>("MapGen").GetMapGrid(); }
-	
 	public void HideMap() { GetNode<Node2D>("MapUI").Visible = false; }
-	
 	public void ShowMap() { GetNode<Node2D>("MapUI").Visible = true; }
-
-	private void TransferHitSignal(string grid, Vector2I position)
-	{
-		EmitSignal("SetHitMarker", grid, position);
-	}
-
-	private void TranserMissSignal(string grid, Vector2I position)
-	{
-		EmitSignal("SetMissMarker", grid, position);
-	}
+	private void TransferHitSignal(string grid, Vector2I position) { EmitSignal("SetHitMarker", grid, position); }
+	private void TranserMissSignal(string grid, Vector2I position) { EmitSignal("SetMissMarker", grid, position); }
 }

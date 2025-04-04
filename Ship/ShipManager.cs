@@ -137,10 +137,8 @@ public partial class ShipManager : Node2D
 				break;
 		}
 	}
-	
 	public List<Vector2I> GetCords() { return BoardCords; }
 	public bool IsPlaced() { return Placed; }
-
 	private void HoverSpriteCorrection(){
 		switch (SpriteRotation)
 		{
