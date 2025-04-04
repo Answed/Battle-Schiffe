@@ -15,18 +15,18 @@ public partial class BoardManager : Node
 {
 	[Signal] public delegate void SetHitMarkerEventHandler(string grid, Vector2I position);
 	[Signal] public delegate void SetMissMarkerEventHandler(string grid, Vector2I position);
+	[Signal] public delegate void GameOverEventHandler(bool win);
 	
 	private int[,] _shipsPositions;
-	private int [,] _oldBoardPositions;
-	protected List<Ship> ships = new List<Ship>();
+	protected List<Ship> Ships = new List<Ship>();
 	private string _gridName;
 	private bool _isPlayerBoard;
 	
-	private GameManager gameManager;
+	private GameManager _gameManager;
 
-	public override void _Ready()
+	public override void _Ready() // Must be public to be used by the Engine
 	{ 
-		gameManager = GetNode<GameManager>("../GameManager");
+		_gameManager = GetNode<GameManager>("../GameManager");
 	}
 	
 	public void InitBoard(int[,] board, bool isPlayerBoard) 
@@ -41,12 +41,12 @@ public partial class BoardManager : Node
 		int[,] position = {{x},{y}};
 		if (_shipsPositions[x, y] >= 2) 
 		{
-			//Gets the ShipValue from the Bord and substracts -2 to get the fitting index from ships
-			ships[_shipsPositions[x, y] - 2].shipPosition.Remove(position);
-			if (ships[_shipsPositions[x, y] - 2].shipPosition.Count == 0)
+			//Gets the ShipValue from the Bord and substracts -2 to get the fitting index from Ships
+			Ships[_shipsPositions[x, y] - 2].shipPosition.Remove(position);
+			if (Ships[_shipsPositions[x, y] - 2].shipPosition.Count == 0)
 			{
-				ships[_shipsPositions[position[0, 0], position[0, 1]] - 2].shipManager.DestroyShip();
-				ships.RemoveAt(_shipsPositions[x, y] - 2); 
+				Ships[_shipsPositions[position[0, 0], position[0, 1]] - 2].shipManager.DestroyShip();
+				Ships.RemoveAt(_shipsPositions[x, y] - 2); 
 				CheckIfAllShipsAreDead();
 			}
 			EmitSignal("SetHitMaker",_gridName, new Vector2I(x,y));
@@ -59,13 +59,13 @@ public partial class BoardManager : Node
 
 	private void CheckIfAllShipsAreDead()
 	{
-		if (ships.Count == 0)
-			gameManager.PlayerHasWon(_isPlayerBoard);
+		if (Ships.Count == 0)
+			EmitSignal("GameOver", _isPlayerBoard);
 	}
-	public void SetShipArray()
+	protected void SetShipArray()
 	{
 		int currentShipIndex = 2;
-		foreach (Ship ship in ships)
+		foreach (Ship ship in Ships)
 		{
 			foreach (int[,] position in ship.shipPosition)
 			{
@@ -86,6 +86,6 @@ public partial class BoardManager : Node
 		}	
 		return newBoard;
 	}
-	public List<Ship> GetShips() { return ships; }
+	public List<Ship> GetShips() { return Ships; }
 	public int[,] GetBoard() { return _shipsPositions; }
 }

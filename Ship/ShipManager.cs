@@ -8,22 +8,20 @@ using static Godot.GD;
 public partial class ShipManager : Node2D
 {
 	
-	private int SpriteRotation = 0; // 0-3 top->clockwise
-	private bool Selected  = false;
-	private bool Hovered = false;
-	private float MapScale = 1F;
-	private List<Vector2I> BoardCords = new();
-	private Vector2 TileMapPosition;
-	private Vector2 PlacePosition;
-	private ShipControll.ShipType ShipType;
+	private int _spriteRotation = 0; // 0-3 top->clockwise
+	private bool _selected  = false;
+	private bool _hovered = false;
+	private float _mapScale = 1F;
+	private List<Vector2I> _boardCords = new();
+	private Vector2 _tileMapPosition;
+	private Vector2 _placePosition;
+	private ShipControll.ShipType _shipType;
 
-	private bool Placed = false;
-
-	public override void _Ready(){}
+	private bool _placed = false;
 	
 	public override void _Process(double delta)
 	{
-		if(Selected)
+		if(_selected)
 		{
 			//follows mouse
 			Position = GetGlobalMousePosition();
@@ -31,58 +29,58 @@ public partial class ShipManager : Node2D
 			if(Input.IsActionJustPressed("rotate_selected_ship"))
 			{
 				RotationDegrees += 90;
-				if(SpriteRotation == 3){ SpriteRotation = 0;}
-				else{SpriteRotation++;}
+				if(_spriteRotation == 3){ _spriteRotation = 0;}
+				else{_spriteRotation++;}
 
-				if(ShipType == ShipControll.ShipType.Corvette || ShipType ==ShipControll.ShipType.Corvette){
+				if(_shipType == ShipControll.ShipType.Corvette || _shipType ==ShipControll.ShipType.Corvette){
 					HoverSpriteCorrection();
 				}
 			}
 			//Hover Sprite
-			GetNode<AnimatedSprite2D>("AnimatedSprite2D-Hover").GlobalPosition = PlacePosition;
-			if(ShipType == ShipControll.ShipType.Corvette || ShipType ==ShipControll.ShipType.Corvette){
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D-Hover").GlobalPosition = _placePosition;
+			if(_shipType == ShipControll.ShipType.Corvette || _shipType ==ShipControll.ShipType.Corvette){
 				HoverSpriteCorrection();
 			}
 		}
 		//selects current ship
-		if(Hovered && Input.IsActionJustPressed("select"))
+		if(_hovered && Input.IsActionJustPressed("select"))
 		{
-			if(Selected)
+			if(_selected)
 			{
-				Selected = false;
-				Position = PlacePosition;
+				_selected = false;
+				Position = _placePosition;
 				GetNode<AnimatedSprite2D>("AnimatedSprite2D-Hover").Visible = false;
 				SetPositions();
-				Placed = true; 
+				_placed = true; 
 			}
 			else
 			{
-				Selected = true;
+				_selected = true;
 				GetNode<AnimatedSprite2D>("AnimatedSprite2D-Hover").Visible = true;
 			}
 		}
 	}
 	//checks if the ship is hovered over
-	public void MouseEnter()
+	private void MouseEnter()
 	{
-		Hovered = true;
+		_hovered = true;
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(1.1F,1.1F);
 	}
-	public void MouseExit()
+	private void MouseExit()
 	{
-		Hovered = false;
+		_hovered = false;
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Scale = new Vector2(1.0F,1.0F);
 	}
-	public void BodyEnter(TileMapLayer nod) 
+	private void BodyEnter(TileMapLayer nod) 
 	{
-		TileMapPosition = nod.Position;
-		Vector2 helper = (Position - nod.Position) / 16 / MapScale; // 16 = map tile size
+		_tileMapPosition = nod.Position;
+		Vector2 helper = (Position - nod.Position) / 16 / _mapScale; // 16 = map tile size
 		helper = new Vector2((int)helper.X, (int)helper.Y);
-		PlacePosition = (helper * (200F * Scale)) + nod.Position + (Scale * 100F); 
+		_placePosition = (helper * (200F * Scale)) + nod.Position + (Scale * 100F); 
 	}
 
-	public void SetShipType(ShipControll.ShipType type) { ShipType = type; }
-	public ShipControll.ShipType GetShipType() { return ShipType; }
+	public void SetShipType(ShipControll.ShipType type) { _shipType = type; }
+	public ShipControll.ShipType GetShipType() { return _shipType; }
 
 	public void LockingShip() { GetNode<Area2D>("Area2D-Collision").Visible = false; }
 	public void UnlockingShip() { GetNode<Area2D>("Area2D-Collision").Visible = true; }
@@ -90,43 +88,43 @@ public partial class ShipManager : Node2D
 	public void HideShip() { Visible = false; }
 	public void UnhideShip() { Visible = true; }
 	public void DestroyShip() { QueueFree(); }
-	public void ScaleShip(float Scale) { this.Scale = new Vector2(Scale,Scale); }
-	public void SetMapScale(float mscale) { MapScale = mscale; }
+	public void ScaleShip(float scale) { this.Scale = new Vector2(scale,scale); }
+	public void SetMapScale(float mscale) { _mapScale = mscale; }
 
 	private void SetPositions()
 	{
-		Vector2 helper = (Position - TileMapPosition) / 16 / MapScale;
+		Vector2 helper = (Position - _tileMapPosition) / 16 / _mapScale;
 		helper =  new Vector2I((int)helper.X,(int)helper.Y);
 		Vector2I helper2 = (Vector2I)helper;
-		BoardCords.Add(helper2);
-		switch (ShipType)
+		_boardCords.Add(helper2);
+		switch (_shipType)
 		{
 			case ShipControll.ShipType.Speedboat:
 				GD.Print(helper);
-				GD.Print(BoardCords);
+				GD.Print(_boardCords);
 				break;
 			case ShipControll.ShipType.Corvette:
-				switch (SpriteRotation)
+				switch (_spriteRotation)
 				{
 					case 0:
-						helper2 = BoardCords[0];
+						helper2 = _boardCords[0];
 						helper2.Y = helper2.Y + 1;
-						BoardCords.Add(helper2);
+						_boardCords.Add(helper2);
 						break;
 					case 1:
-						helper2 = BoardCords[0];
+						helper2 = _boardCords[0];
 						helper2.X = helper2.X + 1;
-						BoardCords.Add(helper2);
+						_boardCords.Add(helper2);
 						break;
 					case 2:
-						helper2 = BoardCords[0];
+						helper2 = _boardCords[0];
 						helper2.Y = helper2.Y - 1;
-						BoardCords.Add(helper2);
+						_boardCords.Add(helper2);
 						break;
 					case 3:
-						helper2 = BoardCords[0];
+						helper2 = _boardCords[0];
 						helper2.X = helper2.X - 1;
-						BoardCords.Add(helper2);
+						_boardCords.Add(helper2);
 						break;
 					default:
 						break;
@@ -137,10 +135,10 @@ public partial class ShipManager : Node2D
 				break;
 		}
 	}
-	public List<Vector2I> GetCords() { return BoardCords; }
-	public bool IsPlaced() { return Placed; }
+	public List<Vector2I> GetCords() { return _boardCords; }
+	public bool IsPlaced() { return _placed; }
 	private void HoverSpriteCorrection(){
-		switch (SpriteRotation)
+		switch (_spriteRotation)
 		{
 			case 0:
 				GetNode<AnimatedSprite2D>("AnimatedSprite2D-Hover").GlobalPosition +=  new Vector2(0, -(100F * Scale.X));

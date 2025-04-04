@@ -7,65 +7,64 @@ using System.Runtime.CompilerServices;
 public partial class MapUI : Node2D
 {
 	[Signal] public delegate void GetUIDataEventHandler();
-	[Export] public CompressedTexture2D[] IslandSprites;// = new CompressedTexture2D();
-	MapGen mapGen;
-	TileMapLayer waterLayer;
-	TileMapLayer gridLayer;
-	List<Sprite2D> Islands = new();
-	private float scale = 1F;
-	private float boardWidth = 418F;
-	private int mapWidth = 10;
-	private Vector2 mapPositon;
-	private List<MapGen.IslandInfo> IslandInfo;
-	private bool pReady = false;
-	private bool sReady = false;
-	private bool mReady = false;
-	private bool wReady = false;
+	[Export] public CompressedTexture2D[] islandSprites;// = new CompressedTexture2D();
+	private TileMapLayer _waterLayer;
+	private TileMapLayer _gridLayer;
+	private List<Sprite2D> _islands = new();
+	private float _scale = 1F;
+	private float _boardWidth = 418F;
+	private int _mapWidth = 10;
+	private Vector2 _mapPositon;
+	private List<MapGen.IslandInfo> _islandInfos;
+	private bool _pReady = false;
+	private bool _sReady = false;
+	private bool _mReady = false;
+	private bool _wReady = false;
 	
 	public override void _Ready()
 	{
 		EmitSignal("GetUIData");
-		waterLayer = GetNode<TileMapLayer>("Water");
-		gridLayer = GetNode<TileMapLayer>("Grid");
+		_waterLayer = GetNode<TileMapLayer>("Water");
+		_gridLayer = GetNode<TileMapLayer>("Grid");
 	}
 
 	public override void _Process(double delta)
 	{
-		if(pReady && sReady && mReady && wReady)
+		if(_pReady && _sReady && _mReady && _wReady)
 		{
-			scale = boardWidth / ( 200F * mapWidth );
-			waterLayer.Scale = new Vector2(scale,scale);
-			waterLayer.Position = mapPositon;
-			gridLayer.Scale = new Vector2(scale,scale);
-			gridLayer.Position = mapPositon;
+			_scale = _boardWidth / ( 200F * _mapWidth );
+			_waterLayer.Scale = new Vector2(_scale,_scale);
+			_waterLayer.Position = _mapPositon;
+			_gridLayer.Scale = new Vector2(_scale,_scale);
+			_gridLayer.Position = _mapPositon;
 			GD.Print("Hello");
-			generateUI();
+			GenerateUI();
 			//reset
-			pReady = false;
-			sReady = false;
-			mReady = false;
-			wReady = false;
+			_pReady = false;
+			_sReady = false;
+			_mReady = false;
+			_wReady = false;
 		}
 	}
-	public void generateUI()
+	private void GenerateUI()
 	{
 		// fills board with water
 		GenerateTileMap("Water");
 		// adds guidelines to make the grid visible for the player.
 		GenerateTileMap("Grid");
 		// adds the islands
-		placeIslands();
+		PlaceIslands();
 		
 		// Creates empty maps which will later be used to indicate hits
-		//GenerateTileMap("PlayerGrid");
-		//GenerateTileMap("EnemyGrid");
+		GenerateTileMap("PlayerGrid");
+		GenerateTileMap("EnemyGrid");
 	}
 
 	private void GenerateTileMap(string mapName)
 	{
-		for (int i = 0; i < mapWidth; i++)
+		for (int i = 0; i < _mapWidth; i++)
 		{
-			for (int j = 0; j < mapWidth; j++)
+			for (int j = 0; j < _mapWidth; j++)
 			{
 				Vector2I position = new Vector2I(i,j);
 				GetNode<TileMapLayer>(mapName).SetCell(position,0,new Vector2I(0,0),0);
@@ -73,49 +72,49 @@ public partial class MapUI : Node2D
 		}
 	}
 
-	private void placeIslands()
+	private void PlaceIslands()
 	{
-		foreach (MapGen.IslandInfo X in IslandInfo)
+		foreach (MapGen.IslandInfo x in _islandInfos)
 		{
-			Islands.Add(new Sprite2D());
-			switch (X.Type)
+			_islands.Add(new Sprite2D());
+			switch (x.type)
 			{
 				case MapGen.IslandType.Chunker:
-					Islands[^1].Texture = IslandSprites[0];
+					_islands[^1].Texture = islandSprites[0];
 					break;
 				default:
 					break;
 			}
-			Islands[^1].Scale = new Vector2(scale,scale);
-			Islands[^1].Position = waterLayer.MapToLocal(X.cordinate);
-			Islands[^1].Position = new Vector2 (Islands[^1].Position.X * scale, Islands[^1].Position.Y * scale);
-			Islands[^1].Position = new Vector2 (Islands[^1].Position.X + mapPositon.X, Islands[^1].Position.Y + mapPositon.Y);
-			Islands[^1].Position = new Vector2 (Islands[^1].Position.X + (200 * scale),Islands[^1].Position.Y + (200 * scale));
+			_islands[^1].Scale = new Vector2(_scale,_scale);
+			_islands[^1].Position = _waterLayer.MapToLocal(x.coordinates);
+			_islands[^1].Position = new Vector2 (_islands[^1].Position.X * _scale, _islands[^1].Position.Y * _scale);
+			_islands[^1].Position = new Vector2 (_islands[^1].Position.X + _mapPositon.X, _islands[^1].Position.Y + _mapPositon.Y);
+			_islands[^1].Position = new Vector2 (_islands[^1].Position.X + (200 * _scale),_islands[^1].Position.Y + (200 * _scale));
 		}
-		foreach (Sprite2D X in Islands) { AddChild(X); }
+		foreach (Sprite2D X in _islands) { AddChild(X); }
 	}
-	public void setIslandInfos(List<MapGen.IslandInfo> Infos)
+	public void SetIslandInfos(List<MapGen.IslandInfo> infos)
 	{ 
-		mReady = true;
-		IslandInfo = Infos; 
+		_mReady = true;
+		_islandInfos = infos; 
 	}
 	private void MapReady(){
 		//mReady = true;
 	}
-	private void GetPosition(Vector2 positon) 
+	private void SetMapPosition(Vector2 positon) //Node already has a function called SetPosition
 	{ 
-		mapPositon = positon; 
-		pReady = true;
+		_mapPositon = positon; 
+		_pReady = true;
 	}
-	private void GetSize(Vector2 size) 
+	private void SetSize(Vector2 size) 
 	{ 
-		boardWidth = size.X; 
-		sReady = true;
+		_boardWidth = size.X; 
+		_sReady = true;
 	}
-	private void GetWidth(int width)
+	private void SetWidth(int width)
 	{
-		mapWidth = width;
-		wReady = true;
+		_mapWidth = width;
+		_wReady = true;
 	}
 	private void PlaceHitMarker(string grid, Vector2I pos) { GetNode<TileMapLayer>(grid).SetCell(pos,1,new Vector2I(0,0),0); }
 	private void PlaceMissMarker(string grid, Vector2I pos) { GetNode<TileMapLayer>(grid).SetCell(pos,2,new Vector2I(0,0),0); }

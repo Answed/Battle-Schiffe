@@ -8,13 +8,13 @@ public partial class EnemyBoardManager : BoardManager
 {
 		public void SetShips(List<Ship> ships)
 		{
-				this.ships = ships;
+				this.Ships = ships;
 				SetShipArray();
 		}
 
-		private void PrintAllShips()
+		private void PrintAllShips() // For Debugging only 
 		{
-			foreach (var ship in ships)
+			foreach (var ship in Ships)
 			{
 				GD.Print(ship);
 			}

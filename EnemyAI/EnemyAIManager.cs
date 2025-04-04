@@ -9,12 +9,12 @@ public partial class EnemyAIManager : Node
 	[Signal] public delegate void AttackEventHandler(int shipCount);
 	[Signal] public delegate void SetAttackParametersEventHandler(PlayerBoardManager boardManager);
 	
-	private List<Ship> currentShips;
-	private EnemyBoardManager enemyBoard;
-	private PlayerBoardManager playerBoard;
-	private int currentFightingForce = 10;
-	private int currentBonus = 0;
-	private EnemyShipPlacement shipPlacement;
+	private List<Ship> _currentShips;
+	private EnemyBoardManager _enemyBoard;
+	private PlayerBoardManager _playerBoard;
+	private int _currentFightingForce = 10;
+	private int _currentBonus = 0;
+	private EnemyShipPlacement _shipPlacement;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -25,22 +25,22 @@ public partial class EnemyAIManager : Node
 	private void SetNewMatch()
 	{
 		//UpdateFighhtingForce();
-		currentShips = shipPlacement.PlaceShips(currentFightingForce, enemyBoard.GetBoard());
-		EmitSignal(SignalName.SetAttackParameters, playerBoard);
-		enemyBoard.SetShips(currentShips);
+		_currentShips = _shipPlacement.PlaceShips(_currentFightingForce, _enemyBoard.GetBoard());
+		EmitSignal(SignalName.SetAttackParameters, _playerBoard);
+		_enemyBoard.SetShips(_currentShips);
 	}
 	
 	// Attacks the enemy and switches back to player after the attack is completed
 	private void EnemyTurn()
 	{
-		EmitSignal(SignalName.Attack, currentShips.Count);
+		EmitSignal(SignalName.Attack, _currentShips.Count);
 		EmitSignal(SignalName.EnemyTurnFinished);
 	}
 	
-	private void UpdateFighhtingForce() 
+	private void UpdateFightingForce() 
 	{
 		int playerFightingForce = 0;
-		foreach (Ship ship in playerBoard.GetShips())
+		foreach (Ship ship in _playerBoard.GetShips())
 		{
 			// Get Ship Level and at it to playerFightingForce
 		}
@@ -50,14 +50,13 @@ public partial class EnemyAIManager : Node
 	// ../ is needed to access the Nodes on the same tree height.
 	private void SetRequiredDependencies() 
 	{
-		shipPlacement = GetNode<EnemyShipPlacement>("ShipPlacement");
-		enemyBoard = GetNode<EnemyBoardManager>("../EnemyBoardManager");
-		playerBoard = GetNode<PlayerBoardManager>("../PlayerBoardManager");
+		_shipPlacement = GetNode<EnemyShipPlacement>("ShipPlacement");
+		_enemyBoard = GetNode<EnemyBoardManager>("../EnemyBoardManager");
+		_playerBoard = GetNode<PlayerBoardManager>("../PlayerBoardManager");
 	}
 	
 	// Gets Called in GameManager it only increases it by one bc of the Scaling Function.
 	// For more Info Check GDD Enemy AI
-	private void UpdateCurrentBonus() { currentBonus++; }
-	public void AddShip(Ship ship) { currentShips.Add(ship); }
-	public int GetCurrentShipCount() { return currentShips.Count; }
+	private void UpdateCurrentBonus() { _currentBonus++; }
+	public int GetCurrentShipCount() { return _currentShips.Count; }
 }

@@ -16,14 +16,8 @@ public enum ShipType
 [GlobalClass]
 public partial class ShipBlueprint : Resource
 {
-	
 	[Export]
 	public ShipType shipType { get; set; }
 	[Export]
 	public Godot.Collections.Array<ShipPositionPrefab> position { get; set; }
-
-	public void SetNewShip(ShipType shipType)
-	{
-		this.shipType = shipType;
-	}
 }
